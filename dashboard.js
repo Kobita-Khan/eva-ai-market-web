@@ -55,5 +55,41 @@ document.getElementById('dashboard-deposit-form').addEventListener('submit', asy
   setNotice('Deposit submitted. It is pending manual verification.'); event.target.reset(); await loadData(user.id);
 });
 
+document.getElementById('create-api-key').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  setNotice('Creating a secure API key…');
+  try {
+    const { data: { session } } = await client.auth.getSession();
+    if (!session) return location.replace('/login.html');
+    const response = await fetch('/api/keys/create', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${session.access_token}` },
+      body: JSON.stringify({ name: 'Gemini key' })
+    });
+    const body = await response.json();
+    if (!response.ok) throw new Error(body.error || 'Could not create API key.');
+    document.getElementById('new-api-key').textContent = body.apiKey;
+    document.getElementById('new-key-box').hidden = false;
+    setNotice('API key created. Copy it now—it will not be shown again.');
+    const { data: { user } } = await client.auth.getUser();
+    if (user) await loadData(user.id);
+  } catch (error) {
+    setNotice(error.message, true);
+  } finally {
+    button.disabled = false;
+  }
+});
+
+document.getElementById('copy-api-key').addEventListener('click', async () => {
+  const value = document.getElementById('new-api-key').textContent;
+  try {
+    await navigator.clipboard.writeText(value);
+    setNotice('API key copied. Store it securely.');
+  } catch {
+    setNotice('Press and hold the key to copy it.', true);
+  }
+});
+
 document.getElementById('sign-out').addEventListener('click', async () => { await client.auth.signOut(); location.replace('/'); });
 initDashboard();
