@@ -15,7 +15,7 @@ async function initDashboard() {
   } catch (error) { setNotice(error.message, true); }
 }
 
-async function loadData(userId) {
+async function loadData(userId, retry = true) {
   const [wallet, deposits, ledger, keys, usage] = await Promise.all([
     client.from('wallets').select('balance_usd,updated_at').eq('user_id', userId).single(),
     client.from('deposits').select('id,amount_usdt,network,transaction_id,status,created_at').order('created_at',{ascending:false}).limit(10),
@@ -24,7 +24,13 @@ async function loadData(userId) {
     client.from('usage_records').select('provider,model,input_tokens,output_tokens,cost_usd,created_at').order('created_at',{ascending:false}).limit(10)
   ]);
   const firstError = [wallet,deposits,ledger,keys,usage].find(result => result.error)?.error;
-  if (firstError) throw firstError;
+  if (firstError) {
+    if (retry && /JWT issued at future/i.test(firstError.message || '')) {
+      await new Promise(resolve => setTimeout(resolve, 2500));
+      return loadData(userId, false);
+    }
+    throw firstError;
+  }
   document.getElementById('balance').textContent = money(wallet.data?.balance_usd);
   document.getElementById('pending-count').textContent = deposits.data.filter(item => item.status === 'pending').length;
   document.getElementById('key-count').textContent = keys.data.filter(item => item.status === 'active').length;
