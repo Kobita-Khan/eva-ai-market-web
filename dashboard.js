@@ -20,7 +20,7 @@ async function loadData(userId, retry = true) {
     client.from('wallets').select('balance_usd,updated_at').eq('user_id', userId).single(),
     client.from('deposits').select('id,amount_usdt,network,transaction_id,status,created_at').order('created_at',{ascending:false}).limit(10),
     client.from('wallet_ledger').select('amount_usd,entry_type,description,balance_after,created_at').order('created_at',{ascending:false}).limit(10),
-    client.from('api_keys').select('id,key_prefix,status,created_at,last_used_at').order('created_at',{ascending:false}),
+    client.rpc('list_my_api_keys'),
     client.from('usage_records').select('provider,model,input_tokens,output_tokens,cost_usd,created_at').order('created_at',{ascending:false}).limit(10)
   ]);
   const firstError = [wallet,deposits,ledger,keys,usage].find(result => result.error)?.error;
