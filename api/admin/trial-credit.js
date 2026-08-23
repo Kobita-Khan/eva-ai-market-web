@@ -10,15 +10,26 @@ export default async function handler(req, res) {
     return json(res, 400, { error: 'Enter a valid customer email.' });
   }
 
-  const encodedEmail = encodeURIComponent(email);
-  const profileResponse = await serviceRequest(ctx, `profiles?email=eq.${encodedEmail}&select=id,email&limit=1`);
-  const profiles = await profileResponse.json().catch(() => []);
-  if (!profileResponse.ok) return json(res, 502, { error: 'Could not find customer.' });
-  if (!profiles[0]) return json(res, 404, { error: 'Customer account not found.' });
+  let customer = null;
+  for (let page = 1; page <= 5 && !customer; page += 1) {
+    const authResponse = await fetch(`${ctx.url}/auth/v1/admin/users?page=${page}&per_page=200`, {
+      headers: {
+        apikey: ctx.service,
+        authorization: `Bearer ${ctx.service}`
+      }
+    });
+    const authBody = await authResponse.json().catch(() => ({}));
+    if (!authResponse.ok) return json(res, 502, { error: 'Could not search registered customers.' });
+    const users = Array.isArray(authBody.users) ? authBody.users : [];
+    customer = users.find(user => user.email?.toLowerCase() === email) || null;
+    if (users.length < 200) break;
+  }
+
+  if (!customer) return json(res, 404, { error: 'Registered customer account not found.' });
 
   const creditResponse = await serviceRequest(ctx, 'rpc/grant_trial_credit', {
     method: 'POST',
-    body: JSON.stringify({ p_user_id: profiles[0].id })
+    body: JSON.stringify({ p_user_id: customer.id })
   });
   const result = await creditResponse.json().catch(() => ({}));
   if (!creditResponse.ok) {
@@ -27,7 +38,7 @@ export default async function handler(req, res) {
 
   return json(res, 200, {
     granted: true,
-    email: profiles[0].email,
+    email: customer.email,
     amount: Number(result.amount),
     balance: Number(result.balance)
   });
