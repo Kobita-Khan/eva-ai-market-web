@@ -69,7 +69,7 @@ document.getElementById('create-api-key').addEventListener('click', async event 
     });
     const body = await response.json();
     if (!response.ok) throw new Error(body.error || 'Could not create API key.');
-    document.getElementById('new-api-key').textContent = body.apiKey;
+    document.getElementById('new-api-key').value = body.apiKey;
     document.getElementById('new-key-box').hidden = false;
     setNotice('API key created. Copy it now—it will not be shown again.');
     const { data: { user } } = await client.auth.getUser();
@@ -82,13 +82,24 @@ document.getElementById('create-api-key').addEventListener('click', async event 
 });
 
 document.getElementById('copy-api-key').addEventListener('click', async () => {
-  const value = document.getElementById('new-api-key').textContent;
+  const field = document.getElementById('new-api-key');
+  field.focus();
+  field.select();
+  field.setSelectionRange(0, field.value.length);
+  let copied = false;
   try {
-    await navigator.clipboard.writeText(value);
-    setNotice('API key copied. Store it securely.');
-  } catch {
-    setNotice('Press and hold the key to copy it.', true);
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(field.value);
+      copied = true;
+    }
+  } catch {}
+  if (!copied) {
+    try { copied = document.execCommand('copy'); } catch {}
   }
+  setNotice(
+    copied ? 'API key copied. Paste it into Notes now.' : 'Key selected. Press and hold inside the field, then tap Copy.',
+    !copied
+  );
 });
 
 document.getElementById('sign-out').addEventListener('click', async () => { await client.auth.signOut(); location.replace('/'); });
