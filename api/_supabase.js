@@ -9,11 +9,10 @@ export function json(res, status, body) {
   return res.status(status).json(body);
 }
 
-export async function requireAdmin(req, res) {
+async function authenticatedContext(req, res) {
   const { url, anon, service } = env();
-  const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
-  if (!url || !anon || !service || !adminEmail) {
-    json(res, 503, { error: 'Admin service is not configured.' });
+  if (!url || !anon || !service) {
+    json(res, 503, { error: 'Account service is not configured.' });
     return null;
   }
   const authorization = req.headers.authorization || '';
@@ -26,12 +25,26 @@ export async function requireAdmin(req, res) {
     json(res, 401, { error: 'Invalid or expired session.' });
     return null;
   }
-  const user = await response.json();
-  if (user.email?.toLowerCase() !== adminEmail) {
+  return { url, service, user: await response.json() };
+}
+
+export async function requireUser(req, res) {
+  return authenticatedContext(req, res);
+}
+
+export async function requireAdmin(req, res) {
+  const ctx = await authenticatedContext(req, res);
+  if (!ctx) return null;
+  const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  if (!adminEmail) {
+    json(res, 503, { error: 'Admin service is not configured.' });
+    return null;
+  }
+  if (ctx.user.email?.toLowerCase() !== adminEmail) {
     json(res, 403, { error: 'Admin access denied.' });
     return null;
   }
-  return { url, service, user };
+  return ctx;
 }
 
 export async function serviceRequest(ctx, path, options = {}) {
