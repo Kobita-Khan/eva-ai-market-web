@@ -22,3 +22,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,5,16,.84);backdrop-fil
 
 .trial-card{margin:0 0 18px}.trial-form{grid-template-columns:minmax(0,1fr) auto;align-items:end}.trial-form .button{min-height:49px}
 @media(max-width:600px){.trial-form{grid-template-columns:1fr}.trial-form .button{width:100%}}
+
+.key-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.danger-button{color:#ffb1b1;border-color:rgba(255,90,90,.25)}
+@media(max-width:520px){.key-actions{display:grid;grid-template-columns:1fr}.key-actions .button{width:100%}}
