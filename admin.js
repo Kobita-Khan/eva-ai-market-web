@@ -35,5 +35,26 @@ async function approve(button) {
   catch(error){ adminNotice(error.message,true); button.disabled=false; }
 }
 
+document.getElementById('trial-credit-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const email = document.getElementById('trial-email').value.trim();
+  const button = event.currentTarget.querySelector('button');
+  if (!confirm(`Grant one-time $0.10 trial credit to ${email}?`)) return;
+  button.disabled = true;
+  adminNotice('Granting trial credit…');
+  try {
+    const result = await adminFetch('/api/admin/trial-credit', {
+      method: 'POST',
+      body: JSON.stringify({ email })
+    });
+    adminNotice(`$0.10 trial granted to ${result.email}. New balance: ${result.balance.toFixed(2)}`);
+    event.currentTarget.reset();
+  } catch (error) {
+    adminNotice(error.message, true);
+  } finally {
+    button.disabled = false;
+  }
+});
+
 document.getElementById('admin-refresh').addEventListener('click',()=>loadDeposits().catch(error=>adminNotice(error.message,true)));
 initAdmin();
