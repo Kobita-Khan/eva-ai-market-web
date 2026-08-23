@@ -2,11 +2,26 @@ let adminClient;
 const adminNotice = (message, error = false) => { const el=document.getElementById('admin-notice'); el.textContent=message; el.className=error?'dash-notice error':'dash-notice success'; };
 const escapeAdmin = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 
-async function adminFetch(path, options = {}) {
-  const { data: { session } } = await adminClient.auth.getSession();
-  if (!session) throw new Error('Sign in required.');
+async function adminFetch(path, options = {}, retry = true) {
+  let { data: { session } } = await adminClient.auth.getSession();
+  if (!session) {
+    const refreshed = await adminClient.auth.refreshSession();
+    session = refreshed.data.session;
+  }
+  if (!session) {
+    await adminClient.auth.signOut();
+    location.replace('/login.html');
+    throw new Error('Sign in required.');
+  }
   const response = await fetch(path, { ...options, headers: { 'content-type':'application/json', authorization:`Bearer ${session.access_token}`, ...(options.headers||{}) } });
   const body = await response.json();
+  if (response.status === 401 && retry) {
+    const refreshed = await adminClient.auth.refreshSession();
+    if (refreshed.data.session) return adminFetch(path, options, false);
+    await adminClient.auth.signOut();
+    location.replace('/login.html');
+    throw new Error('Session expired. Please sign in again.');
+  }
   if (!response.ok) throw new Error(body.error || 'Request failed.');
   return body;
 }
