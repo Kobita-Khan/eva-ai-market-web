@@ -55,6 +55,32 @@ document.getElementById('dashboard-deposit-form').addEventListener('submit', asy
   setNotice('Deposit submitted. It is pending manual verification.'); event.target.reset(); await loadData(user.id);
 });
 
+document.getElementById('reset-api-keys').addEventListener('click', async event => {
+  if (!confirm('Revoke every active API key on this account? Applications using them will stop working.')) return;
+  const button = event.currentTarget;
+  button.disabled = true;
+  setNotice('Resetting lost API keys…');
+  try {
+    const { data: { session } } = await client.auth.getSession();
+    if (!session) return location.replace('/login.html');
+    const response = await fetch('/api/keys/reset', {
+      method: 'POST',
+      headers: { authorization: `Bearer ${session.access_token}` }
+    });
+    const body = await response.json();
+    if (!response.ok) throw new Error(body.error || 'Could not reset API keys.');
+    document.getElementById('new-api-key').value = '';
+    document.getElementById('new-key-box').hidden = true;
+    setNotice(`${body.revoked} active API key(s) revoked. Create one new key now.`);
+    const { data: { user } } = await client.auth.getUser();
+    if (user) await loadData(user.id);
+  } catch (error) {
+    setNotice(error.message, true);
+  } finally {
+    button.disabled = false;
+  }
+});
+
 document.getElementById('create-api-key').addEventListener('click', async event => {
   const button = event.currentTarget;
   button.disabled = true;
