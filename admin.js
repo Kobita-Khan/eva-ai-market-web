@@ -37,8 +37,9 @@ async function approve(button) {
 
 document.getElementById('trial-credit-form').addEventListener('submit', async event => {
   event.preventDefault();
+  const form = event.currentTarget;
   const email = document.getElementById('trial-email').value.trim();
-  const button = event.currentTarget.querySelector('button');
+  const button = form.querySelector('button');
   if (!confirm(`Grant one-time $0.10 trial credit to ${email}?`)) return;
   button.disabled = true;
   adminNotice('Granting trial credit…');
@@ -48,7 +49,7 @@ document.getElementById('trial-credit-form').addEventListener('submit', async ev
       body: JSON.stringify({ email })
     });
     adminNotice(`$0.10 trial granted to ${result.email}. New balance: ${result.balance.toFixed(2)}`);
-    event.currentTarget.reset();
+    form.reset();
   } catch (error) {
     adminNotice(error.message, true);
   } finally {
