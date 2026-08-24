@@ -18,11 +18,12 @@
   </div></header>
   <main>
     <section class="section hero" id="home"><div class="container hero-grid">
-      <div><div class="eyebrow"><i></i> Secure payment verification</div><h1>EVA AI <span>MARKET</span></h1><p class="subtitle">Pay-as-you-go Claude, OpenAI &amp; Gemini API access</p><p class="muted hero-desc">Start from 10 USDT. Pay only for what you use.</p>
+      <div><div class="eyebrow"><i></i> Secure payment verification</div><h1>EVA AI <span>MARKET</span></h1><p class="subtitle">Pay-as-you-go AWS Bedrock Claude, OpenAI &amp; Gemini API access</p><p class="muted hero-desc">Start from 10 USDT. Pay only for what you use.</p>
         <div class="buttons"><a class="button primary" href="#deposit">Buy Credits</a><a class="button secondary" href="/login.html">Customer Login</a><a class="button secondary" href="https://t.me/eva007_8" target="_blank" rel="noopener noreferrer">Contact Support</a></div>
-        <div class="stats"><span><b>10 USDT</b>Minimum</span><span><b>3</b>Providers</span><span><b>Secure Payment</b>Verification</span></div>
+        <div class="stats"><span><b>10 USDT</b>Minimum</span><span><b>4</b>API Options</span><span><b>Secure Payment</b>Verification</span></div>
       </div>
       <div class="hero-card panel"><div class="card-head"><span>API availability</span><b><i></i> Available</b></div>
+        <div class="provider"><em class="openai">B</em><div><strong>AWS Bedrock — Claude</strong><small>Access requests open</small></div><span>→</span></div>
         <div class="provider"><em class="openai">C</em><div><strong>Claude API</strong><small>After payment approval</small></div><span>✓</span></div>
         <div class="provider"><em class="gemini">G</em><div><strong>Gemini API</strong><small>After payment approval</small></div><span>✓</span></div>
         <div class="provider"><em class="openai">O</em><div><strong>OpenAI API</strong><small>After payment approval</small></div><span>✓</span></div>
@@ -32,7 +33,7 @@
 
     <section class="section" id="pricing"><div class="container"><div class="heading"><span>Pricing</span><h2>Simple credits. No subscription.</h2><p>Fund your balance with USDT and use approved API access as needed.</p></div>
       <div class="pricing panel"><div class="price"><span>Minimum deposit</span><strong>10 <small>USDT</small></strong><a class="button primary" href="#deposit">Deposit Credits</a></div>
-        <ul><li><b>✓</b>Flexible pay-as-you-go credits</li><li><b>✓</b>Claude, OpenAI, and Gemini available</li><li><b>✓</b>Manual payment verification</li><li><b>✓</b>No monthly subscription required</li></ul>
+        <ul><li><b>✓</b>Flexible pay-as-you-go credits</li><li><b>✓</b>AWS Bedrock Claude access requests open</li><li><b>✓</b>Claude, OpenAI, and Gemini available</li><li><b>✓</b>Manual payment verification</li><li><b>✓</b>No monthly subscription required</li></ul>
       </div>
     </div></section>
 
@@ -44,6 +45,7 @@
       </div>
       <form class="payment-form panel" id="payment-form" novalidate>
         <label>Telegram username<input id="telegram" type="text" placeholder="@yourusername" autocomplete="off" required><small data-error="telegram"></small></label>
+        <label>Product<select id="product"><option value="AWS Bedrock Claude">AWS Bedrock — Claude API</option><option value="Claude API">Claude API</option><option value="OpenAI API">OpenAI API</option><option value="Gemini API">Gemini API</option><option value="Wallet Credits">General wallet credits</option></select></label>
         <label>Amount in USDT<input id="amount" type="number" min="10" step="0.01" inputmode="decimal" placeholder="Minimum 10" required><small data-error="amount"></small></label>
         <label>Network<select id="network"><option value="TRC20">USDT TRC20</option><option value="BEP20">USDT BEP20</option></select></label>
         <label>Transaction ID<input id="txid" type="text" placeholder="Paste transaction hash / TXID" autocomplete="off" required><small data-error="txid"></small></label>
@@ -51,8 +53,8 @@
       </form></div>
     </div></section>
 
-    <section class="section" id="models"><div class="container"><div class="heading"><span>API Models</span><h2>Three leading AI providers</h2><p>Access instructions are provided manually after your payment is approved.</p></div>
-      <div class="models"><article class="model panel"><em class="openai large">C</em><h3>Claude API</h3><p>Available after payment approval.</p><b>Secure payment verification</b></article><article class="model panel"><em class="gemini large">G</em><h3>Gemini API</h3><p>Available after payment approval.</p><b>Secure payment verification</b></article><article class="model panel"><em class="openai large">O</em><h3>OpenAI API</h3><p>Available after payment approval.</p><b>Secure payment verification</b></article></div>
+    <section class="section" id="models"><div class="container"><div class="heading"><span>API Models</span><h2>Four API access options</h2><p>AWS Bedrock orders are accepted now. Live access is activated only after AWS account approval, provider availability, and payment verification.</p></div>
+      <div class="models"><article class="model panel"><em class="openai large">B</em><h3>AWS Bedrock — Claude</h3><p>Order requests open for approved Bedrock access. No AWS secret is exposed in the browser.</p><b>Request access</b><div style="margin-top:18px"><a class="button secondary" href="https://t.me/eva007_8?text=I%20want%20AWS%20Bedrock%20Claude%20API%20access" target="_blank" rel="noopener noreferrer">Order on Telegram</a></div></article><article class="model panel"><em class="openai large">C</em><h3>Claude API</h3><p>Available after payment approval.</p><b>Secure payment verification</b></article><article class="model panel"><em class="gemini large">G</em><h3>Gemini API</h3><p>Available after payment approval.</p><b>Secure payment verification</b></article><article class="model panel"><em class="openai large">O</em><h3>OpenAI API</h3><p>Available after payment approval.</p><b>Secure payment verification</b></article></div>
     </div></section>
 
     <section class="section tinted" id="documentation"><div class="container docs"><div class="heading left"><span>Getting Started</span><h2>How to get started</h2><p>A simple manual process for payment verification and safe access delivery.</p></div>
@@ -61,6 +63,6 @@
 
     <section class="section" id="contact"><div class="container contact panel"><div><span class="kicker">Contact</span><h2>Need help with your payment?</h2><p>Contact primary support on Telegram for deposit verification and access instructions.</p></div><a class="button primary" href="https://t.me/eva007_8" target="_blank" rel="noopener noreferrer">Contact Support on Telegram</a></div></section>
   </main>
-  <footer><div class="container footer"><a class="brand" href="#home"><span class="brand-mark">E</span><span>EVA AI MARKET</span></a><p>EVA AI MARKET is an independent API-powered service and is not an official Anthropic, OpenAI, or Google partnership.</p><small>© 2026 EVA AI MARKET. All rights reserved.</small></div></footer>
+  <footer><div class="container footer"><a class="brand" href="#home"><span class="brand-mark">E</span><span>EVA AI MARKET</span></a><p>EVA AI MARKET is an independent API-powered service and is not an official partner of AWS, Anthropic, OpenAI, or Google. AWS Bedrock access is subject to AWS approval, regional availability, and usage billing.</p><small>© 2026 EVA AI MARKET. All rights reserved.</small></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div><script src="app.js"></script>
 </body></html>
