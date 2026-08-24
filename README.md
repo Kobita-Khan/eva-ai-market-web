@@ -1,6 +1,6 @@
 # EVA AI MARKET
 
-Production pay-as-you-go AI API gateway for Gemini, OpenAI, and Claude.
+Production pay-as-you-go AI API gateway for Gemini, OpenAI, and Claude, with AWS Bedrock Claude access requests available through the storefront.
 
 ## Customer flow
 
@@ -21,6 +21,8 @@ Developer documentation is available at `/api-docs`.
 - `GEMINI_API_KEY`
 - `OPENAI_API_KEY`
 - `ANTHROPIC_API_KEY`
+
+AWS Bedrock storefront orders can be accepted without a browser-side AWS credential. A live Bedrock relay must remain disabled until valid AWS billing, model access, region, and server-side IAM permissions are configured. Never place AWS access keys in HTML or client JavaScript.
 
 Never commit real provider keys or the Supabase service-role key.
 
