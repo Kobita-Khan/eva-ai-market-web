@@ -33,7 +33,7 @@ async function initAdmin() {
     adminClient=window.supabase.createClient(config.url,config.anonKey);
     const { data:{session} }=await adminClient.auth.getSession();
     if(!session) return location.replace('/login.html');
-    await loadDeposits();
+    await Promise.all([loadDeposits(),loadStoreAdmin()]);
   } catch(error) { adminNotice(error.message,true); }
 }
 
@@ -72,5 +72,9 @@ document.getElementById('trial-credit-form').addEventListener('submit', async ev
   }
 });
 
-document.getElementById('admin-refresh').addEventListener('click',()=>loadDeposits().catch(error=>adminNotice(error.message,true)));
+document.getElementById('admin-refresh').addEventListener('click',()=>Promise.all([loadDeposits(),loadStoreAdmin()]).catch(error=>adminNotice(error.message,true)));
 initAdmin();
+
+async function loadStoreAdmin(){const {products,orders}=await adminFetch('/api/admin/store');document.getElementById('admin-product-grid').innerHTML=products.map(p=>`<article class="panel stock-editor"><div><b>${escapeAdmin(p.name)}</b><small>${escapeAdmin(p.subtitle)} · $${Number(p.price_usd).toFixed(2)}</small></div><label>Stock<input type="number" min="0" max="10000" value="${p.stock}" data-stock-id="${escapeAdmin(p.id)}"></label><button class="button secondary small-button save-stock" type="button">Save</button></article>`).join('');document.querySelectorAll('.save-stock').forEach(button=>button.addEventListener('click',()=>saveStock(button)));document.getElementById('admin-order-rows').innerHTML=orders.length?orders.map(o=>`<tr><td>${new Date(o.created_at).toLocaleString()}</td><td><code>${escapeAdmin(o.user_id.slice(0,8))}…</code></td><td>${escapeAdmin(o.product_name)}</td><td>$${Number(o.price_usd).toFixed(2)}</td><td><select class="order-status"><option ${o.status==='approved'?'selected':''}>approved</option><option ${o.status==='processing'?'selected':''}>processing</option><option ${o.status==='delivered'?'selected':''}>delivered</option><option ${o.status==='cancelled'?'selected':''}>cancelled</option><option ${o.status==='refunded'?'selected':''}>refunded</option></select></td><td><textarea class="order-delivery" rows="3" placeholder="Secure delivery details or admin note">${escapeAdmin(o.delivery_details||'')}</textarea></td><td><button class="button primary small-button save-order" type="button" data-order-id="${o.id}">Update</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">No account orders yet.</td></tr>';document.querySelectorAll('.save-order').forEach(button=>button.addEventListener('click',()=>saveOrder(button)))}
+async function saveStock(button){const card=button.closest('.stock-editor'),input=card.querySelector('[data-stock-id]');button.disabled=true;try{await adminFetch('/api/admin/stock-update',{method:'POST',body:JSON.stringify({productId:input.dataset.stockId,stock:Number(input.value)})});adminNotice('Stock updated.');await loadStoreAdmin()}catch(error){adminNotice(error.message,true);button.disabled=false}}
+async function saveOrder(button){const row=button.closest('tr'),status=row.querySelector('.order-status').value,deliveryDetails=row.querySelector('.order-delivery').value;if(status==='delivered'&&!deliveryDetails.trim())return adminNotice('Add delivery details before marking Delivered.',true);if(status==='refunded'&&!confirm('Refund this order, return the balance, and restore stock?'))return;button.disabled=true;try{await adminFetch('/api/admin/order-update',{method:'POST',body:JSON.stringify({orderId:button.dataset.orderId,status,deliveryDetails})});adminNotice('Order updated.');await loadStoreAdmin()}catch(error){adminNotice(error.message,true);button.disabled=false}}
