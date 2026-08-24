@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080510">
+  <meta name="description" content="Developer API documentation for EVA AI MARKET multi-provider API access.">
+  <title>Developer API Guide — EVA AI MARKET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .docs-main{padding:72px 0 110px}.docs-hero{max-width:900px;margin-bottom:34px}.docs-hero h1{font-size:clamp(2.2rem,7vw,4.5rem);margin:10px 0}.docs-hero p{font-size:1.08rem;line-height:1.75}
+    .api-layout{display:grid;gap:22px}.api-section{padding:28px}.api-section h2{margin:0 0 8px}.api-section h3{margin:24px 0 10px}.api-section p,.api-section li{color:#b8b2c9;line-height:1.7}
+    .endpoint{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}.method{background:#143a34;color:#65e6bd;border:1px solid #246a5e;padding:6px 10px;border-radius:9px;font-weight:800}.endpoint code{font-size:1rem;color:#fff;overflow-wrap:anywhere}
+    pre{margin:12px 0 0;padding:18px;border-radius:14px;background:#07050d;border:1px solid #2e2450;color:#d8fff4;overflow:auto;white-space:pre;line-height:1.55;font-size:.86rem}
+    .callout{border-left:3px solid #41d7e8;padding:14px 18px;background:rgba(65,215,232,.07);border-radius:8px;color:#dce8f4}.error-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.error-item{padding:15px;border:1px solid #302650;border-radius:12px;background:#0d0918}.error-item b{display:block;color:#fff;margin-bottom:5px}
+    .docs-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}@media(max-width:640px){.docs-main{padding-top:48px}.api-section{padding:20px}pre{font-size:.77rem}}
+  </style>
+</head>
+<body>
+  <div class="glow glow-a" aria-hidden="true"></div>
+  <header><div class="container nav-wrap">
+    <a class="brand" href="/"><span class="brand-mark">E</span><span>EVA AI MARKET</span></a>
+    <div class="buttons"><a class="button secondary small-button" href="/dashboard.html">Dashboard</a></div>
+  </div></header>
+  <main class="container docs-main">
+    <section class="docs-hero">
+      <span class="kicker">Developer documentation</span>
+      <h1>One EVA key.<br>Three AI providers.</h1>
+      <p class="muted">Use your private <code>eva_live_...</code> key with the EVA API gateway. Requests are metered automatically and the exact charge appears in your dashboard.</p>
+      <div class="docs-actions"><a class="button primary" href="/dashboard.html">Open dashboard</a><a class="button secondary" href="https://t.me/eva007_8" target="_blank" rel="noopener noreferrer">Get support</a></div>
+    </section>
+
+    <div class="api-layout">
+      <section class="panel api-section">
+        <h2>Before you start</h2>
+        <ol>
+          <li>Sign in and make sure your approved balance is available.</li>
+          <li>Create one EVA API key in the customer dashboard.</li>
+          <li>Copy it immediately—the full secret is shown only once.</li>
+          <li>Send the key in the <code>X-API-Key</code> header.</li>
+        </ol>
+        <p class="callout"><strong>Keep it secret:</strong> Store the EVA key only on your server or in an environment variable. Never expose it in browser JavaScript, screenshots, public repositories, or chat groups.</p>
+      </section>
+
+      <section class="panel api-section">
+        <span class="kicker">Gemini</span>
+        <h2>Gemini API request</h2>
+        <div class="endpoint"><span class="method">POST</span><code>https://eva-ai-market.vercel.app/api/v1/gemini</code></div>
+        <pre><code>curl "https://eva-ai-market.vercel.app/api/v1/gemini" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: eva_live_YOUR_KEY" \
+  -d '{
+    "prompt": "Explain this idea in three short points.",
+    "generationConfig": {
+      "maxOutputTokens": 256,
+      "temperature": 0.7
+    }
+  }'</code></pre>
+      </section>
+
+      <section class="panel api-section">
+        <span class="kicker">OpenAI</span>
+        <h2>OpenAI API request</h2>
+        <div class="endpoint"><span class="method">POST</span><code>https://eva-ai-market.vercel.app/api/v1/openai</code></div>
+        <pre><code>curl "https://eva-ai-market.vercel.app/api/v1/openai" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: eva_live_YOUR_KEY" \
+  -d '{
+    "prompt": "Write a short product description.",
+    "max_output_tokens": 256
+  }'</code></pre>
+      </section>
+
+      <section class="panel api-section">
+        <span class="kicker">Claude</span>
+        <h2>Claude API request</h2>
+        <div class="endpoint"><span class="method">POST</span><code>https://eva-ai-market.vercel.app/api/v1/claude</code></div>
+        <pre><code>curl "https://eva-ai-market.vercel.app/api/v1/claude" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: eva_live_YOUR_KEY" \
+  -d '{
+    "prompt": "Summarize the following text.",
+    "max_tokens": 256,
+    "temperature": 0.7
+  }'</code></pre>
+      </section>
+
+      <section class="panel api-section">
+        <h2>Authentication and billing</h2>
+        <p>You may also send <code>Authorization: Bearer eva_live_YOUR_KEY</code>. One active EVA key works across every currently enabled provider endpoint. The provider response includes an <code>eva_usage</code object with the request ID, charged amount, remaining balance, and active model.</p>
+        <pre><code>{
+  "eva_usage": {
+    "request_id": "request-uuid",
+    "charged_usd": 0.000100,
+    "balance_usd": 9.999900,
+    "model": "provider-model"
+  }
+}</code></pre>
+      </section>
+
+      <section class="panel api-section">
+        <h2>Common responses</h2>
+        <div class="error-grid">
+          <div class="error-item"><b>400 Bad Request</b><span class="muted">Prompt or request body is invalid.</span></div>
+          <div class="error-item"><b>401 Unauthorized</b><span class="muted">EVA key is missing, invalid, revoked, or inactive.</span></div>
+          <div class="error-item"><b>402 Payment Required</b><span class="muted">Balance is insufficient for the request.</span></div>
+          <div class="error-item"><b>413 Too Large</b><span class="muted">The request exceeds the current size limit.</span></div>
+          <div class="error-item"><b>429 Rate Limited</b><span class="muted">Wait briefly and retry with backoff.</span></div>
+          <div class="error-item"><b>5xx Service Error</b><span class="muted">Provider or gateway service is temporarily unavailable.</span></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="container footer"><a class="brand" href="/"><span class="brand-mark">E</span><span>EVA AI MARKET</span></a><p>EVA AI MARKET is an independent API-powered service and is not an official Anthropic, OpenAI, or Google partnership.</p><small>© 2026 EVA AI MARKET</small></div></footer>
+</body>
+</html>
