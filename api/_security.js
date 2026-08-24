@@ -1,6 +1,6 @@
 const WINDOW_MS = 60_000;
 const DEFAULT_REQUESTS_PER_MINUTE = 30;
-const DEFAULT_CONCURRENT_REQUESTS = 3;
+const DEFAULT_CONCURRENT_REQUESTS = 1;
 const MAX_TRACKED_IDENTITIES = 5_000;
 
 const state = globalThis.__evaRelaySecurityState || {
@@ -51,6 +51,12 @@ const allowedOrigins = (req) => {
   configured.push('https://eva-ai-market.vercel.app');
   return new Set(configured);
 };
+
+export function relayClientIdentity(req) {
+  const forwarded = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  const direct = String(req.socket?.remoteAddress || '').trim();
+  return forwarded || direct || 'unknown';
+}
 
 export function applyRelayCors(req, res) {
   const origin = String(req.headers.origin || '').trim();
