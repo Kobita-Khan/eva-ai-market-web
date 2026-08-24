@@ -1,13 +1,14 @@
 import { createHash, randomUUID } from 'node:crypto';
+import { acquireRelayGate, applyRelayCors, fetchWithTimeout } from '../_security.js';
 
 const MODEL = 'claude-haiku-4-5-20251001';
 const INPUT_RETAIL_PER_TOKEN = 0.00000135;
 const OUTPUT_RETAIL_PER_TOKEN = 0.00000675;
 const MINIMUM_CHARGE = 0.0001;
+const MINIMUM_BALANCE = 0.015;
 
 const send = (res, status, body) => {
   res.setHeader('Cache-Control', 'no-store');
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-API-Key, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   return res.status(status).json(body);
@@ -30,6 +31,7 @@ const serviceFetch = (env, path, options = {}) => fetch(`${env.url}/rest/v1/${pa
 });
 
 export default async function handler(req, res) {
+  if (!applyRelayCors(req, res)) return send(res, 403, { error: 'This browser origin is not allowed.' });
   if (req.method === 'OPTIONS') return send(res, 204, {});
   if (req.method !== 'POST') return send(res, 405, { error: 'Method not allowed.' });
 
@@ -60,7 +62,7 @@ export default async function handler(req, res) {
     id: keys[0].api_key_id,
     user_id: keys[0].customer_user_id
   };
-  if (Number(keys[0].balance_usd) < 0.005) {
+  if (Number(keys[0].balance_usd) < MINIMUM_BALANCE) {
     return send(res, 402, { error: 'Insufficient balance. Deposit credits to continue.' });
   }
 
@@ -89,7 +91,10 @@ export default async function handler(req, res) {
     providerRequest.system = req.body.system.trim().slice(0, 5000);
   }
 
-  const providerResponse = await fetch('https://api.anthropic.com/v1/messages', {
+  const gate = acquireRelayGate(req, res, keyHash);
+  if (!gate.ok) return send(res, gate.status, { error: gate.error });
+
+  const providerResponse = await fetchWithTimeout('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -100,6 +105,7 @@ export default async function handler(req, res) {
   });
 
   const providerBody = await providerResponse.json().catch(() => ({}));
+  gate.release();
   if (!providerResponse.ok) {
     const providerMessage = providerBody?.error?.message || 'Claude request failed.';
     return send(res, providerResponse.status === 429 ? 429 : 502, { error: providerMessage });
