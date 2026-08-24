@@ -38,17 +38,13 @@ const cleanExpiredWindows = (now) => {
   }
 };
 
-const allowedOrigins = (req) => {
+const allowedOrigins = () => {
   const configured = String(process.env.EVA_ALLOWED_ORIGINS || '')
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean);
-  const host = String(req.headers.host || '').trim();
-  if (host) {
-    configured.push(`https://${host}`);
-    if (host.startsWith('localhost:')) configured.push(`http://${host}`);
-  }
   configured.push('https://eva-ai-market.vercel.app');
+  configured.push('https://eva-ai-market-web.vercel.app');
   return new Set(configured);
 };
 
@@ -62,7 +58,7 @@ export function applyRelayCors(req, res) {
   const origin = String(req.headers.origin || '').trim();
   res.setHeader('Vary', 'Origin');
   if (!origin) return true;
-  if (!allowedOrigins(req).has(origin)) return false;
+  if (!allowedOrigins().has(origin)) return false;
   res.setHeader('Access-Control-Allow-Origin', origin);
   return true;
 }
