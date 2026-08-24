@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { acquireRelayGate, applyRelayCors, fetchWithTimeout } from '../_security.js';
+import { acquireRelayGate, applyRelayCors, fetchWithTimeout, relayClientIdentity } from '../_security.js';
 
 const MODEL = 'gemini-3.5-flash-lite';
 const INPUT_RETAIL_PER_TOKEN = 0.000000405;
@@ -34,6 +34,10 @@ export default async function handler(req, res) {
   if (!applyRelayCors(req, res)) return send(res, 403, { error: 'This browser origin is not allowed.' });
   if (req.method === 'OPTIONS') return send(res, 204, {});
   if (req.method !== 'POST') return send(res, 405, { error: 'Method not allowed.' });
+
+  const clientGate = acquireRelayGate(req, res, `ip:${relayClientIdentity(req)}`);
+  if (!clientGate.ok) return send(res, clientGate.status, { error: clientGate.error });
+  clientGate.release();
 
   const env = serviceEnv();
   if (!env.url || !env.service || !env.gemini) {
