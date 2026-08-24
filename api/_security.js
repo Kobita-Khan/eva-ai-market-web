@@ -129,7 +129,12 @@ export async function fetchWithTimeout(url, options = {}, timeoutMs = 45_000) {
         headers: { 'content-type': 'application/json' }
       });
     }
-    throw error;
+    return new Response(JSON.stringify({
+      error: { message: 'The upstream AI provider could not be reached. Please retry.' }
+    }), {
+      status: 502,
+      headers: { 'content-type': 'application/json' }
+    });
   } finally {
     clearTimeout(timeout);
   }
