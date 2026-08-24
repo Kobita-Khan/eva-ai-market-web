@@ -49,3 +49,10 @@ Optional configuration:
 - `POST /api/v1/claude`
 
 Send the customer key in `X-API-Key` or `Authorization: Bearer`.
+
+
+## Wallet account store
+
+The account store uses approved wallet balance. `purchase_store_product` locks the wallet and product row in one transaction, deducts balance, decrements stock, creates an order, and records the ledger entry atomically. Admins can update stock, process delivery, or refund an order. Delivery details are returned only through the authenticated customer orders endpoint.
+
+Apply `supabase/migrations/20260824_account_store.sql` before enabling the store UI.
