@@ -4,15 +4,6 @@ menuButton.addEventListener('click',()=>{const open=siteNav.classList.toggle('op
 siteNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{siteNav.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}));
 document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const address=document.getElementById(button.dataset.copy).textContent.trim();try{await navigator.clipboard.writeText(address)}catch{const area=document.createElement('textarea');area.value=address;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const original=button.textContent;button.textContent='Copied ✓';showToast('Wallet address copied');setTimeout(()=>button.textContent=original,1800)}));
 
-function renderPaymentQRCodes(){
-  if(typeof QRCode==='undefined')return;
-  document.querySelectorAll('.wallet-qr').forEach(box=>{
-    box.replaceChildren();
-    new QRCode(box,{text:box.dataset.address,width:190,height:190,colorDark:'#111014',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
-  });
-}
-function highlightPaymentNetwork(network){document.querySelectorAll('[data-network-card]').forEach(card=>card.classList.toggle('active',card.dataset.networkCard===network))}
-renderPaymentQRCodes();
 const networkSelect=document.getElementById('network');
 networkSelect.addEventListener('change',()=>highlightPaymentNetwork(networkSelect.value));
 highlightPaymentNetwork(networkSelect.value);
