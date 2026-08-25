@@ -3,6 +3,20 @@ function showToast(message){toast.textContent=message;toast.classList.add('show'
 menuButton.addEventListener('click',()=>{const open=siteNav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open))});
 siteNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{siteNav.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}));
 document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const address=document.getElementById(button.dataset.copy).textContent.trim();try{await navigator.clipboard.writeText(address)}catch{const area=document.createElement('textarea');area.value=address;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const original=button.textContent;button.textContent='Copied ✓';showToast('Wallet address copied');setTimeout(()=>button.textContent=original,1800)}));
+
+function renderPaymentQRCodes(){
+  if(typeof QRCode==='undefined')return;
+  document.querySelectorAll('.wallet-qr').forEach(box=>{
+    box.replaceChildren();
+    new QRCode(box,{text:box.dataset.address,width:190,height:190,colorDark:'#111014',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+  });
+}
+function highlightPaymentNetwork(network){document.querySelectorAll('[data-network-card]').forEach(card=>card.classList.toggle('active',card.dataset.networkCard===network))}
+renderPaymentQRCodes();
+const networkSelect=document.getElementById('network');
+networkSelect.addEventListener('change',()=>highlightPaymentNetwork(networkSelect.value));
+highlightPaymentNetwork(networkSelect.value);
+
 const form=document.getElementById('payment-form');
 function setError(id,message){const input=document.getElementById(id);input.classList.toggle('invalid',Boolean(message));document.querySelector(`[data-error="${id}"]`).textContent=message}
 form.addEventListener('submit',event=>{event.preventDefault();const telegram=document.getElementById('telegram').value.trim(),amount=Number(document.getElementById('amount').value),product=document.getElementById('product').value,network=document.getElementById('network').value,txid=document.getElementById('txid').value.trim();setError('telegram',telegram?'':'Enter your Telegram username.');setError('amount',amount>=10?'':'Minimum deposit is 10 USDT.');setError('txid',txid?'':'Enter your transaction ID.');if(!telegram||amount<10||!txid){showToast('Please check the required fields');return}const message=['EVA AI MARKET — Payment Verification','',`Telegram username: ${telegram}`,`Product: ${product}`,`Amount: ${amount.toFixed(2)} USDT`,`Network: ${network}`,`Transaction ID: ${txid}`].join('\n');window.open(`https://t.me/eva007_8?text=${encodeURIComponent(message)}`,'_blank','noopener,noreferrer')});
