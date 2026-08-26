@@ -24,7 +24,13 @@ export default async function handler(req,res){
   const response=await serviceRequest(ctx,'rpc/purchase_store_product',{method:'POST',body:JSON.stringify({p_user_id:ctx.user.id,p_product_id:productId})});
   const result=await response.json().catch(()=>({}));
   if(!response.ok)return json(res,400,{error:result.message||'Purchase failed.'});
-  return json(res,200,{purchased:true,result});
+  const orderId=String(result?.order_id||'');
+  let status='approved';
+  if(/^[0-9a-f-]{36}$/i.test(orderId)){
+   const processingResponse=await serviceRequest(ctx,'rpc/admin_update_store_order',{method:'POST',body:JSON.stringify({p_order_id:orderId,p_status:'processing',p_delivery_details:null,p_admin_note:'Balance deducted. Awaiting manual admin delivery.'})});
+   if(processingResponse.ok)status='processing';
+  }
+  return json(res,200,{purchased:true,status,result});
  }
  return json(res,405,{error:'Method not allowed.'});
 }
