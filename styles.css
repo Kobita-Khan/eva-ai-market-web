@@ -105,3 +105,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,5,16,.84);backdrop-fil
 .cover-telegram{background:radial-gradient(circle at 50% 10%,#37aee2,transparent 48%),linear-gradient(145deg,#0c416a,#061522 78%)}.cover-telegram:before{background:#2aabee;opacity:.22}
 .cover-ai{background:radial-gradient(circle at 50% 10%,#655cff,transparent 48%),linear-gradient(145deg,#201c58,#08091a 78%)}.cover-ai:before{background:#7f75ff;opacity:.20}
 @media(max-width:600px){.product-cover{min-height:225px}.brand-icon-shell{width:78px;height:78px}.brand-icon{width:43px;height:43px}.product-cover strong{font-size:25px}}
+
+
+/* Requested 16:9 catalog imagery */
+.product-cover{aspect-ratio:16/9;min-height:0;height:auto;padding-block:20px}
+.product-cover .brand-icon-shell{width:68px;height:68px;margin-bottom:11px;border-radius:20px}
+.product-cover .brand-icon{width:38px;height:38px}
+.product-cover strong{font-size:clamp(20px,2.1vw,25px)}
+.product-cover .cover-brand{margin-bottom:4px}
+.product-cover small{margin-top:6px}
+.demo-copy>div{flex-wrap:wrap}
+.demo-time{margin-left:auto!important;padding:0!important;color:#a9b7ce!important;background:transparent!important;border:0!important;font-size:12px!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
+@media(max-width:600px){.product-cover{aspect-ratio:16/9;min-height:0;padding-block:14px}.product-cover .brand-icon-shell{width:58px;height:58px;margin-bottom:8px}.product-cover .brand-icon{width:32px;height:32px}.product-cover strong{font-size:20px}.product-cover small{font-size:10px}.demo-time{margin-left:0!important}}
