@@ -86,11 +86,41 @@ const telegramQuoteServices=[
  {name:'Telegram Giveaway',subtitle:'Premium or Stars giveaway setup assistance'},
  {name:'Telegram Recharge / Top-up',subtitle:'Custom official Telegram recharge service'}
 ];
-function telegramQuoteCards(){return telegramQuoteServices.map(service=>`<article class="account-product panel telegram-service"><div class="product-logo claude-logo"><span>TG</span><i></i></div><span class="product-tag">Telegram Services</span><h3>${escapeStore(service.name)}</h3><p>${escapeStore(service.subtitle)}</p><strong>Custom <small>QUOTE</small></strong><div class="stock-line"><span class="in-stock">Available</span><span>Manual delivery</span></div><a class="button secondary" href="https://t.me/eva007_8?text=${encodeURIComponent('Hello, I want '+service.name+'. Please send the current price.')}" target="_blank" rel="noopener noreferrer">Contact for Price</a></article>`).join('')}
+function telegramQuoteCards(){return telegramQuoteServices.map(service=>`<article class="account-product panel telegram-service"><div class="product-cover cover-telegram"><div class="cover-brand">TELEGRAM</div><strong>${escapeStore(service.name)}</strong><small>Official Service Support</small></div><div class="product-logo claude-logo"><span>TG</span><i></i></div><span class="product-tag">Telegram Services</span><h3>${escapeStore(service.name)}</h3><p>${escapeStore(service.subtitle)}</p><strong>Custom <small>QUOTE</small></strong><div class="stock-line"><span class="in-stock">Available</span><span>Manual delivery</span></div><a class="button secondary" href="https://t.me/eva007_8?text=${encodeURIComponent('Hello, I want '+service.name+'. Please send the current price.')}" target="_blank" rel="noopener noreferrer">Contact for Price</a></article>`).join('')}
 
 const publicStore=document.getElementById('public-store-products');
-async function loadPublicStore(){if(!publicStore)return;try{const response=await fetch('/api/store');const body=await response.json();if(!response.ok)throw new Error(body.error||'Store unavailable');publicStore.innerHTML=sortStoreProducts(body.products).map(product=>`<article class="account-product panel">${publicProductLogo(product)}<span class="product-tag">${escapeStore(product.category)}</span><h3>${escapeStore(product.name)}</h3>${publicProductSubtitle(product)}<strong>$${Number(product.price_usd).toFixed(2)} <small>USDT</small></strong><div class="stock-line"><span class="${product.stock>0?'in-stock':'out-stock'}">${product.stock>0?product.stock+' in stock':'Out of stock'}</span><span>${product.warranty_days}-day warranty</span></div><a class="button ${product.stock>0?'secondary':'disabled'}" href="/login.html">${product.stock>0?'Buy with EVA Balance':'Unavailable'}</a></article>`).join('')+telegramQuoteCards()}catch(error){publicStore.innerHTML=`<article class="panel store-loading">${escapeStore(error.message)} Contact support for current stock.</article>`}}
+async function loadPublicStore(){if(!publicStore)return;try{const response=await fetch('/api/store');const body=await response.json();if(!response.ok)throw new Error(body.error||'Store unavailable');publicStore.innerHTML=sortStoreProducts(body.products).map(product=>`<article class="account-product panel">${publicProductCover(product)}${publicProductLogo(product)}<span class="product-tag">${escapeStore(product.category)}</span><h3>${escapeStore(product.name)}</h3>${publicProductSubtitle(product)}<strong>$${Number(product.price_usd).toFixed(2)} <small>USDT</small></strong><div class="stock-line"><span class="${product.stock>0?'in-stock':'out-stock'}">${product.stock>0?product.stock+' in stock':'Out of stock'}</span><span>${product.warranty_days}-day warranty</span></div><a class="button ${product.stock>0?'secondary':'disabled'}" href="/login.html">${product.stock>0?'Buy with EVA Balance':'Unavailable'}</a></article>`).join('')+telegramQuoteCards()}catch(error){publicStore.innerHTML=`<article class="panel store-loading">${escapeStore(error.message)} Contact support for current stock.</article>`}}
+function publicProductCover(product){const text=`${product.name||''} ${product.subtitle||''}`.toLowerCase();let theme='ai',brand='EVA AI',label=product.name;if(text.includes('aws')||product.category==='AWS Cloud Accounts'){theme='aws';brand='AWS';label='Cloud Account'}else if(text.includes('claude')){theme='claude';brand='Claude';label=product.name}else if(text.includes('gpt')||text.includes('openai')){theme='openai';brand='OpenAI';label=product.name}else if(text.includes('gemini')||text.includes('google')){theme='gemini';brand='Gemini';label=product.name}else if(text.includes('grok')){theme='grok';brand='GROK';label=product.name}else if(text.includes('capcut')){theme='capcut';brand='CapCut';label=product.name}return `<div class="product-cover cover-${theme}" role="img" aria-label="${escapeStore(product.name)} product cover"><div class="cover-brand">${escapeStore(brand)}</div><strong>${escapeStore(label)}</strong><small>Premium Digital Service</small></div>`}
 function publicProductLogo(product){const aws=product.category==='AWS Cloud Accounts';return `<div class="product-logo ${aws?'aws-logo':'claude-logo'}"><span>${aws?'AWS':'AI'}</span><i></i></div>`}
 function publicProductSubtitle(product){return product.category==='AWS Cloud Accounts'?'':`<p>${escapeStore(product.subtitle)}</p>`}
 function escapeStore(value){return String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 loadPublicStore();
+
+const demoTransactions=[
+ {product:'Claude Max 5× — Monthly',order:'EVA-260908-84152'},
+ {product:'Claude Max 20× — Monthly',order:'EVA-260908-37604'},
+ {product:'GPT Premium Subscription',order:'EVA-260908-92471'},
+ {product:'AWS Bedrock Account',order:'EVA-260908-51839'},
+ {product:'Gemini Ultra Service',order:'EVA-260908-66328'}
+];
+function mountDemoTransaction(){
+ const popup=document.createElement('aside');
+ popup.className='demo-transaction';
+ popup.setAttribute('role','status');
+ popup.setAttribute('aria-live','polite');
+ popup.setAttribute('aria-label','Recent demo transaction');
+ popup.innerHTML='<div class="demo-check">✓</div><div class="demo-copy"><div><strong>Demo transaction</strong><span>Demo</span></div><small class="demo-order"></small><p>Purchased: <b class="demo-product"></b></p></div><em>Delivered</em>';
+ document.body.appendChild(popup);
+ let cursor=0;
+ const show=()=>{
+  const item=demoTransactions[cursor%demoTransactions.length];cursor++;
+  popup.querySelector('.demo-order').textContent='Order No. '+item.order;
+  popup.querySelector('.demo-product').textContent=item.product;
+  popup.classList.add('show');
+  clearTimeout(show.hideTimer);
+  show.hideTimer=setTimeout(()=>popup.classList.remove('show'),6500);
+ };
+ setTimeout(show,8000);
+ setInterval(show,26000);
+}
+mountDemoTransaction();
