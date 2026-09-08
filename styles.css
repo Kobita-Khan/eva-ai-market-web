@@ -120,3 +120,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,5,16,.84);backdrop-fil
 
 .demo-copy .demo-user{display:inline-block;margin:3px 9px 0 0;color:#83d9ff;font-weight:650}
 .demo-copy .demo-order{display:inline-block;margin-top:4px}
+
+
+/* Compact premium Telegram links replacing the large start-price block */
+.telegram-mini-bar{display:grid;grid-template-columns:auto 1fr 1px 1fr;gap:13px;align-items:center;margin-bottom:17px;padding:13px 14px;border:1px solid rgba(66,223,245,.22);border-radius:15px;background:linear-gradient(135deg,rgba(17,56,105,.78),rgba(10,18,43,.92));box-shadow:inset 0 1px rgba(255,255,255,.06),0 12px 30px rgba(0,0,0,.18)}
+.tg-mini-icon{display:grid;place-items:center;width:35px;height:35px;color:#fff;background:linear-gradient(145deg,#35b8ee,#168ac5);border-radius:11px;box-shadow:0 9px 22px rgba(30,165,220,.25);font-size:17px;transform:rotate(-18deg)}
+.telegram-mini-bar>div{display:flex;min-width:0;flex-direction:column;gap:2px}
+.telegram-mini-bar small{color:#8c9bb5;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.telegram-mini-bar a{color:#68ddff;font-size:13px;font-weight:800;white-space:nowrap}
+.telegram-mini-bar a:hover{color:#fff}
+.telegram-mini-bar>i{width:1px;height:31px;background:rgba(255,255,255,.11)}
+@media(max-width:480px){.telegram-mini-bar{grid-template-columns:auto 1fr 1px 1fr;gap:9px;padding:11px}.tg-mini-icon{width:31px;height:31px}.telegram-mini-bar a{font-size:11px}.telegram-mini-bar small{font-size:8px}}
