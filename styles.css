@@ -131,3 +131,27 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,5,16,.84);backdrop-fil
 .telegram-mini-bar a:hover{color:#fff}
 .telegram-mini-bar>i{width:1px;height:31px;background:rgba(255,255,255,.11)}
 @media(max-width:480px){.telegram-mini-bar{grid-template-columns:auto 1fr 1px 1fr;gap:9px;padding:11px}.tg-mini-icon{width:31px;height:31px}.telegram-mini-bar a{font-size:11px}.telegram-mini-bar small{font-size:8px}}
+
+
+/* Reliable built-in brand marks and compact mobile catalog */
+.brand-symbol{position:relative;z-index:1;display:grid;place-items:center;width:100%;height:100%;color:#fff;font-size:31px;font-weight:900;line-height:1;letter-spacing:-.06em;text-shadow:0 8px 20px rgba(0,0,0,.35)}
+.brand-symbol-aws{font-size:22px;letter-spacing:-.08em}.brand-symbol-claude{font-size:39px}.brand-symbol-openai{font-size:38px}.brand-symbol-gemini{font-size:42px}.brand-symbol-grok{font-size:35px}.brand-symbol-capcut{font-size:34px}.brand-symbol-telegram{font-size:35px;transform:rotate(-18deg)}
+.store-showcase .account-product>.product-logo{display:none}
+@media(max-width:600px){
+ .store-showcase .store-products{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .store-showcase .account-product{padding:0 13px 14px;border-radius:16px}
+ .product-cover{margin:0 -13px 14px;padding:10px 8px;min-height:0}
+ .product-cover .brand-icon-shell{width:48px;height:48px;margin-bottom:6px;border-radius:15px}
+ .brand-symbol{font-size:23px}.brand-symbol-aws{font-size:15px}.brand-symbol-claude{font-size:28px}.brand-symbol-gemini{font-size:30px}
+ .product-cover .cover-brand{font-size:8px;letter-spacing:.12em}
+ .product-cover strong{font-size:15px;line-height:1.05}
+ .product-cover small{font-size:8px}
+ .store-showcase .product-tag{position:static;align-self:center;margin:-2px 0 0;padding:4px 7px;font-size:7px;letter-spacing:.04em}
+ .store-showcase .account-product h3{margin:11px 0 4px;font-size:15px;line-height:1.2}
+ .store-showcase .account-product>p{font-size:10px;line-height:1.45}
+ .store-showcase .account-product>strong{margin:11px 0;font-size:23px}
+ .stock-line{display:grid;gap:3px;margin-bottom:11px;text-align:center;font-size:9px}
+ .store-showcase .account-product .button{min-height:39px;padding:9px 6px;font-size:10px}
+ .aws-features{display:none}
+}
+@media(max-width:350px){.store-showcase .store-products{grid-template-columns:1fr}}
