@@ -129,7 +129,12 @@ function mountDemoTransaction(){
  const show=()=>{
   const item=demoTransactions[cursor%demoTransactions.length];
   popup.querySelector('.demo-time').textContent=demoTimes[cursor%demoTimes.length];cursor++;
-  popup.querySelector('.demo-order').textContent='Order No. '+item.order;
+  const now=new Date();
+  const datePart=String(now.getFullYear()).slice(-2)+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
+  let randomPart;
+  do{randomPart=String(Math.floor(100000+Math.random()*900000))}while(randomPart===show.lastOrder);
+  show.lastOrder=randomPart;
+  popup.querySelector('.demo-order').textContent='Order No. EVA-'+datePart+'-'+randomPart;
   popup.querySelector('.demo-product').textContent=item.product;
   popup.classList.add('show');
   clearTimeout(show.hideTimer);
