@@ -83,3 +83,25 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,5,16,.84);backdrop-fil
 .demo-copy{min-width:0}.demo-copy>div{display:flex;align-items:center;gap:9px}.demo-copy strong{font-size:16px}.demo-copy>div span{padding:3px 7px;color:#8ee6ff;background:rgba(51,185,255,.12);border:1px solid rgba(89,199,255,.28);border-radius:99px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.demo-copy small{display:block;margin-top:4px;color:#a9b7ce}.demo-copy p{margin:3px 0 0;color:#bac5d5;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.demo-copy p b{color:#fff}.demo-transaction>em{color:#4be0a8;font-size:12px;font-style:normal;font-weight:700}
 @media(max-width:600px){.product-cover{min-height:185px;margin-inline:-23px}.demo-transaction{grid-template-columns:auto 1fr;padding:14px}.demo-check{width:42px;height:42px}.demo-transaction>em{grid-column:2}.demo-copy strong{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.demo-transaction{transition:none}}
+
+
+/* Premium brand-icon artwork upgrade */
+.product-cover{isolation:isolate;min-height:255px;padding:30px 22px 25px;background:#07111f}
+.product-cover:before{z-index:-1;width:220px;height:220px;border-radius:50%;filter:blur(2px);opacity:.58;transform:none}
+.product-cover:after{z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.10),transparent 36%,rgba(0,0,0,.22)),radial-gradient(circle at 50% 0,rgba(255,255,255,.18),transparent 40%)}
+.cover-grid{position:absolute;z-index:-1;inset:0;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(to bottom,#000,transparent 86%)}
+.brand-icon-shell{display:grid;place-items:center;width:86px;height:86px;margin-bottom:18px;border:1px solid rgba(255,255,255,.30);border-radius:25px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));box-shadow:0 22px 48px rgba(0,0,0,.36),inset 0 1px rgba(255,255,255,.28);backdrop-filter:blur(12px)}
+.brand-icon{display:block;width:47px;height:47px;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.32))}
+.product-cover .cover-brand{margin-bottom:6px;color:rgba(255,255,255,.72);font-size:12px;letter-spacing:.18em}
+.product-cover strong{color:#fff;font-size:27px;text-shadow:0 8px 25px rgba(0,0,0,.38)}
+.product-cover small{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.76);font-size:11px;font-weight:650}
+.product-cover small i{display:block;width:7px;height:7px;background:#43e2a1;border-radius:50%;box-shadow:0 0 12px #43e2a1}
+.cover-aws{background:radial-gradient(circle at 50% 15%,#1769aa,transparent 45%),linear-gradient(145deg,#101c2a,#07101b 72%)}.cover-aws:before{background:#ff9900;opacity:.18}
+.cover-claude{background:radial-gradient(circle at 50% 15%,#d97850,transparent 47%),linear-gradient(145deg,#4f2619,#170e0b 76%)}.cover-claude:before{background:#d97757;opacity:.23}.cover-claude small{color:rgba(255,255,255,.76)}
+.cover-openai{background:radial-gradient(circle at 50% 12%,#26a17b,transparent 48%),linear-gradient(145deg,#123d35,#071713 74%)}.cover-openai:before{background:#10a37f;opacity:.20}
+.cover-gemini{background:radial-gradient(circle at 30% 12%,#4285f4,transparent 38%),radial-gradient(circle at 75% 28%,#a142f4,transparent 46%),linear-gradient(145deg,#151c55,#120a28 78%)}.cover-gemini:before{background:#8e6cff;opacity:.20}
+.cover-grok{background:radial-gradient(circle at 50% 8%,#6e6e6e,transparent 45%),linear-gradient(145deg,#151515,#000 78%)}.cover-grok:before{background:#fff;opacity:.10}
+.cover-capcut{background:radial-gradient(circle at 50% 8%,#3ac7db,transparent 48%),linear-gradient(145deg,#103845,#061015 78%)}.cover-capcut:before{background:#35d5ea;opacity:.17}
+.cover-telegram{background:radial-gradient(circle at 50% 10%,#37aee2,transparent 48%),linear-gradient(145deg,#0c416a,#061522 78%)}.cover-telegram:before{background:#2aabee;opacity:.22}
+.cover-ai{background:radial-gradient(circle at 50% 10%,#655cff,transparent 48%),linear-gradient(145deg,#201c58,#08091a 78%)}.cover-ai:before{background:#7f75ff;opacity:.20}
+@media(max-width:600px){.product-cover{min-height:225px}.brand-icon-shell{width:78px;height:78px}.brand-icon{width:43px;height:43px}.product-cover strong{font-size:25px}}
