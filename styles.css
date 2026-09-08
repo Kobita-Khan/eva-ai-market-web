@@ -117,3 +117,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(8,5,16,.84);backdrop-fil
 .demo-copy>div{flex-wrap:wrap}
 .demo-time{margin-left:auto!important;padding:0!important;color:#a9b7ce!important;background:transparent!important;border:0!important;font-size:12px!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
 @media(max-width:600px){.product-cover{aspect-ratio:16/9;min-height:0;padding-block:14px}.product-cover .brand-icon-shell{width:58px;height:58px;margin-bottom:8px}.product-cover .brand-icon{width:32px;height:32px}.product-cover strong{font-size:20px}.product-cover small{font-size:10px}.demo-time{margin-left:0!important}}
+
+.demo-copy .demo-user{display:inline-block;margin:3px 9px 0 0;color:#83d9ff;font-weight:650}
+.demo-copy .demo-order{display:inline-block;margin-top:4px}
