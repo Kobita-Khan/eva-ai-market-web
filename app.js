@@ -116,7 +116,7 @@ function mountDemoTransaction(){
  popup.setAttribute('role','status');
  popup.setAttribute('aria-live','polite');
  popup.setAttribute('aria-label','Recent demo transaction');
- popup.innerHTML='<div class="demo-check">✓</div><div class="demo-copy"><div><strong>Transaction completed</strong><span class="demo-time">Just now</span><span>Demo</span></div><small class="demo-order"></small><small class="demo-user"></small><p>Purchased: <b class="demo-product"></b></p></div><em>Delivered</em>';
+ popup.innerHTML='<div class="demo-check">✓</div><div class="demo-copy"><div><strong>Transaction completed</strong><span class="demo-time">Just now</span><span class="demo-label">Demo</span></div><small class="demo-order"></small><small class="demo-user"></small><p>Purchased: <b class="demo-product"></b></p></div><em>Delivered</em>';
  document.body.appendChild(popup);
  let cursor=0;
  const demoTimes=['Just now','1 min ago','2 min ago','3 min ago','5 min ago'];
