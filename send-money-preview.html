@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070a12">
+<title>EVA Pay — Send Money</title>
+<style>
+:root{--bg:#070a12;--panel:#0d1320;--panel2:#101827;--text:#f7f9fc;--muted:#94a3b8;--line:rgba(255,255,255,.09);--green:#19d37e}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+radial-gradient(circle at 15% 0,rgba(255,42,116,.15),transparent 30%),
+radial-gradient(circle at 90% 15%,rgba(60,130,255,.13),transparent 28%),var(--bg);color:var(--text)}
+.wrap{width:min(100%,520px);margin:auto;padding:20px 16px 60px}.top{display:flex;align-items:center;justify-content:space-between;margin:2px 0 22px}
+.brand{display:flex;gap:11px;align-items:center;font-weight:800}.mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#111a2b,#1d2b45);box-shadow:inset 0 0 0 1px var(--line),0 12px 30px rgba(0,0,0,.28)}
+.safe{font-size:12px;color:#86efac;background:rgba(25,211,126,.08);border:1px solid rgba(25,211,126,.2);padding:8px 10px;border-radius:999px}
+.hero{margin-bottom:18px}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7dd3fc;font-weight:800}.hero h1{font-size:34px;line-height:1.06;margin:10px 0 10px;letter-spacing:-.04em}.hero p{margin:0;color:var(--muted);line-height:1.65}
+.card{background:linear-gradient(180deg,rgba(18,27,44,.98),rgba(11,17,29,.98));border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.28);margin-top:14px}
+.methods{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.method{border:1px solid var(--line);background:#0b1220;color:#cbd5e1;padding:12px 7px;border-radius:16px;font-weight:800;font-size:12px;cursor:pointer}.method.active{color:#fff;border-color:rgba(255,255,255,.28);transform:translateY(-1px)}
+.method[data-method="bkash"].active{background:linear-gradient(145deg,#e2136e,#a90c4f)}.method[data-method="nagad"].active{background:linear-gradient(145deg,#ef4b23,#c83318)}.method[data-method="rocket"].active{background:linear-gradient(145deg,#8a2be2,#5419a8)}.method[data-method="usdt"].active{background:linear-gradient(145deg,#26a17b,#17795b)}
+.paybox{margin-top:14px;padding:17px;border-radius:20px;background:rgba(255,255,255,.035);border:1px solid var(--line)}.payhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.payhead small{display:block;color:var(--muted);margin-top:4px}.badge{font-size:11px;border-radius:999px;padding:7px 9px;background:rgba(25,211,126,.1);color:#86efac;border:1px solid rgba(25,211,126,.2)}
+.number{display:flex;align-items:center;gap:10px;margin-top:15px}.number code{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#070b13;border:1px solid var(--line);padding:14px;border-radius:14px;font-size:16px}.copy{border:0;border-radius:14px;padding:14px 16px;background:#fff;color:#0b1020;font-weight:900;cursor:pointer}
+.tip{font-size:12px;color:#cbd5e1;line-height:1.6;margin:12px 0 0}.tip b{color:#fda4af}
+.steps{display:flex;gap:8px;margin-top:16px}.step{flex:1;text-align:center;padding:9px 5px;border-radius:12px;background:#0a111d;color:#64748b;font-size:11px;border:1px solid var(--line)}.step.on{color:#e2e8f0;border-color:rgba(125,211,252,.3);background:rgba(56,189,248,.06)}
+label{display:block;font-size:13px;font-weight:700;margin-top:14px;color:#d8e0ea}input{width:100%;margin-top:7px;border:1px solid var(--line);background:#080e18;color:#fff;padding:14px 15px;border-radius:14px;outline:none;font-size:15px}input:focus{border-color:rgba(125,211,252,.55);box-shadow:0 0 0 3px rgba(56,189,248,.08)}
+.submit{width:100%;border:0;border-radius:16px;padding:16px;margin-top:17px;font-weight:900;font-size:15px;background:linear-gradient(135deg,#20e38a,#16b96e);color:#02150c;cursor:pointer;box-shadow:0 14px 35px rgba(25,211,126,.22)}
+.note{text-align:center;color:#64748b;font-size:11px;line-height:1.55;margin-top:12px}.receipt{display:none;margin-top:14px;padding:18px;border-radius:20px;border:1px solid rgba(25,211,126,.24);background:rgba(25,211,126,.055)}.receipt.show{display:block}.tick{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(25,211,126,.14);color:#86efac;font-size:24px;margin-bottom:10px}.receipt h3{margin:0 0 7px}.receipt p{margin:0;color:#a7b5c7;line-height:1.6;font-size:13px}
+.footer{text-align:center;color:#526176;font-size:11px;margin-top:22px}
+@media(max-width:400px){.hero h1{font-size:30px}.methods{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand"><span class="mark">E</span><span>EVA Pay</span></div><span class="safe">🔒 No account access</span></div>
+  <section class="hero">
+    <div class="eyebrow">Secure Manual Payment</div>
+    <h1>Send Money.<br>Submit TxID.</h1>
+    <p>কোনো লগইন, OTP বা অ্যাকাউন্ট অ্যাক্সেস লাগবে না। নাম্বার কপি করে আপনার নিজের অ্যাপ থেকে পেমেন্ট করুন।</p>
+  </section>
+
+  <section class="card">
+    <div class="methods" id="methods">
+      <button class="method active" data-method="bkash">bKash</button>
+      <button class="method" data-method="nagad">Nagad</button>
+      <button class="method" data-method="rocket">Rocket</button>
+      <button class="method" data-method="usdt">USDT</button>
+    </div>
+
+    <div class="paybox">
+      <div class="payhead">
+        <div><strong id="payTitle">bKash — Send Money</strong><small id="paySub">Personal payment number</small></div>
+        <span class="badge" id="payBadge">SEND MONEY</span>
+      </div>
+      <div class="number"><code id="payNumber">01XXXXXXXXX</code><button class="copy" id="copyBtn" type="button">Copy</button></div>
+      <p class="tip" id="tip"><b>গুরুত্বপূর্ণ:</b> এই নাম্বারে Send Money করবেন। Cash Out করবেন না।</p>
+    </div>
+
+    <div class="steps"><div class="step on">1. Copy</div><div class="step on">2. Send Money</div><div class="step">3. Submit TxID</div><div class="step">4. Verify</div></div>
+
+    <form id="paymentForm">
+      <label>Amount
+        <input id="amount" type="number" min="1" step="0.01" placeholder="৳ 5,000" required>
+      </label>
+      <label>Transaction ID
+        <input id="txid" type="text" placeholder="যেমন: 9A7BC2D1EF" minlength="5" required>
+      </label>
+      <label>Sender number — last 4 digits
+        <input id="last4" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="1234" required>
+      </label>
+      <button class="submit" type="submit">I Have Paid → Submit</button>
+      <div class="note">শুধু payment reference লাগবে। PIN, password, OTP বা account access কখনো চাওয়া হবে না।</div>
+    </form>
+
+    <div class="receipt" id="receipt">
+      <div class="tick">✓</div>
+      <h3>Payment submitted</h3>
+      <p id="receiptText">আপনার payment verification-এর জন্য পাঠানো হয়েছে। Admin approve করলে status Paid হবে।</p>
+    </div>
+  </section>
+  <div class="footer">© 2026 EVA AI MARKET · Secure manual verification</div>
+</div>
+<script>
+const paymentData={
+  bkash:{title:"bKash — Send Money",sub:"Personal payment number",badge:"SEND MONEY",number:"01XXXXXXXXX",tip:"<b>গুরুত্বপূর্ণ:</b> এই নাম্বারে Send Money করবেন। Cash Out করবেন না।"},
+  nagad:{title:"Nagad — Send Money",sub:"Personal payment number",badge:"SEND MONEY",number:"01XXXXXXXXX",tip:"<b>গুরুত্বপূর্ণ:</b> এই নাম্বারে Send Money করবেন। Cash Out করবেন না।"},
+  rocket:{title:"Rocket — Send Money",sub:"Personal payment number",badge:"SEND MONEY",number:"01XXXXXXXXX",tip:"<b>গুরুত্বপূর্ণ:</b> এই নাম্বারে Send Money করবেন। Cash Out করবেন না।"},
+  usdt:{title:"USDT — Transfer",sub:"TRC20 wallet address",badge:"TRC20",number:"TJCFS6hDKsEnquGuvw43krk141QLvHnGbG",tip:"<b>গুরুত্বপূর্ণ:</b> শুধুমাত্র TRC20 network ব্যবহার করুন। ভুল network-এ পাঠাবেন না।"}
+};
+let active="bkash";
+document.querySelectorAll(".method").forEach(btn=>btn.addEventListener("click",()=>{
+  active=btn.dataset.method;
+  document.querySelectorAll(".method").forEach(x=>x.classList.toggle("active",x===btn));
+  const p=paymentData[active];
+  payTitle.textContent=p.title;paySub.textContent=p.sub;payBadge.textContent=p.badge;payNumber.textContent=p.number;tip.innerHTML=p.tip;
+}));
+copyBtn.addEventListener("click",async()=>{
+  const value=payNumber.textContent.trim();
+  try{await navigator.clipboard.writeText(value)}catch(e){
+    const t=document.createElement("textarea");t.value=value;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();
+  }
+  copyBtn.textContent="Copied ✓";setTimeout(()=>copyBtn.textContent="Copy",1500);
+});
+paymentForm.addEventListener("submit",e=>{
+  e.preventDefault();
+  const amount=document.getElementById("amount").value;
+  const tx=document.getElementById("txid").value.trim();
+  const last=document.getElementById("last4").value.trim();
+  if(!/^\d{4}$/.test(last))return;
+  receiptText.textContent=`${paymentData[active].title} · Amount: ${amount} · TxID: ${tx} · Sender: ••••${last}. Preview mode: no payment data was sent to the server.`;
+  receipt.classList.add("show");receipt.scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
+</body>
+</html>
