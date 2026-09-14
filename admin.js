@@ -42,7 +42,7 @@ async function initAdmin() {
 }
 
 async function loadDeposits() {
-  const { deposits } = await adminFetch(`/api/admin/deposits?refresh=${Date.now()}`, { cache:'no-store', headers:{ 'cache-control':'no-cache' } });
+  const { deposits } = await adminFetch(`/api/admin/store?view=deposits&refresh=${Date.now()}`, { cache:'no-store', headers:{ 'cache-control':'no-cache' } });
   document.getElementById('admin-deposit-rows').innerHTML = deposits.length ? deposits.map(item => {
     const action = item.status==='pending'
       ? `<button class="approve-button" data-id="${item.id}">Approve</button>`
