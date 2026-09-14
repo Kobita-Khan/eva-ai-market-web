@@ -27,6 +27,16 @@ async function sendTelegramTest(){
 export default async function handler(req,res){
  const ctx=await requireAdmin(req,res);if(!ctx)return;
  if(req.method==='GET'){
+  if(req.query?.view==='deposits'){
+   const response=await serviceRequest(ctx,'rpc/admin_list_deposits',{method:'POST',body:'{}'});
+   const result=await response.json().catch(()=>null);
+   if(!response.ok)return json(res,502,{error:result?.message||'Could not load deposits.'});
+   let deposits=[];
+   if(Array.isArray(result))deposits=result;
+   else if(Array.isArray(result?.admin_list_deposits))deposits=result.admin_list_deposits;
+   else if(Array.isArray(result?.data))deposits=result.data;
+   return json(res,200,{deposits});
+  }
   if(req.query?.view==='stats'){
    try{
     const [usersResponse,depositsResponse,visitsResponse]=await Promise.all([
