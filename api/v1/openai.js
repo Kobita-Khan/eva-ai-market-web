@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { acquireRelayGate, applyRelayCors, fetchWithTimeout, relayClientIdentity } from '../../_security.js';
+import { estimateMaximumCharge, finalizeApiUsage, releaseApiUsage, reservationErrorStatus, reserveApiUsage } from '../_billing.js';
 
 const MODEL = 'gpt-5.6-luna';
 const INPUT_RETAIL_PER_TOKEN = 0.00000027;
@@ -75,8 +76,25 @@ export default async function handler(req, res) {
     providerRequest.instructions = req.body.instructions.trim().slice(0, 5000);
   }
 
+  const requestId = randomUUID();
+  const maxCostUsd = estimateMaximumCharge(providerRequest, INPUT_RETAIL_PER_TOKEN, OUTPUT_RETAIL_PER_TOKEN, maxOutputTokens, MINIMUM_CHARGE);
+  const reservation = await reserveApiUsage(serviceFetch, env, {
+    userId: apiKey.user_id,
+    apiKeyId: apiKey.id,
+    provider: 'openai',
+    model: MODEL,
+    maxCostUsd,
+    requestId
+  });
+  if (!reservation.response.ok) {
+    return send(res, reservationErrorStatus(reservation.result), { error: reservation.result?.message || 'Usage reservation failed.' });
+  }
+
   const gate = acquireRelayGate(req, res, keyHash);
-  if (!gate.ok) return send(res, gate.status, { error: gate.error });
+  if (!gate.ok) {
+    await releaseApiUsage(serviceFetch, env, requestId).catch(() => null);
+    return send(res, gate.status, { error: gate.error });
+  }
 
   let providerResponse;
   try {
@@ -91,32 +109,29 @@ export default async function handler(req, res) {
 
   const providerBody = await providerResponse.json().catch(() => ({}));
   if (!providerResponse.ok) {
+    await releaseApiUsage(serviceFetch, env, requestId).catch(() => null);
     const providerMessage = providerBody?.error?.message || 'OpenAI request failed.';
-    return send(res, providerResponse.status === 429 ? 429 : 502, { error: providerMessage });
+    return send(res, providerResponse.status === 429 ? 429 : providerResponse.status === 504 ? 504 : 502, { error: providerMessage });
   }
 
   const inputTokens = Number(providerBody.usage?.input_tokens || 0);
   const outputTokens = Number(providerBody.usage?.output_tokens || 0);
   const charge = Math.max(MINIMUM_CHARGE, Number((inputTokens * INPUT_RETAIL_PER_TOKEN + outputTokens * OUTPUT_RETAIL_PER_TOKEN).toFixed(6)));
-  const requestId = randomUUID();
-
-  const billingResponse = await serviceFetch(env, 'rpc/record_openai_usage', {
-    method: 'POST',
-    body: JSON.stringify({
-      p_user_id: apiKey.user_id,
-      p_api_key_id: apiKey.id,
-      p_model: MODEL,
-      p_input_tokens: inputTokens,
-      p_output_tokens: outputTokens,
-      p_cost_usd: charge,
-      p_request_id: requestId
-    })
+  const billing = await finalizeApiUsage(serviceFetch, env, {
+    requestId,
+    inputTokens,
+    outputTokens,
+    actualCostUsd: charge
   });
-  const billing = await billingResponse.json().catch(() => ({}));
-  if (!billingResponse.ok) return send(res, 402, { error: billing.message || 'Usage could not be charged. Add credits and retry.' });
+  if (!billing.response.ok) {
+    return send(res, 500, {
+      error: 'The model completed the request, but billing finalization is pending. Contact support with the request ID instead of retrying.',
+      request_id: requestId
+    });
+  }
 
   return send(res, 200, {
     ...providerBody,
-    eva_usage: { request_id: requestId, charged_usd: charge, balance_usd: Number(billing.balance), model: MODEL }
+    eva_usage: { request_id: requestId, charged_usd: charge, balance_usd: Number(billing.result.balance), model: MODEL }
   });
 }
