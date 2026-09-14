@@ -1,5 +1,6 @@
 import { createHash, createHmac, randomUUID } from 'node:crypto';
 import { acquireRelayGate, applyRelayCors, fetchWithTimeout, relayClientIdentity } from '../../_security.js';
+import { estimateMaximumCharge, finalizeApiUsage, releaseApiUsage, reservationErrorStatus, reserveApiUsage } from '../_billing.js';
 
 const MINIMUM_CHARGE = 0.0001;
 const MINIMUM_BALANCE = 0.015;
@@ -17,7 +18,8 @@ const send = (req, res, status, body) => {
       error: {
         type: status === 401 ? 'authentication_error' : status === 429 ? 'rate_limit_error' : 'api_error',
         message
-      }
+      },
+      ...(body?.request_id ? { request_id: body.request_id } : {})
     });
   }
   return res.status(status).json(body);
@@ -169,12 +171,29 @@ export default async function handler(req, res) {
     providerRequest.system = [{ text: req.body.system.trim().slice(0, 5000) }];
   }
 
+  const requestId = randomUUID();
+  const maxCostUsd = estimateMaximumCharge(providerRequest, env.inputRetailPerToken, env.outputRetailPerToken, maxTokens, MINIMUM_CHARGE);
+  const reservation = await reserveApiUsage(serviceFetch, env, {
+    userId: apiKey.user_id,
+    apiKeyId: apiKey.id,
+    provider: 'claude',
+    model: env.model,
+    maxCostUsd,
+    requestId
+  });
+  if (!reservation.response.ok) {
+    return send(req, res, reservationErrorStatus(reservation.result), { error: reservation.result?.message || 'Usage reservation failed.' });
+  }
+
   const body = JSON.stringify(providerRequest);
   const host = `bedrock-runtime.${env.region}.amazonaws.com`;
   const path = `/model/${encodeURIComponent(env.model)}/converse`;
   const headers = awsSignedHeaders(env, host, path, body);
   const gate = acquireRelayGate(req, res, keyHash);
-  if (!gate.ok) return send(req, res, gate.status, { error: gate.error });
+  if (!gate.ok) {
+    await releaseApiUsage(serviceFetch, env, requestId).catch(() => null);
+    return send(req, res, gate.status, { error: gate.error });
+  }
 
   let providerResponse;
   try {
@@ -185,31 +204,29 @@ export default async function handler(req, res) {
 
   const providerBody = await providerResponse.json().catch(() => ({}));
   if (!providerResponse.ok) {
+    await releaseApiUsage(serviceFetch, env, requestId).catch(() => null);
     const providerMessage = providerBody?.message || providerBody?.error?.message || 'Amazon Bedrock Claude request failed.';
-    return send(req, res, providerResponse.status === 429 ? 429 : 502, { error: providerMessage });
+    return send(req, res, providerResponse.status === 429 ? 429 : providerResponse.status === 504 ? 504 : 502, { error: providerMessage });
   }
 
   const inputTokens = Number(providerBody.usage?.inputTokens || 0);
   const outputTokens = Number(providerBody.usage?.outputTokens || 0);
   const charge = Math.max(MINIMUM_CHARGE, Number((inputTokens * env.inputRetailPerToken + outputTokens * env.outputRetailPerToken).toFixed(6)));
-  const requestId = randomUUID();
-  const billingResponse = await serviceFetch(env, 'rpc/record_claude_usage', {
-    method: 'POST',
-    body: JSON.stringify({
-      p_user_id: apiKey.user_id,
-      p_api_key_id: apiKey.id,
-      p_model: env.model,
-      p_input_tokens: inputTokens,
-      p_output_tokens: outputTokens,
-      p_cost_usd: charge,
-      p_request_id: requestId
-    })
+  const billing = await finalizeApiUsage(serviceFetch, env, {
+    requestId,
+    inputTokens,
+    outputTokens,
+    actualCostUsd: charge
   });
-  const billing = await billingResponse.json().catch(() => ({}));
-  if (!billingResponse.ok) return send(req, res, 402, { error: billing.message || 'Usage could not be charged. Add credits and retry.' });
+  if (!billing.response.ok) {
+    return send(req, res, 500, {
+      error: 'The model completed the request, but billing finalization is pending. Contact support with the request ID instead of retrying.',
+      request_id: requestId
+    });
+  }
 
   if (isAnthropicCompat(req)) {
-    return send(req, res, 200, anthropicResponse(providerBody, env, requestId, charge, billing.balance));
+    return send(req, res, 200, anthropicResponse(providerBody, env, requestId, charge, billing.result.balance));
   }
 
   return send(req, res, 200, {
@@ -218,7 +235,7 @@ export default async function handler(req, res) {
     eva_usage: {
       request_id: requestId,
       charged_usd: charge,
-      balance_usd: Number(billing.balance),
+      balance_usd: Number(billing.result.balance),
       model: env.model
     }
   });
