@@ -1,4 +1,5 @@
 let evaClient;
+let directSignupUrl='';
 const statusEl = document.getElementById('auth-status');
 const showStatus = (message, error = false) => {
   statusEl.textContent = message;
@@ -23,6 +24,7 @@ async function init() {
     const config = await response.json();
     if (!response.ok) throw new Error(config.error || 'Configuration unavailable');
     evaClient = window.supabase.createClient(config.url, config.anonKey);
+    directSignupUrl=String(config.signupUrl||`${String(config.url).replace(/\/$/,'')}/functions/v1/direct-signup`);
     const { data } = await evaClient.auth.getSession();
     if (data.session) location.replace('/dashboard.html');
   } catch (error) {
@@ -43,7 +45,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
 
 document.getElementById('signup-form').addEventListener('submit', async (event) => {
   event.preventDefault();
-  if (!evaClient) return;
+  if (!evaClient||!directSignupUrl) return showStatus('Signup service is not ready. Please refresh and try again.',true);
   const email = document.getElementById('signup-email').value.trim().toLowerCase();
   const password = document.getElementById('signup-password').value;
   if (password.length < 8) return showStatus('Password must be at least 8 characters.', true);
@@ -53,7 +55,7 @@ document.getElementById('signup-form').addEventListener('submit', async (event) 
   showStatus('Creating your account…');
 
   try{
-    const response=await fetch('https://yewvkwfynipdsewcnypp.supabase.co/functions/v1/direct-signup',{
+    const response=await fetch(directSignupUrl,{
       method:'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify({email,password})
