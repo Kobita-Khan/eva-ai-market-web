@@ -28,6 +28,20 @@
 .footer{text-align:center;color:#9ca3af;font-size:11px;margin-top:18px}
 @media(max-width:390px){.number{font-size:24px}.title{font-size:25px}.paycard{min-height:380px}}
 </style>
+
+<!-- Vercel Web Analytics: strip query strings and URL fragments before collection -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+  window.va('beforeSend', function (event) {
+    var url = new URL(event.url);
+    url.search = '';
+    url.hash = '';
+    return Object.assign({}, event, { url: url.toString() });
+  });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div class="wrap">

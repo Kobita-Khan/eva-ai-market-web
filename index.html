@@ -23,6 +23,20 @@
   body.premium-home .pro-topbar #site-nav>a.video-get-started{position:absolute!important;right:22px!important;top:-72px!important;width:164px!important;height:50px!important;padding:0!important;border-radius:999px!important;background:linear-gradient(90deg,#10bfe1,#2563eb)!important;border:0!important;color:#fff!important;font-size:16px!important;font-weight:800!important;box-shadow:0 0 24px rgba(37,99,235,.24)!important;z-index:10!important}
 }
 </style>
+
+<!-- Vercel Web Analytics: strip query strings and URL fragments before collection -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+  window.va('beforeSend', function (event) {
+    var url = new URL(event.url);
+    url.search = '';
+    url.hash = '';
+    return Object.assign({}, event, { url: url.toString() });
+  });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="premium-home">
 <div class="pro-app">

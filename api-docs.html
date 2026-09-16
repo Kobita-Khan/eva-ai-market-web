@@ -18,6 +18,20 @@
     .callout{border-left:3px solid #41d7e8;padding:14px 18px;background:rgba(65,215,232,.07);border-radius:8px;color:#dce8f4}.error-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.error-item{padding:15px;border:1px solid #302650;border-radius:12px;background:#0d0918}.error-item b{display:block;color:#fff;margin-bottom:5px}
     .docs-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}@media(max-width:640px){.docs-main{padding-top:48px}.api-section{padding:20px}pre{font-size:.77rem}}
   </style>
+
+<!-- Vercel Web Analytics: strip query strings and URL fragments before collection -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+  window.va('beforeSend', function (event) {
+    var url = new URL(event.url);
+    url.search = '';
+    url.hash = '';
+    return Object.assign({}, event, { url: url.toString() });
+  });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <div class="glow glow-a" aria-hidden="true"></div>

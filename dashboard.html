@@ -15,6 +15,20 @@
 <link rel="stylesheet" href="dashboard-eva-v5.css?v=20260916-ios-fix1">
 <link rel="stylesheet" href="dashboard-customer-control.css?v=20260916-premium-control1">
 <link rel="stylesheet" href="dimension-card.css?v=20260916-all3d1">
+
+<!-- Vercel Web Analytics: strip query strings and URL fragments before collection -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+  window.va('beforeSend', function (event) {
+    var url = new URL(event.url);
+    url.search = '';
+    url.hash = '';
+    return Object.assign({}, event, { url: url.toString() });
+  });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="dashboard-page dashboard-storefront">
 <div class="glow glow-a"></div><div class="side-scrim" id="side-scrim" hidden></div>

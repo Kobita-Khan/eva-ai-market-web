@@ -18,6 +18,20 @@
     .password-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:700;color:#67e8f9}
     .password-toggle:hover{color:#fff}
   </style>
+
+<!-- Vercel Web Analytics: strip query strings and URL fragments before collection -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+  window.va('beforeSend', function (event) {
+    var url = new URL(event.url);
+    url.search = '';
+    url.hash = '';
+    return Object.assign({}, event, { url: url.toString() });
+  });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 relative selection:bg-cyan-500 selection:text-black">
   <div class="fixed top-10 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
