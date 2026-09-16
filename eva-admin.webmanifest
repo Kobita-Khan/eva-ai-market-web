@@ -1,1 +1,42 @@
-{"name":"EVA AI MARKET Admin","short_name":"EVA Admin","start_url":"/eva-admin-app.html","scope":"/","display":"standalone","background_color":"#050816","theme_color":"#050816","description":"Private owner administration app for EVA AI MARKET","icons":[{"src":"/assets/logos/ai-premium.jpeg","sizes":"512x512","type":"image/jpeg","purpose":"any maskable"}]}
+{
+  "name": "EVA AI MARKET Admin",
+  "short_name": "EVA Admin",
+  "start_url": "/eva-admin-app.html?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "description": "Private owner administration app for EVA AI MARKET",
+  "icons": [
+    {
+      "src": "/assets/logos/ai-premium.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "id": "/eva-admin",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Admin Overview",
+      "short_name": "Overview",
+      "url": "/eva-admin-app.html"
+    },
+    {
+      "name": "Storefront",
+      "short_name": "Store",
+      "url": "/"
+    }
+  ]
+}

@@ -1,1 +1,53 @@
-{"name":"EVA AI MARKET","short_name":"EVA Market","id":"/","start_url":"/?source=app","scope":"/","display":"standalone","orientation":"portrait-primary","background_color":"#07111f","theme_color":"#07111f","description":"EVA AI MARKET — premium AI tools, cloud accounts and customer services.","categories":["shopping","business","productivity"],"icons":[{"src":"/assets/logos/ai-premium.jpeg","sizes":"512x512","type":"image/jpeg","purpose":"any maskable"}],"shortcuts":[{"name":"Products","short_name":"Products","url":"/#products"},{"name":"My Account","short_name":"Account","url":"/dashboard.html"},{"name":"Deposit","short_name":"Deposit","url":"/#deposit"},{"name":"Support","short_name":"Support","url":"https://t.me/eva007_8"}]}
+{
+  "name": "EVA AI MARKET",
+  "short_name": "EVA Market",
+  "id": "/eva-market",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "description": "EVA AI MARKET — premium AI tools, cloud accounts and customer services.",
+  "categories": [
+    "shopping",
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/assets/logos/ai-premium.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Products",
+      "short_name": "Products",
+      "url": "/#products"
+    },
+    {
+      "name": "My Account",
+      "short_name": "Account",
+      "url": "/dashboard.html"
+    },
+    {
+      "name": "Deposit",
+      "short_name": "Deposit",
+      "url": "/#deposit"
+    },
+    {
+      "name": "Support",
+      "short_name": "Support",
+      "url": "https://t.me/eva007_8"
+    }
+  ],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "lang": "en",
+  "dir": "ltr"
+}

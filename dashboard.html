@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#030611">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EVA Market">
+<link rel="manifest" href="/eva-market.webmanifest"><link rel="apple-touch-icon" href="/assets/logos/ai-premium.jpeg">
 <title>Customer Dashboard — EVA AI MARKET</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -99,4 +101,5 @@
 <script>
 (()=>{const addresses={TRC20:'TJCFS6hDKsEnquGuvw43krk141QLvHnGbG',BEP20:'0x644ed89caecc120d3a3180e9f20a90d970cfa3e8',ERC20:'0x644ed89caecc120d3a3180e9f20a90d970cfa3e8'};const network=document.getElementById('dash-network'),name=document.getElementById('deposit-network-name'),address=document.getElementById('deposit-wallet-address'),copy=document.getElementById('copy-deposit-address'),menu=document.getElementById('mobile-menu'),scrim=document.getElementById('side-scrim');const update=()=>{name.textContent=network.value;address.textContent=addresses[network.value]||''};const closeMenu=()=>{document.body.classList.remove('side-open');menu.setAttribute('aria-expanded','false');scrim.hidden=true};network.addEventListener('change',update);copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(address.textContent)}catch{const area=document.createElement('textarea');area.value=address.textContent;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const old=copy.textContent;copy.textContent='Copied ✓';setTimeout(()=>copy.textContent=old,1500)});menu.addEventListener('click',()=>{const open=document.body.classList.toggle('side-open');menu.setAttribute('aria-expanded',String(open));scrim.hidden=!open});scrim.addEventListener('click',closeMenu);document.querySelectorAll('.customer-nav a').forEach(a=>a.addEventListener('click',closeMenu));update()})()
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/eva-market-sw.js',{scope:'/'}).catch(function(){});});}</script>
 </body></html>

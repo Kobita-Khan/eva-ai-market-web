@@ -1,1 +1,6 @@
-const CACHE='eva-admin-shell-v1';const SHELL=['/eva-admin-app.html','/eva-admin-app.css','/eva-admin-app.js','/eva-admin.webmanifest'];self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).catch(()=>{}));self.skipWaiting()});self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim()});self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET')return;if(url.origin!==location.origin)return;if(url.pathname.startsWith('/api/')||url.pathname.includes('login')||url.pathname.includes('dashboard')||url.pathname.includes('eva-ops'))return;event.respondWith(fetch(event.request).then(response=>{const copy=response.clone();if(response.ok&&SHELL.includes(url.pathname))caches.open(CACHE).then(c=>c.put(event.request,copy));return response}).catch(()=>caches.match(event.request)))})
+// Legacy compatibility worker. The admin PWA now uses the shared safe shell worker.
+// No API responses, authentication pages, admin pages, or customer data are cached here.
+const CACHE='eva-admin-static-v2';
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE));self.skipWaiting()});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('eva-admin-static-')&&key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim()});
+self.addEventListener('fetch',()=>{});

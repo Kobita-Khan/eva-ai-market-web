@@ -1,6 +1,6 @@
-const CACHE='eva-market-shell-v1';
-const SHELL=['/','/index.html','/styles.css','/app.js','/eva-market.webmanifest'];
-const PRIVATE_PREFIXES=['/api/','/eva-admin','/eva-ops','/admin','/dashboard','/login','/reset-password'];
-self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).catch(()=>{}));self.skipWaiting()});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('eva-market-shell-')&&k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim()});
-self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET')return;const url=new URL(req.url);if(url.origin!==location.origin)return;if(PRIVATE_PREFIXES.some(p=>url.pathname.startsWith(p)))return;if(url.pathname.startsWith('/api/'))return;event.respondWith(fetch(req).then(res=>{if(res.ok&&(url.pathname==='/'||url.pathname==='/index.html'||url.pathname.endsWith('.css')||url.pathname.endsWith('.js')||url.pathname.endsWith('.webmanifest'))){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy));}return res;}).catch(()=>caches.match(req).then(r=>r||caches.match('/'))))});
+const CACHE='eva-market-shell-v2';
+const SHELL=['/','/index.html','/eva-market-app.html','/styles.css','/app.js','/eva-market.webmanifest','/assets/logos/ai-premium.jpeg'];
+const PRIVATE_PREFIXES=['/api/','/eva-admin','/eva-ops','/admin','/dashboard','/login','/reset-password','/reassign-deposit'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).catch(()=>{}));self.skipWaiting()});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('eva-market-shell-')&&key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim()});
+self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const url=new URL(request.url);if(url.origin!==location.origin)return;if(PRIVATE_PREFIXES.some(prefix=>url.pathname.startsWith(prefix)))return;event.respondWith(fetch(request).then(response=>{if(response.ok&&(SHELL.includes(url.pathname)||url.pathname.endsWith('.css')||url.pathname.endsWith('.js')||url.pathname.endsWith('.webmanifest'))){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy))}return response}).catch(()=>caches.match(request).then(cached=>cached||caches.match('/'))))});
