@@ -145,7 +145,7 @@ export default async function handler(req,res){
     if(userResponse.ok&&userBody?.email)email=userBody.email;
    }
    const statusIcon={approved:'✅',processing:'🔄',delivered:'📦',cancelled:'❌',refunded:'💸'}[status]||'ℹ️';
-   const telegram=await sendTelegramAlert(`${statusIcon} EVA AI MARKET — Order ${status.charAt(0).toUpperCase()+status.slice(1)}\n\nCustomer: ${email}\nProduct: ${before?.product_name||orderId}\nPrice: $${Number(before?.price_usd||0).toFixed(2)}\nPrevious: ${before?.status||'unknown'}\nNew status: ${status}\nOrder: ${orderId}\nTime: ${new Date().toLocaleString('en-GB',{timeZone:'Asia/Dhaka'})} (BD)\n\nAdmin: https://eva-ai-market.vercel.app/eva-ops-93k7m2`);
+   const telegram=await sendTelegramAlert(`${statusIcon} EVA AI MARKET — Order ${status.charAt(0).toUpperCase()+status.slice(1)}\n\nCustomer: ${email}\nProduct: ${before?.product_name||orderId}\nPrice: $${Number(before?.price_usd||0).toFixed(2)}\nPrevious: ${before?.status||'unknown'}\nNew status: ${status}\nOrder: ${orderId}\nTime: ${new Date().toLocaleString('en-GB',{timeZone:'Asia/Dhaka'})} (BD)\n\nAdmin: https://aicloudmarket.shop/eva-ops-93k7m2`);
    return json(res,200,{updated:true,result,telegram:telegram.sent});
   }
   return json(res,400,{error:'Invalid store action.'});
