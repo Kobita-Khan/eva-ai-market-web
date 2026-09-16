@@ -18,14 +18,36 @@ function setActiveTab(name){
   });
 }
 
+function getSafeReturnTarget() {
+  const queryTarget = new URLSearchParams(location.search).get('next');
+  const storedTarget = sessionStorage.getItem('eva-return-to');
+  const target = queryTarget || storedTarget || '';
+  if (!target.startsWith('/') || target.startsWith('//')) return '';
+  return target;
+}
+
+async function redirectAfterLogin(defaultTarget = '/dashboard.html') {
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const { data } = await evaClient.auth.getSession();
+    if (data.session?.access_token) {
+      const target = getSafeReturnTarget() || defaultTarget;
+      sessionStorage.removeItem('eva-return-to');
+      location.replace(target);
+      return;
+    }
+    await new Promise(resolve => setTimeout(resolve, 200));
+  }
+  throw new Error('Your sign-in could not be saved on this device. Please try again.');
+}
+
 async function init() {
   try {
     const response = await fetch('/api/config');
     const config = await response.json();
     if (!response.ok) throw new Error(config.error || 'Configuration unavailable');
-    evaClient = window.supabase.createClient(config.url, config.anonKey);
+    evaClient = window.supabase.createClient(config.url, config.anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
     const { data } = await evaClient.auth.getSession();
-    if (data.session) location.replace('/dashboard.html');
+    if (data.session) await redirectAfterLogin();
   } catch (error) {
     showStatus(error.message, true);
   }
@@ -48,9 +70,7 @@ async function finishLogin(email,password){
   const { error }=await evaClient.auth.signInWithPassword({email,password});
   if(error) throw error;
   await sendSignupNotification(email);
-  const target=sessionStorage.getItem('eva-return-to');
-  if(target){sessionStorage.removeItem('eva-return-to');location.replace(target);return;}
-  location.replace('/dashboard.html');
+  await redirectAfterLogin();
 }
 
 document.getElementById('login-form').addEventListener('submit', async (event) => {
@@ -60,9 +80,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
   showStatus('Signing in securely…');
   const { error }=await evaClient.auth.signInWithPassword({email,password});
   if(error) return showStatus(error.message,true);
-  const target=sessionStorage.getItem('eva-return-to');
-  if(target){sessionStorage.removeItem('eva-return-to');location.replace(target);return;}
-  location.replace('/dashboard.html');
+  try { await redirectAfterLogin(); } catch (error) { showStatus(error.message, true); }
 });
 
 document.getElementById('signup-form').addEventListener('submit', async (event) => {
