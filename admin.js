@@ -9,13 +9,17 @@ function canonicalizeAdminOrigin() {
   return true;
 }
 
+function adminReturnPath() {
+  return `${location.pathname}${location.search}${location.hash}`;
+}
+
 function rememberAdminReturn() {
-  sessionStorage.setItem('eva-return-to', `${location.pathname}${location.search}${location.hash}`);
+  try { sessionStorage.setItem('eva-return-to', adminReturnPath()); } catch {}
 }
 
 function goToAdminLogin() {
   rememberAdminReturn();
-  location.replace('/login.html');
+  location.replace(`/login.html?next=${encodeURIComponent(adminReturnPath())}`);
 }
 
 async function refreshAdminSession() {
@@ -37,6 +41,15 @@ async function getAdminSession(forceRefresh = false) {
   const message = String(refreshed.error?.message || '');
   if (!message || /refresh token|session.*missing|invalid.*token/i.test(message)) return null;
   throw new Error('Connection problem while refreshing the admin session. Your login has been kept; please retry.');
+}
+
+async function waitForAdminSession() {
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const session = await getAdminSession();
+    if (session) return session;
+    await new Promise(resolve => setTimeout(resolve, 250));
+  }
+  return null;
 }
 
 const adminNotice = (message, error = false) => { const el=document.getElementById('admin-notice'); el.textContent=message; el.className=error?'dash-notice error':'dash-notice success'; };
@@ -70,11 +83,8 @@ async function initAdmin() {
     const response=await fetch('/api/config'); const config=await response.json();
     if(!response.ok) throw new Error(config.error);
     adminClient=window.supabase.createClient(config.url,config.anonKey);
-    const session = await getAdminSession();
+    const session = await waitForAdminSession();
     if (!session) return goToAdminLogin();
-    adminClient.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_OUT') goToAdminLogin();
-    });
     await Promise.all([loadDeposits(),loadStoreAdmin()]);
   } catch(error) { adminNotice(error.message,true); }
 }
@@ -183,9 +193,9 @@ document.getElementById('admin-refresh').addEventListener('click',()=>setTimeout
 
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState !== 'visible' || !adminClient) return;
-  getAdminSession()
+  waitForAdminSession()
     .then(session => {
-      if (!session) return goToAdminLogin();
+      if (!session) return adminNotice('Session is temporarily unavailable. Refresh to reconnect, or sign in again if needed.', true);
       return Promise.all([loadDeposits(), loadStoreAdmin(), loadAdminStats(false)]);
     })
     .catch(error => adminNotice(error.message, true));
