@@ -10,7 +10,8 @@
   var ua=navigator.userAgent||'';
   var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   var standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
-  if(ios||(standalone&&window.matchMedia('(max-width: 760px)').matches)){
+  var pwaLaunch=new URLSearchParams(location.search).get('source')==='pwa';
+  if(ios||pwaLaunch||(standalone&&window.matchMedia('(max-width: 760px)').matches)){
     document.documentElement.classList.add('eva-mobile-lite');
   }
 })();
