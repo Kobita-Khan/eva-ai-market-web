@@ -5,6 +5,39 @@
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EVA Market">
 <link rel="manifest" href="/eva-market.webmanifest"><link rel="apple-touch-icon" href="/assets/icons/eva-app-192.png">
 <title>EVA AI MARKET — Premium AI Tools</title>
+<script>
+(function(){
+  var ua=navigator.userAgent||'';
+  var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
+  if(ios||(standalone&&window.matchMedia('(max-width: 760px)').matches)){
+    document.documentElement.classList.add('eva-mobile-lite');
+  }
+})();
+</script>
+<style>
+@media (max-width:760px){
+  html.eva-mobile-lite .ref-cyber-head,
+  html.eva-mobile-lite .ref-cyber-head:after,
+  html.eva-mobile-lite .ref-visual:before,
+  html.eva-mobile-lite .ref-orbit-card,
+  html.eva-mobile-lite .demo-transaction{
+    animation:none!important;
+    transition:none!important;
+    will-change:auto!important;
+  }
+  html.eva-mobile-lite #public-store-products>article,
+  html.eva-mobile-lite #official-credits>article{
+    content-visibility:auto;
+    contain:layout paint style;
+    contain-intrinsic-size:auto 640px;
+    transform:none!important;
+    will-change:auto!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="premium-theme.css?v=20260901-approved"><link rel="stylesheet" href="final-premium.css?v=20260902-final"><link rel="stylesheet" href="product-color-mix.css?v=20260911-all-buttons"><link rel="stylesheet" href="styles.css?v=20260909-hero-5c"><link rel="stylesheet" href="hero-complete.css?v=20260909-cloud-svg4"><link rel="stylesheet" href="site-final.css?v=20260911-buttons-final"><link rel="stylesheet" href="catalog-unique-theme.css?v=20260911-enterprise-calc"><link rel="stylesheet" href="official-credits.css?v=20260915-3d"><link rel="stylesheet" href="eva-3d-market.css?v=20260915-full3d-1"><link rel="stylesheet" href="dimension-card.css?v=20260916-all3d1"><link rel="stylesheet" href="eva-reference-v2.css?v=20260915-ref4">
 <link rel="stylesheet" href="eva-video-match.css?v=20260915-video-match5">
@@ -67,7 +100,14 @@
 <footer class="ref-footer"><div class="container"><div class="ref-footer-row"><a class="brand pro-mobile-brand" href="#home"><span class="brand-mark">E</span><span>EVA <b>AI</b> MARKET</span></a><nav class="ref-footer-nav"><a href="#home">Home</a><a href="#products">Products</a><a href="#live-feed">Live Feed</a><a href="#ai-sandbox">AI Playground</a><a href="#products">Pricing</a><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Support</a><a href="#delivery">How It Works</a><a href="/eva-market-app.html">Install App</a></nav><a class="ref-channel" href="https://t.me/eva007_8" target="_blank" rel="noopener">Join Our Channel</a></div><div class="ref-copy"><span>© 2026 EVA AI MARKET. All rights reserved.</span><span>AI Today, A Better Tomorrow.</span></div></div></footer>
 </div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div><form id="payment-form" hidden></form>
-<script src="app.js?v=20260911-enterprise-calc"></script><script src="claude-plans.js?v=20260911-mobile-fix"></script><script src="official-credits.js?v=20260912-official5"></script><script src="eva-ai-playground.js?v=20260916-ai1"></script><script src="eva-live-feed.js?v=20260916-sample1"></script><script src="dimension-card.js?v=20260916-all3d1"></script>
+<script src="app.js?v=20260911-enterprise-calc"></script><script src="claude-plans.js?v=20260911-mobile-fix"></script><script src="official-credits.js?v=20260912-official5"></script><script src="eva-ai-playground.js?v=20260916-ai1"></script><script src="eva-live-feed.js?v=20260916-sample1"></script><script>
+if(!document.documentElement.classList.contains('eva-mobile-lite')){
+  var dimensionScript=document.createElement('script');
+  dimensionScript.src='dimension-card.js?v=20260917-mobile-lite1';
+  dimensionScript.defer=true;
+  document.head.appendChild(dimensionScript);
+}
+</script>
 <script>document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.menu-button'),n=document.getElementById('site-nav');if(b&&n)b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',String(o))});});</script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/eva-market-sw.js',{scope:'/'}).catch(function(){});});}</script>
 </body></html>
