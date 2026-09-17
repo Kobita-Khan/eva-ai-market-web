@@ -1,4 +1,4 @@
-const CACHE='eva-market-shell-v2';
+const CACHE='eva-market-shell-v3';
 const SHELL=['/','/index.html','/eva-market-app.html','/styles.css','/app.js','/eva-market.webmanifest','/assets/logos/ai-premium.jpeg'];
 const PRIVATE_PREFIXES=['/api/','/eva-admin','/eva-ops','/admin','/dashboard','/login','/reset-password','/reassign-deposit'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).catch(()=>{}));self.skipWaiting()});
