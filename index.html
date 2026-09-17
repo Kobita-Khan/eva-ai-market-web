@@ -1,111 +1,160 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#020812"><meta name="description" content="EVA AI MARKET — premium AI plans, cloud accounts and official API support.">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EVA Market">
-<link rel="manifest" href="/eva-market.webmanifest"><link rel="apple-touch-icon" href="/assets/icons/eva-app-192.png">
-<title>EVA AI MARKET — Premium AI Tools</title>
-<script>
-(function(){
-  var ua=navigator.userAgent||'';
-  var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-  var standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
-  var pwaLaunch=new URLSearchParams(location.search).get('source')==='pwa';
-  if(ios||pwaLaunch||(standalone&&window.matchMedia('(max-width: 760px)').matches)){
-    document.documentElement.classList.add('eva-mobile-lite');
-  }
-})();
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#030712">
+<title>EVA AI MARKET — Cyber Dark Demo</title>
+<meta name="description" content="Futuristic cyber-dark EVA AI marketplace concept demo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <style>
-@media (max-width:760px){
-  html.eva-mobile-lite .ref-cyber-head,
-  html.eva-mobile-lite .ref-cyber-head:after,
-  html.eva-mobile-lite .ref-visual:before,
-  html.eva-mobile-lite .ref-orbit-card,
-  html.eva-mobile-lite .demo-transaction{
-    animation:none!important;
-    transition:none!important;
-    will-change:auto!important;
-  }
-  html.eva-mobile-lite #public-store-products>article,
-  html.eva-mobile-lite #official-credits>article{
-    content-visibility:auto;
-    contain:layout paint style;
-    contain-intrinsic-size:auto 640px;
-    transform:none!important;
-    will-change:auto!important;
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
-  }
+:root{
+  --bg:#030712;--bg2:#050814;--glass:rgba(15,23,42,.65);--line:rgba(255,255,255,.08);
+  --muted:#94a3b8;--text:#f8fafc;--cyan:#06b6d4;--cyan2:#00f2fe;--pink:#ec4899;
+  --purple:#8b5cf6;--gold:#f59e0b;--green:#10b981;--radius:22px;--max:1180px;
 }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="premium-theme.css?v=20260901-approved"><link rel="stylesheet" href="final-premium.css?v=20260902-final"><link rel="stylesheet" href="product-color-mix.css?v=20260911-all-buttons"><link rel="stylesheet" href="styles.css?v=20260909-hero-5c"><link rel="stylesheet" href="hero-complete.css?v=20260909-cloud-svg4"><link rel="stylesheet" href="site-final.css?v=20260911-buttons-final"><link rel="stylesheet" href="catalog-unique-theme.css?v=20260911-enterprise-calc"><link rel="stylesheet" href="official-credits.css?v=20260915-3d"><link rel="stylesheet" href="eva-3d-market.css?v=20260915-full3d-1"><link rel="stylesheet" href="dimension-card.css?v=20260916-all3d1"><link rel="stylesheet" href="eva-reference-v2.css?v=20260915-ref4">
-<link rel="stylesheet" href="eva-video-match.css?v=20260915-video-match5">
-<link rel="stylesheet" href="eva-account-flow.css?v=20260915-account">
-<link rel="stylesheet" href="eva-live-feed.css?v=20260916-real1">
-<link rel="stylesheet" href="eva-mobile-orb-reference.css?v=20260917-referencefix2" data-eva-mobile-ref>
-<style>
-@media (min-width:761px){
-  body.premium-home .pro-topbar{height:142px!important;min-height:142px!important;background:#06090e!important;border-bottom:1px solid rgba(34,211,238,.12)!important;box-shadow:none!important}
-  body.premium-home .pro-topbar .nav-wrap{position:relative!important;display:block!important;width:100%!important;max-width:1500px!important;height:142px!important;min-height:142px!important;margin:0 auto!important;padding:0 28px!important;box-sizing:border-box!important}
-  body.premium-home .pro-topbar .pro-search,body.premium-home .pro-topbar .menu-button{display:none!important}
-  body.premium-home .pro-topbar .pro-mobile-brand{position:absolute!important;left:34px!important;top:22px!important;display:flex!important;align-items:center!important;gap:16px!important;height:62px!important;margin:0!important;z-index:5!important}
-  body.premium-home .pro-topbar #site-nav{position:absolute!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:34px!important;height:54px!important;margin:0!important;padding:0 360px 0 34px!important;box-sizing:border-box!important;background:#07101d!important;border-top:1px solid rgba(99,102,241,.18)!important;border-bottom:1px solid rgba(34,211,238,.12)!important;border-radius:0 0 20px 20px!important;overflow:visible!important}
-  body.premium-home .pro-topbar #site-nav>a{display:flex!important;align-items:center!important;justify-content:center!important;height:54px!important;margin:0!important;padding:0!important;white-space:nowrap!important;color:#cbd5e1!important;text-decoration:none!important;font-size:15px!important;font-weight:700!important;line-height:1!important;background:transparent!important;border:0!important;box-shadow:none!important}
-  body.premium-home .pro-topbar #site-nav>a:hover{color:#22d3ee!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{position:absolute!important;right:205px!important;top:-68px!important;width:118px!important;height:44px!important;padding:0!important;border-radius:14px!important;background:#0a1424!important;border:1px solid #1e293b!important;color:#f8fafc!important;font-size:16px!important;font-weight:700!important;z-index:10!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{position:absolute!important;right:22px!important;top:-72px!important;width:164px!important;height:50px!important;padding:0!important;border-radius:999px!important;background:linear-gradient(90deg,#10bfe1,#2563eb)!important;border:0!important;color:#fff!important;font-size:16px!important;font-weight:800!important;box-shadow:0 0 24px rgba(37,99,235,.24)!important;z-index:10!important}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font-family:Inter,sans-serif;background:
+ radial-gradient(circle at 12% 0%,rgba(6,182,212,.13),transparent 32rem),
+ radial-gradient(circle at 88% 12%,rgba(139,92,246,.14),transparent 34rem),
+ linear-gradient(180deg,var(--bg),var(--bg2) 55%,#02040b);min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:
+ linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:38px 38px;
+ mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+a{text-decoration:none;color:inherit}button,input{font:inherit}.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.topbar{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(3,7,18,.72);backdrop-filter:blur(18px)}
+.nav{min-height:74px;display:flex;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:11px;font:800 15px Space Grotesk;letter-spacing:.08em;white-space:nowrap}
+.mark{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;color:#111827;font-size:20px;background:linear-gradient(145deg,#fde68a,var(--gold));box-shadow:0 0 26px rgba(245,158,11,.35)}
+.navlinks{display:flex;gap:24px;margin-left:auto;color:#aebbd0;font-size:13px;font-weight:700}.navlinks a:hover{color:var(--cyan2)}
+.search{display:flex;align-items:center;gap:8px;width:220px;height:42px;padding:0 13px;border-radius:14px;color:#8290a7}
+.search input{width:100%;border:0;outline:0;color:#fff;background:transparent}.search input::placeholder{color:#64748b}
+.iconbtn{width:42px;height:42px;border-radius:13px;color:#dbeafe;cursor:pointer;border:1px solid var(--line);background:rgba(15,23,42,.72)}
+.cart{position:relative}.cart i{position:absolute;right:-4px;top:-5px;width:18px;height:18px;display:grid;place-items:center;border-radius:50%;font-size:10px;font-style:normal;background:var(--pink)}
+.hero{padding:76px 0 36px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:54px;min-height:570px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;color:#b8f8ff;font-size:12px;font-weight:800;border:1px solid rgba(6,182,212,.28);background:rgba(6,182,212,.08)}
+.pill:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan2);box-shadow:0 0 12px var(--cyan2);animation:pulse 1.7s infinite}
+h1{max-width:680px;margin:22px 0 18px;font:800 clamp(46px,6.4vw,82px)/.98 Space Grotesk;letter-spacing:-.055em}
+.gradient{display:block;color:transparent;background:linear-gradient(90deg,var(--pink),#a78bfa 45%,var(--cyan2));background-clip:text;-webkit-background-clip:text}
+.lead{max-width:610px;margin:0;color:var(--muted);font-size:17px;line-height:1.8}.actions{display:flex;gap:12px;margin-top:28px}
+.btn{height:50px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:15px;border:1px solid var(--line);color:#fff;font-weight:800;cursor:pointer;background:rgba(15,23,42,.7);transition:.28s}
+.btn.primary{border:0;background:linear-gradient(100deg,var(--cyan),#2563eb);box-shadow:0 0 30px rgba(6,182,212,.2)}
+.btn:hover{transform:translateY(-2px);border-color:rgba(0,242,254,.42);box-shadow:0 12px 34px rgba(0,0,0,.24)}
+.micro{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;color:#94a3b8;font-size:12px}.micro b{color:#e2e8f0}.micro span:before{content:"✓";margin-right:7px;color:var(--green)}
+.visual{position:relative;display:grid;place-items:center;min-height:520px;isolation:isolate}
+.halo{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.22),rgba(139,92,246,.11) 42%,transparent 70%);filter:blur(14px);animation:halo 5s ease-in-out infinite}
+.core{position:relative;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 32% 26%,#bafaff 0 3%,#3689ef 14%,#322170 38%,#0a1038 70%,#050816);box-shadow:inset -22px -26px 38px rgba(0,0,0,.62),inset 12px 14px 25px rgba(126,240,255,.2),0 0 34px rgba(0,242,254,.58),0 0 95px rgba(139,92,246,.38);animation:float 4.6s ease-in-out infinite;z-index:4}
+.core:before,.core:after{content:"";position:absolute;left:50%;top:50%;border:2px solid;border-radius:50%;transform-origin:center}
+.core:before{width:340px;height:108px;border-color:rgba(0,242,254,.72);transform:translate(-50%,-50%) rotate(-17deg);box-shadow:0 0 12px rgba(0,242,254,.5);animation:ring1 9s linear infinite}
+.core:after{width:125px;height:380px;border-color:rgba(236,72,153,.65);transform:translate(-50%,-50%) rotate(24deg);box-shadow:0 0 12px rgba(236,72,153,.45);animation:ring2 11s linear infinite}
+.core-logo{position:absolute;inset:0;display:grid;place-items:center;font:900 76px Space Grotesk;color:#e7feff;text-shadow:0 0 18px var(--cyan2);z-index:3}
+.orbit{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px;display:grid;place-items:center;border-radius:18px;background:rgba(9,15,35,.92);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 26px rgba(0,0,0,.42);font-weight:900;z-index:7;--r:225px;animation:orbit 19s linear infinite}
+.orbit small{font-size:9px;color:#aab7ce}.orbit b{font-size:18px}.o1{--a:0deg;color:#7df5ff}.o2{--a:45deg;color:#ffb36a}.o3{--a:90deg;color:#83a9ff}.o4{--a:135deg;color:#f9cc5e}.o5{--a:180deg;color:#58e2ff}.o6{--a:225deg;color:#fa78be}.o7{--a:270deg;color:#c78aff}.o8{--a:315deg;color:#d6dee9}
+@keyframes orbit{from{transform:rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a)))}to{transform:rotate(calc(var(--a) + 360deg)) translateX(var(--r)) rotate(calc(-1 * (var(--a) + 360deg)))}}
+@keyframes float{50%{transform:translateY(-9px) scale(1.025)}}@keyframes halo{50%{transform:scale(1.08);opacity:.72}}
+@keyframes ring1{to{transform:translate(-50%,-50%) rotate(343deg)}}@keyframes ring2{to{transform:translate(-50%,-50%) rotate(-336deg)}}@keyframes pulse{50%{opacity:.3;transform:scale(.72)}}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;padding:24px 0 70px}.trust article{padding:21px;border-radius:18px}.trust i{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;font-style:normal;color:var(--cyan2);background:rgba(6,182,212,.1)}.trust b,.trust span{display:block}.trust b{margin-top:15px}.trust span{margin-top:6px;color:var(--muted);font-size:12px}
+.section{padding:70px 0}.eyebrow{color:var(--cyan2);font-size:11px;font-weight:900;letter-spacing:.18em}.title-row{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:28px}.title-row h2{margin:9px 0 0;font:800 clamp(30px,4vw,48px) Space Grotesk;letter-spacing:-.035em}.title-row p{max-width:450px;color:var(--muted);line-height:1.65}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 18px;scrollbar-width:none}.chip{white-space:nowrap;padding:10px 15px;border-radius:999px;color:#9fb0c8;cursor:pointer;border:1px solid var(--line);background:rgba(15,23,42,.48)}.chip.active{color:#05101b;border-color:transparent;background:linear-gradient(90deg,var(--cyan2),#67e8f9);font-weight:900}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{position:relative;overflow:hidden;padding:22px;border-radius:var(--radius);transition:.3s}.product:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,var(--accent-soft),transparent 43%);pointer-events:none}.product:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 20px 52px rgba(0,0,0,.34),0 0 0 1px var(--accent-soft)}
+.product-top{position:relative;display:flex;align-items:center;justify-content:space-between}.logo{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;color:#fff;font-size:18px;font-weight:900;background:var(--accent-soft);border:1px solid var(--accent)}
+.stock{display:flex;align-items:center;gap:7px;color:#9ce8cc;font-size:10px;font-weight:800}.stock:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.product h3{position:relative;margin:22px 0 8px;font-size:20px}.product p{position:relative;min-height:48px;margin:0;color:var(--muted);font-size:13px;line-height:1.6}.meta{position:relative;display:flex;align-items:end;justify-content:space-between;margin-top:23px}.price small{display:block;color:#64748b}.price strong{font-size:24px}.price em{color:#94a3b8;font-size:11px;font-style:normal}.arrow{width:42px;height:42px;border-radius:13px;border:1px solid var(--accent);color:var(--accent);cursor:pointer;background:var(--accent-soft)}
+.cyan{--accent:#22d3ee;--accent-soft:rgba(34,211,238,.12)}.green{--accent:#10b981;--accent-soft:rgba(16,185,129,.12)}.gold{--accent:#f59e0b;--accent-soft:rgba(245,158,11,.12)}.purple{--accent:#a78bfa;--accent-soft:rgba(167,139,250,.12)}.pink{--accent:#ec4899;--accent-soft:rgba(236,72,153,.12)}.blue{--accent:#60a5fa;--accent-soft:rgba(96,165,250,.12)}
+.metrics{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:20px}.metric-panel{padding:26px;border-radius:var(--radius)}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.metric{padding:19px;border-radius:17px;background:rgba(3,7,18,.45);border:1px solid var(--line)}.metric strong{display:block;font:800 28px Space Grotesk}.metric span{color:var(--muted);font-size:11px}.flow{display:grid;gap:12px}.flow div{display:flex;align-items:center;gap:12px;padding:13px;border-radius:15px;background:rgba(3,7,18,.44);border:1px solid var(--line)}.flow b{width:31px;height:31px;display:grid;place-items:center;border-radius:10px;color:#07111f;background:var(--cyan2)}.flow span{font-size:12px;color:#cbd5e1}
+.cta{margin:70px auto 105px;padding:42px;border-radius:28px;text-align:center;background:linear-gradient(135deg,rgba(6,182,212,.14),rgba(139,92,246,.16));border:1px solid rgba(0,242,254,.2)}.cta h2{margin:0;font:800 clamp(30px,5vw,56px) Space Grotesk}.cta p{color:var(--muted)}
+.dock{display:none}.chat{position:fixed;right:22px;bottom:24px;width:54px;height:54px;border:0;border-radius:18px;color:#05101b;font-size:21px;cursor:pointer;background:linear-gradient(145deg,var(--cyan2),#60a5fa);box-shadow:0 0 30px rgba(0,242,254,.32);z-index:55}
+.modal{position:fixed;inset:0;display:none;place-items:center;padding:18px;background:rgba(1,3,10,.76);backdrop-filter:blur(12px);z-index:100}.modal.open{display:grid}.sheet{width:min(470px,100%);padding:25px;border-radius:24px}.sheet-head{display:flex;justify-content:space-between;align-items:center}.sheet h3{font:800 25px Space Grotesk}.close{width:38px;height:38px;border-radius:12px;color:white;border:1px solid var(--line);background:#0f172a;cursor:pointer}.orderbox{margin:18px 0;padding:18px;border-radius:17px;background:rgba(3,7,18,.5);border:1px solid var(--line)}.paymethods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pay{padding:12px 8px;border-radius:13px;text-align:center;color:#b8c4d8;font-size:11px;border:1px solid var(--line);background:#080d1c}.demo-note{margin-top:14px;color:#f8c97a;font-size:11px;line-height:1.55}
+@media(max-width:900px){.navlinks{display:none}.hero-grid{grid-template-columns:1fr;text-align:center}.hero-copy{display:grid;justify-items:center}.visual{min-height:500px}.trust{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr}.search{margin-left:auto}.micro{justify-content:center}}
+@media(max-width:620px){
+ .wrap{width:min(100% - 24px,430px)}.nav{min-height:66px;gap:8px}.brand{font-size:11px}.mark{width:38px;height:38px;border-radius:12px}.search{display:none}.iconbtn{width:38px;height:38px}
+ .hero{padding:38px 0 18px}.hero-grid{gap:12px;min-height:auto}h1{font-size:43px}.lead{font-size:13px;line-height:1.7}.actions{width:100%;display:grid;grid-template-columns:1fr 1fr}.btn{height:46px;padding:0 12px;font-size:11px}
+ .visual{min-height:390px;transform:scale(.78);margin:-20px 0}.core{width:165px;height:165px}.core:before{width:300px}.core:after{height:334px}.orbit{--r:193px}
+ .trust{padding:0 0 52px;gap:10px}.trust article{padding:16px}.title-row{display:block}.title-row p{font-size:13px}.section{padding:52px 0}.products{grid-template-columns:1fr}.product p{min-height:0}
+ .metric-grid{grid-template-columns:1fr}.cta{margin-bottom:110px;padding:32px 20px}.chat{right:16px;bottom:86px}
+ .dock{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(94%,420px);height:64px;padding:6px;display:grid;grid-template-columns:repeat(5,1fr);border-radius:20px;z-index:50;box-shadow:0 18px 50px rgba(0,0,0,.6)}
+ .dock a{display:grid;place-items:center;align-content:center;gap:3px;color:#718096;font-size:9px}.dock a b{font-size:16px}.dock a.active{color:var(--cyan2);border-radius:14px;background:rgba(6,182,212,.1)}
 }
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 </style>
-
-<!-- Vercel Web Analytics: strip query strings and URL fragments before collection -->
-<script>
-  window.va = window.va || function () {
-    (window.vaq = window.vaq || []).push(arguments);
-  };
-  window.va('beforeSend', function (event) {
-    var url = new URL(event.url);
-    url.search = '';
-    url.hash = '';
-    return Object.assign({}, event, { url: url.toString() });
-  });
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body class="premium-home">
-<div class="pro-app">
-<header class="pro-topbar"><div class="nav-wrap"><a class="brand pro-mobile-brand" href="#home"><span class="brand-mark">E</span><span>EVA <b>AI</b> MARKET</span></a><div class="pro-search">⌕ <span>Search AI tools...</span></div><button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><b class="sr-only">Open menu</b></button><nav id="site-nav"><a href="#home">Home</a><a href="#products">Products</a><a href="#live-feed">Live Feed</a><a href="#products">Pricing</a><a href="#delivery">How It Works</a><a href="#reviews">Reviews</a><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Support</a><a class="nav-account" href="/login.html">Sign In</a><a class="video-get-started" href="/login.html#signup">Get Started</a></nav></div></header>
+<body>
+<header class="topbar">
+ <div class="wrap nav">
+  <a class="brand" href="#home"><span class="mark">E</span><span>EVA AI MARKET</span></a>
+  <nav class="navlinks"><a href="#home">Home</a><a href="#products">Products</a><a href="#metrics">System</a><a href="#support">Support</a></nav>
+  <label class="search glass">⌕ <input id="search" placeholder="Search AI tools"></label>
+  <button class="iconbtn" aria-label="Account">◉</button><button class="iconbtn cart" aria-label="Cart">▣<i id="cartCount">0</i></button>
+ </div>
+</header>
 <main>
-<section class="ref-hero" id="home"><div class="container"><div class="ref-hero-grid">
-<div class="ref-hero-copy"><div class="ref-kicker">#1 AI SUBSCRIPTION MARKETPLACE</div><h1>All AI Tools<span>In One Place.</span></h1><p>Premium AI accounts, cloud credits and productivity tools. Instant automated delivery. Trusted by 50,000+ creators, builders, and agencies worldwide.</p><div class="ref-mini-trust"><span>Instant Delivery</span><span>100% Secure</span><span>24/7 Support</span><span>Global Access</span></div><div class="ref-hero-actions"><a class="ref-btn-primary" href="#products">Browse Products →</a><a class="ref-btn-secondary" href="#delivery">▶ How It Works</a></div><div class="ref-customer-proof"><div class="ref-proof-avatars"><i>AR</i><i>SK</i><i>DM</i><i>EK</i></div><div class="ref-proof-copy"><strong>50,000+ Happy Customers</strong><small>Trusted around the world</small></div></div></div>
-<div class="ref-visual"><div class="ref-cyber-head"><span class="ref-eye"></span><span class="ref-head-label">EVA AI MARKET</span><div class="ref-orbit-card c1"><b>◉</b>ChatGPT</div><div class="ref-orbit-card c2"><b>✳</b>Claude</div><div class="ref-orbit-card c3"><b>✦</b>Gemini</div><div class="ref-orbit-card c4"><b>aws</b>AWS</div><div class="ref-orbit-card c5"><b>☁</b>Google Cloud</div><div class="ref-orbit-card c6"><b>✂</b>CapCut</div><div class="ref-orbit-card c7"><b>▶</b>Kling</div><div class="ref-orbit-card c8"><b>／</b>Grok</div></div></div>
-<aside class="ref-side-promise"><h3>“AI Today,<span>A Better Tomorrow”</span></h3><ul><li>Transaction verification</li><li>Supported provider plans</li><li>Current store pricing</li><li>Fast order handling</li><li>Worldwide online access</li></ul><div class="ref-brand-trust">🛡 Trusted EVA AI MARKET</div></aside>
-</div>
-<div class="ref-stat-grid"><article class="ref-stat"><i>♧</i><div><strong>50,000+</strong><small>Happy Customers</small></div></article><article class="ref-stat"><i>◇</i><div><strong>45+</strong><small>Premium Products</small></div></article><article class="ref-stat"><i>◎</i><div><strong>100+</strong><small>Countries Served</small></div></article><article class="ref-stat"><i>⚡</i><div><strong>99.9%</strong><small>Delivery Success</small></div></article></div></div></section>
-<section class="eva-live-feed" id="live-feed" aria-labelledby="eva-live-feed-title"><div class="container"><div class="eva-live-panel"><div class="eva-live-head"><div class="eva-live-title"><i></i><span id="eva-live-feed-title">Sample Activity Feed</span></div><small id="eva-live-feed-status">Loading sample activity…</small></div><div class="eva-live-table-wrap"><table class="eva-live-table"><thead><tr><th>Customer</th><th>Product Delivered</th><th>Amount</th><th>Status</th><th>Timestamp</th></tr></thead><tbody id="eva-live-feed-body"><tr><td class="eva-live-empty" colspan="5">Loading sample activity…</td></tr></tbody></table></div><div class="eva-live-privacy"><b>Privacy-safe feed: no customer email, TXID, password, credential or private delivery detail is published.</b><a href="#products">Browse live products →</a></div></div></div></section>
-<section class="pro-category-strip"><div class="container"><a class="active" href="#products">All</a><a href="#products">AI Chat</a><a href="#products">Cloud</a><a href="#products">Creative</a><a href="#products">Productivity</a><a href="#products">Social Media</a></div></section>
-<section class="section store-showcase" id="products"><div class="container"><div class="pro-section-title"><div><span>🔥 Popular Products</span><h2>Choose your AI tool <b data-total-products-parenthesized>(45)</b></h2><p>Current prices and stock load directly from the EVA store.</p></div><a href="/login.html">View all →</a></div><div id="public-store-products" class="store-products"><article class="panel store-loading">Loading current products and stock…</article></div>
-<div id="official-credits" class="store-products credit-products"><div class="credit-section-heading"><div><span>OFFICIAL AI CREDITS</span><h3>Credit Top-up Services</h3><p>Official credit amount + 5% EVA service margin.</p></div></div>
-<article class="account-product panel credit-card credit-openai" data-credit-card data-credit-name="OpenAI Official Credits"><span class="product-serial">43</span><div class="credit-cover"><span class="credit-badge">OFFICIAL</span><div class="credit-logo">◎</div><span class="credit-brand">OpenAI</span><strong>Official Flexible Credits</strong></div><span class="product-tag">AI Credits</span><h3>OpenAI Official Credits</h3><p>Flexible usage credit top-up assistance for eligible OpenAI accounts.</p><label class="credit-field"><span>Choose credit amount</span><select data-credit-select><option value="100" data-official="2,500 Credits · Official $100">2,500 Credits — $100 official</option><option value="200" data-official="5,000 Credits · Official $200">5,000 Credits — $200 official</option><option value="1000" data-official="25,000 Credits · Official $1,000">25,000 Credits — $1,000 official</option></select></label><div class="official-price">Official amount: <b data-credit-official>2,500 Credits · Official $100</b></div><div class="credit-price-row"><div><small>EVA price</small><div class="credit-price" data-credit-price>$105 <em>USDT</em></div></div><span class="credit-profit">+5% margin</span></div><div class="stock-line"><span class="in-stock">Available</span><span>Manual top-up</span></div><p class="credit-note">Credit availability and account eligibility are subject to the provider's official rules.</p><div class="credit-actions"><a class="button secondary" data-credit-order href="https://t.me/eva007_8" target="_blank" rel="noopener noreferrer">Order Selected Credit</a></div></article>
-<article class="account-product panel credit-card credit-claude" data-credit-card data-credit-name="Claude API Credits"><span class="product-serial">44</span><div class="credit-cover"><span class="credit-badge">OFFICIAL</span><div class="credit-logo"><img src="/assets/logos/claude-premium.png?v=20260912-credit" alt="Claude" loading="lazy"></div><span class="credit-brand">Anthropic Claude</span><strong>Official API Credits</strong></div><span class="product-tag">AI Credits</span><h3>Claude API Credits</h3><p>Prepaid Anthropic API credit top-up assistance for eligible organizations.</p><label class="credit-field"><span>Choose credit amount</span><select data-credit-select><option value="20" data-official="$20 Claude API Credit">$20 credit</option><option value="50" data-official="$50 Claude API Credit">$50 credit</option><option value="100" data-official="$100 Claude API Credit">$100 credit</option><option value="200" data-official="$200 Claude API Credit">$200 credit</option><option value="500" data-official="$500 Claude API Credit">$500 credit</option><option value="1000" data-official="$1,000 Claude API Credit">$1,000 credit</option></select></label><div class="official-price">Official amount: <b data-credit-official>$20 Claude API Credit</b></div><div class="credit-price-row"><div><small>EVA price</small><div class="credit-price" data-credit-price>$21 <em>USDT</em></div></div><span class="credit-profit">+5% margin</span></div><div class="stock-line"><span class="in-stock">Available</span><span>Manual top-up</span></div><p class="credit-note">Unused prepaid credit may expire under Anthropic's official billing terms.</p><div class="credit-actions"><a class="button secondary" data-credit-order href="https://t.me/eva007_8" target="_blank" rel="noopener noreferrer">Order Selected Credit</a></div></article>
-<article class="account-product panel credit-card credit-gemini" data-credit-card data-credit-name="Gemini API Credits"><span class="product-serial">45</span><div class="credit-cover"><span class="credit-badge">OFFICIAL</span><div class="credit-logo">✦</div><span class="credit-brand">Google Gemini</span><strong>Official API Credits</strong></div><span class="product-tag">AI Credits</span><h3>Gemini API Credits</h3><p>Official Google Gemini API prepaid credit top-up assistance.</p><label class="credit-field"><span>Choose credit amount</span><select data-credit-select><option value="5" data-official="$5 Gemini API Credit">$5 credit</option><option value="20" data-official="$20 Gemini API Credit">$20 credit</option><option value="50" data-official="$50 Gemini API Credit">$50 credit</option><option value="100" data-official="$100 Gemini API Credit">$100 credit</option><option value="200" data-official="$200 Gemini API Credit">$200 credit</option><option value="500" data-official="$500 Gemini API Credit">$500 credit</option><option value="1000" data-official="$1,000 Gemini API Credit">$1,000 credit</option><option value="5000" data-official="$5,000 Gemini API Credit">$5,000 credit</option></select></label><div class="official-price">Official amount: <b data-credit-official>$5 Gemini API Credit</b></div><div class="credit-price-row"><div><small>EVA price</small><div class="credit-price" data-credit-price>$5.25 <em>USDT</em></div></div><span class="credit-profit">+5% margin</span></div><div class="stock-line"><span class="in-stock">Available</span><span>Manual top-up</span></div><p class="credit-note">Credit limits and availability depend on the customer's eligible Google billing account.</p><div class="credit-actions"><a class="button secondary" data-credit-order href="https://t.me/eva007_8" target="_blank" rel="noopener noreferrer">Order Selected Credit</a></div></article></div>
-<div class="ref-payment-row"><article class="ref-payment-banner"><div class="ref-pay-shield">🛡</div><div><h3>Secure Payment Gateway</h3><p>USDT TRC20 / BEP20 / ERC20</p><small>Transaction Verification Required</small></div><div class="ref-networks"><span class="ref-net"><b>◈</b>TRC20</span><span class="ref-net"><b>◆</b>BEP20</span><span class="ref-net"><b>◇</b>ERC20</span></div></article><article class="ref-delivery-banner"><div><h3>⚡ Fast Delivery</h3><p>Order handling after verification</p><small>Access details are delivered privately.</small></div></article></div><div class="ref-section-title"><h3>🧠 All Categories</h3><a href="#products">View All Products →</a></div><div class="ref-cats"><article class="ref-cat"><b>🤖</b><span>AI Chat Tools</span><small>ChatGPT · Claude · Gemini</small></article><article class="ref-cat"><b>☁</b><span>Cloud Services</span><small>AWS · Google Cloud</small></article><article class="ref-cat"><b>🎨</b><span>Creative Tools</span><small>Video · Design · Media</small></article><article class="ref-cat"><b>➤</b><span>Social Media</span><small>Telegram and more</small></article><article class="ref-cat"><b>&lt;/&gt;</b><span>Developer Tools</span><small>API and coding</small></article><article class="ref-cat"><b>▥</b><span>Productivity</span><small>Work smarter</small></article><article class="ref-cat"><b>⌘</b><span>Other Tools</span><small>More services</small></article></div><div class="ref-section-title"><h3>🛡 Why Choose EVA AI MARKET?</h3></div><div class="ref-why"><article><i>✓</i><div><b>Verified Payment</b><small>TXID review flow</small></div></article><article><i>＄</i><div><b>Current Pricing</b><small>Live store data</small></div></article><article><i>⚡</i><div><b>Fast Handling</b><small>After verification</small></div></article><article><i>◉</i><div><b>24/7 Support</b><small>Telegram help</small></div></article><article><i>◎</i><div><b>Global Access</b><small>Online storefront</small></div></article><article><i>♛</i><div><b>EVA Brand</b><small>One trusted place</small></div></article></div><div class="ref-section-title" id="reviews"><h3>⭐ Customer Reviews</h3><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Contact Support →</a></div><div class="ref-reviews"><article class="ref-review"><h4>Verified review sources</h4><p>Customer feedback is shown only from published or verifiable review sources. We do not display invented testimonials.</p><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Ask for current reviews →</a></article><article class="ref-review"><h4>Order feedback</h4><p>Need recent delivery feedback before ordering? Contact EVA support and request current proof or customer references.</p><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Request feedback →</a></article><article class="ref-review"><h4>Support channel</h4><p>Questions about products, payment verification, stock or delivery can be handled directly through Telegram support.</p><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Open Telegram →</a></article></div></div></section>
-<section class="section api-support" id="api-support"><div class="container api-support-grid"><div><div class="eyebrow">OFFICIAL API SUPPORT</div><h2>Deposit. Verify.<br><span>Start building.</span></h2><p>Choose the supported service you need. After transaction verification, setup and access details are handled privately.</p><ul class="support-checks"><li>Provider setup assistance</li><li>Private access delivery</li><li>Prepaid balance and top-up assistance</li><li>AWS Bedrock, OpenAI, Gemini & Claude support</li></ul></div><article class="panel api-flow-card"><ol><li><b>1</b><span><strong>Choose your service</strong><small>Select a product or contact support.</small></span></li><li><b>2</b><span><strong>Make a secure deposit</strong><small>TRC20, BEP20 and ERC20 supported.</small></span></li><li><b>3</b><span><strong>Transaction review</strong><small>Access follows successful verification.</small></span></li></ol><a class="button primary" href="https://t.me/eva007_8" target="_blank" rel="noopener">Request API Support →</a></article></div></section>
-<section class="section tinted" id="deposit"><div class="container"><div class="heading"><span>SECURE PAYMENT GATEWAY</span><h2>USDT TRC20 / BEP20 / ERC20</h2><p><strong>Transaction Verification Required</strong><br>Sign in, send payment on a supported network, and submit the completed transaction ID.</p></div><div class="deposit-grid wallet-three"><article class="wallet panel active" data-network-card="TRC20"><div class="wallet-title"><em class="trc">T</em><div><b>USDT TRC20</b><small>Tron Network</small></div></div><code id="trc-address">TJCFS6hDKsEnquGuvw43krk141QLvHnGbG</code><button class="copy" type="button" data-copy="trc-address">Copy Address</button></article><article class="wallet panel" data-network-card="BEP20"><div class="wallet-title"><em class="bep">B</em><div><b>USDT BEP20</b><small>BNB Smart Chain</small></div></div><code id="bep-address">0x644ed89caecc120d3a3180e9f20a90d970cfa3e8</code><button class="copy" type="button" data-copy="bep-address">Copy Address</button></article><article class="wallet panel" data-network-card="ERC20"><div class="wallet-title"><em class="erc">E</em><div><b>USDT ERC20</b><small>Ethereum Network</small></div></div><code id="erc-address">0x644ed89caecc120d3a3180e9f20a90d970cfa3e8</code><button class="copy" type="button" data-copy="erc-address">Copy Address</button></article></div></div></section>
-<section class="section" id="delivery"><div class="container"><div class="heading"><span>SIMPLE & SECURE</span><h2>How your order works</h2><p>A clear four-step flow from product selection to delivery.</p></div><div class="features premium-steps"><article class="panel"><b>01</b><h3>Select a product</h3><p>Choose a plan, API service, credit or cloud product.</p></article><article class="panel"><b>02</b><h3>Fund your balance</h3><p>Send USDT and submit your completed TXID.</p></article><article class="panel"><b>03</b><h3>Admin verifies</h3><p>Your approved amount is added to EVA Balance.</p></article><article class="panel"><b>04</b><h3>Receive delivery</h3><p>Order details are delivered privately.</p></article></div></div></section>
+<section class="hero" id="home">
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <div class="pill">Trusted by 50,000+ AI builders</div>
+   <h1>Build faster with <span class="gradient">unlimited intelligence.</span></h1>
+   <p class="lead">Premium AI subscriptions, cloud infrastructure and official API credits—designed as one secure, instant-delivery marketplace.</p>
+   <div class="actions"><a class="btn primary" href="#products">Explore products <span>→</span></a><button class="btn" id="watchDemo">▶ Watch demo</button></div>
+   <div class="micro"><span><b>Instant</b> delivery</span><span><b>Verified</b> payments</span><span><b>24/7</b> support</span></div>
+  </div>
+  <div class="visual" aria-label="Orbiting AI product ecosystem">
+   <div class="halo"></div><div class="core"><div class="core-logo">E</div></div>
+   <div class="orbit o1"><div><b>◎</b><small>GPT</small></div></div><div class="orbit o2"><div><b>✳</b><small>Claude</small></div></div>
+   <div class="orbit o3"><div><b>✦</b><small>Gemini</small></div></div><div class="orbit o4"><div><b>aws</b><small>AWS</small></div></div>
+   <div class="orbit o5"><div><b>☁</b><small>GCP</small></div></div><div class="orbit o6"><div><b>✂</b><small>CapCut</small></div></div>
+   <div class="orbit o7"><div><b>▶</b><small>Kling</small></div></div><div class="orbit o8"><div><b>／</b><small>Grok</small></div></div>
+  </div>
+ </div>
+</section>
+<section><div class="wrap trust">
+ <article class="glass"><i>⚡</i><b>Instant Delivery</b><span>Automated fulfilment after verification.</span></article>
+ <article class="glass"><i>◇</i><b>Secure Payment</b><span>Protected transaction validation.</span></article>
+ <article class="glass"><i>◉</i><b>24/7 Support</b><span>Human assistance whenever needed.</span></article>
+ <article class="glass"><i>♧</i><b>Global Access</b><span>Products available worldwide.</span></article>
+</div></section>
+<section class="section" id="products"><div class="wrap">
+ <div class="title-row"><div><span class="eyebrow">CURATED AI STACK</span><h2>Products engineered for scale.</h2></div><p>Choose a verified plan or cloud service. Every card is designed for clarity, speed and confident checkout.</p></div>
+ <div class="filters"><button class="chip active" data-filter="all">All products</button><button class="chip" data-filter="ai">AI Chat</button><button class="chip" data-filter="cloud">Cloud</button><button class="chip" data-filter="creative">Creative</button></div>
+ <div class="products" id="productGrid">
+  <article class="product glass green" data-cat="ai" data-name="ChatGPT Plus"><div class="product-top"><span class="logo">◎</span><span class="stock">IN STOCK</span></div><h3>ChatGPT Plus</h3><p>Expanded access, advanced reasoning and premium creative tools.</p><div class="meta"><div class="price"><small>From</small><strong>$20</strong> <em>/ month</em></div><button class="arrow" data-buy="ChatGPT Plus" data-price="$20">→</button></div></article>
+  <article class="product glass gold" data-cat="ai" data-name="Claude Max"><div class="product-top"><span class="logo">✳</span><span class="stock">IN STOCK</span></div><h3>Claude Max</h3><p>High-capacity workspace for deep research and advanced coding.</p><div class="meta"><div class="price"><small>From</small><strong>$35</strong> <em>/ month</em></div><button class="arrow" data-buy="Claude Max" data-price="$35">→</button></div></article>
+  <article class="product glass blue" data-cat="ai" data-name="Gemini Ultra"><div class="product-top"><span class="logo">✦</span><span class="stock">IN STOCK</span></div><h3>Gemini Ultra</h3><p>Premium multimodal intelligence with creative video capability.</p><div class="meta"><div class="price"><small>From</small><strong>$15</strong> <em>/ month</em></div><button class="arrow" data-buy="Gemini Ultra" data-price="$15">→</button></div></article>
+  <article class="product glass cyan" data-cat="cloud" data-name="AWS Cloud"><div class="product-top"><span class="logo">aws</span><span class="stock">AVAILABLE</span></div><h3>AWS Cloud</h3><p>Scalable compute accounts for modern infrastructure workloads.</p><div class="meta"><div class="price"><small>From</small><strong>$30</strong> <em>/ account</em></div><button class="arrow" data-buy="AWS Cloud" data-price="$30">→</button></div></article>
+  <article class="product glass purple" data-cat="cloud" data-name="Official API Credits"><div class="product-top"><span class="logo">&lt;/&gt;</span><span class="stock">LIVE</span></div><h3>Official API Credits</h3><p>OpenAI, Claude and Gemini credit assistance with flexible amounts.</p><div class="meta"><div class="price"><small>Service margin</small><strong>5%</strong> <em>verified</em></div><button class="arrow" data-buy="Official API Credits" data-price="+5%">→</button></div></article>
+  <article class="product glass pink" data-cat="creative" data-name="Creative Studio"><div class="product-top"><span class="logo">▶</span><span class="stock">IN STOCK</span></div><h3>Creative Studio</h3><p>CapCut, Kling and production tools in one creator bundle.</p><div class="meta"><div class="price"><small>From</small><strong>$15</strong> <em>/ bundle</em></div><button class="arrow" data-buy="Creative Studio" data-price="$15">→</button></div></article>
+ </div>
+ <div class="metrics" id="metrics">
+  <article class="metric-panel glass"><span class="eyebrow">LIVE MARKETPLACE METRICS</span><h3>Built for reliability.</h3><div class="metric-grid"><div class="metric"><strong>99.9%</strong><span>Delivery success</span></div><div class="metric"><strong>45+</strong><span>Premium products</span></div><div class="metric"><strong>100+</strong><span>Countries served</span></div></div></article>
+  <article class="metric-panel glass"><span class="eyebrow">SECURE ORDER FLOW</span><div class="flow"><div><b>1</b><span>Select product and plan</span></div><div><b>2</b><span>Verify secure payment</span></div><div><b>3</b><span>Release private access</span></div></div></article>
+ </div>
+</div></section>
+<section id="support"><div class="wrap cta"><span class="eyebrow">NEXT-GENERATION AI COMMERCE</span><h2>One market. Every AI advantage.</h2><p>This is a visual demo. No real payment or order will be submitted.</p><button class="btn primary" data-buy="EVA Enterprise" data-price="Custom">Start a demo order →</button></div></section>
 </main>
-<footer class="ref-footer"><div class="container"><div class="ref-footer-row"><a class="brand pro-mobile-brand" href="#home"><span class="brand-mark">E</span><span>EVA <b>AI</b> MARKET</span></a><nav class="ref-footer-nav"><a href="#home">Home</a><a href="#products">Products</a><a href="#live-feed">Live Feed</a><a href="#products">Pricing</a><a href="https://t.me/eva007_8" target="_blank" rel="noopener">Support</a><a href="#delivery">How It Works</a><a href="/eva-market-app.html">Install App</a></nav><a class="ref-channel" href="https://t.me/eva007_8" target="_blank" rel="noopener">Join Our Channel</a></div><div class="ref-copy"><span>© 2026 EVA AI MARKET. All rights reserved.</span><span>AI Today, A Better Tomorrow.</span></div></div></footer>
-</div>
-<div id="toast" class="toast" role="status" aria-live="polite"></div><form id="payment-form" hidden></form>
-<script src="app.js?v=20260911-enterprise-calc"></script><script src="claude-plans.js?v=20260911-mobile-fix"></script><script src="official-credits.js?v=20260912-official5"></script><script src="eva-live-feed.js?v=20260916-sample1"></script><script src="eva-3d-hero.js?v=20260917-hero3d1" defer></script><script>
-if(!document.documentElement.classList.contains('eva-mobile-lite')){
-  var dimensionScript=document.createElement('script');
-  dimensionScript.src='dimension-card.js?v=20260917-mobile-lite1';
-  dimensionScript.defer=true;
-  document.head.appendChild(dimensionScript);
-}
+<nav class="dock glass"><a class="active" href="#home"><b>⌂</b>Home</a><a href="#products"><b>◇</b>Products</a><a href="#products"><b>＄</b>Pricing</a><a href="#metrics"><b>☆</b>Metrics</a><a href="#support"><b>◉</b>Account</a></nav>
+<button class="chat" aria-label="Open demo chat" id="chat">✦</button>
+<div class="modal" id="modal" aria-hidden="true"><div class="sheet glass">
+ <div class="sheet-head"><div><span class="eyebrow">DEMO CHECKOUT</span><h3 id="orderName">Product</h3></div><button class="close" id="close">×</button></div>
+ <div class="orderbox"><small>Selected offer</small><h3 id="orderPrice">$0</h3><p style="color:#94a3b8">Instant private delivery after payment verification.</p></div>
+ <div class="paymethods"><div class="pay">USDT</div><div class="pay">bKash</div><div class="pay">Card</div></div>
+ <button class="btn primary" style="width:100%;margin-top:16px" id="demoContinue">Continue demo</button>
+ <div class="demo-note">Demo mode only—this preview cannot submit payments, orders or account data.</div>
+</div></div>
+<script>
+const modal=document.getElementById("modal"),nameEl=document.getElementById("orderName"),priceEl=document.getElementById("orderPrice");
+function openDemo(name,price){nameEl.textContent=name;priceEl.textContent=price;modal.classList.add("open");modal.setAttribute("aria-hidden","false")}
+function closeDemo(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}
+document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>openDemo(b.dataset.buy,b.dataset.price)));
+document.getElementById("watchDemo").addEventListener("click",()=>document.getElementById("products").scrollIntoView({behavior:"smooth"}));
+document.getElementById("close").addEventListener("click",closeDemo);modal.addEventListener("click",e=>{if(e.target===modal)closeDemo()});
+document.getElementById("demoContinue").addEventListener("click",()=>{document.getElementById("demoContinue").textContent="Demo verified ✓";setTimeout(closeDemo,900)});
+document.getElementById("chat").addEventListener("click",()=>openDemo("EVA Support Preview","Online"));
+const chips=[...document.querySelectorAll(".chip")],cards=[...document.querySelectorAll(".product")];
+chips.forEach(c=>c.addEventListener("click",()=>{chips.forEach(x=>x.classList.remove("active"));c.classList.add("active");cards.forEach(p=>p.hidden=c.dataset.filter!=="all"&&p.dataset.cat!==c.dataset.filter)}));
+document.getElementById("search").addEventListener("input",e=>{const q=e.target.value.toLowerCase();cards.forEach(p=>p.hidden=!p.dataset.name.toLowerCase().includes(q))});
 </script>
-<script>document.addEventListener('DOMContentLoaded',()=>{const b=document.querySelector('.menu-button'),n=document.getElementById('site-nav');if(b&&n)b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',String(o))});});</script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/eva-market-sw.js',{scope:'/'}).catch(function(){});});}</script>
-</body></html>
+</body>
+</html>
