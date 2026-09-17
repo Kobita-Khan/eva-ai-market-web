@@ -1,188 +1,143 @@
 /* EVA clean mobile hero isolation layer.
-   Asset-free mobile orb: no image request, no @import, no JS orb dependency. */
+   Asset-free mobile orb: pure CSS 3D orb, centered orbit ring, 8 floating product cards. */
 @media (max-width:760px){
   html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
   body.premium-home{margin:0!important;background:#06090e!important;color:#f1f5f9!important;overflow-x:hidden!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;-webkit-font-smoothing:antialiased!important}
 
-  body.premium-home .pro-topbar{position:sticky!important;top:0!important;z-index:200!important;min-height:62px!important;height:62px!important;background:rgba(6,9,14,.96)!important;border-bottom:1px solid #172033!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
-  body.premium-home .pro-topbar .nav-wrap{width:100%!important;max-width:430px!important;height:62px!important;min-height:62px!important;margin:0 auto!important;padding:0 14px!important;display:flex!important;align-items:center!important;gap:8px!important;box-sizing:border-box!important}
+  /* Fixed sticky topbar: suppress any stray desktop navigation items */
+  body.premium-home .pro-topbar{position:sticky!important;top:0!important;z-index:200!important;min-height:60px!important;height:60px!important;max-height:60px!important;background:rgba(6,9,14,.96)!important;border-bottom:1px solid #172033!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;overflow:visible!important}
+  body.premium-home .pro-topbar .nav-wrap{position:relative!important;width:100%!important;max-width:430px!important;height:60px!important;min-height:60px!important;margin:0 auto!important;padding:0 12px!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;justify-content:space-between!important;gap:6px!important;box-sizing:border-box!important}
   body.premium-home .pro-search,body.premium-home .menu-button{display:none!important}
-  body.premium-home .pro-mobile-brand{display:flex!important;align-items:center!important;gap:9px!important;min-width:0!important;flex:1 1 auto!important;text-decoration:none!important;color:#f8fafc!important;font-size:13px!important;font-weight:800!important;letter-spacing:.04em!important}
-  body.premium-home .pro-mobile-brand .brand-mark{display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;flex:0 0 36px!important;border-radius:12px!important;background:#0f172a!important;border:1px solid #1e293b!important;color:#fbbf24!important;font-size:16px!important}
-  body.premium-home .pro-topbar nav{display:flex!important;position:static!important;width:auto!important;margin-left:auto!important;padding:0!important;background:transparent!important;border:0!important;gap:4px!important;align-items:center!important;box-shadow:none!important}
-  body.premium-home .pro-topbar nav>a{display:none!important}
-  body.premium-home .pro-topbar nav .nav-account,body.premium-home .pro-topbar nav .video-get-started{display:flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;text-decoration:none!important}
-  body.premium-home .pro-topbar nav .nav-account{padding:7px!important;font-size:9px!important;color:#cbd5e1!important}
-  body.premium-home .pro-topbar nav .video-get-started{height:30px!important;padding:0 12px!important;border-radius:999px!important;font-size:9px!important;background:linear-gradient(90deg,#06b6d4,#2563eb)!important;border:0!important;color:#fff!important}
+  body.premium-home .pro-mobile-brand{display:flex!important;align-items:center!important;gap:7px!important;max-width:150px!important;flex:0 0 150px!important;text-decoration:none!important;color:#f8fafc!important;font-size:10px!important;font-weight:900!important;letter-spacing:.04em!important;line-height:1!important;overflow:hidden!important}
+  body.premium-home .pro-mobile-brand .brand-mark{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;width:34px!important;height:34px!important;flex:0 0 34px!important;border-radius:10px!important;background:#090f1d!important;border:1px solid rgba(245,158,11,.40)!important;color:#fbbf24!important;font-size:16px!important;font-weight:900!important;box-shadow:0 0 12px rgba(245,158,11,.18)!important}
+  body.premium-home .pro-mobile-brand>span:last-child{display:block!important;position:relative!important;padding-bottom:10px!important;white-space:nowrap!important}
+  body.premium-home .pro-mobile-brand>span:last-child:after{content:'PREMIUM AI TOOLS'!important;position:absolute!important;left:0!important;bottom:0!important;color:#22d3ee!important;font-size:5.8px!important;font-weight:800!important;letter-spacing:.1em!important;white-space:nowrap!important}
 
-  body.premium-home .ref-hero{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;margin:0!important;padding:24px 0 10px!important;overflow:visible!important;background:#06090e!important;transform:none!important;filter:none!important;perspective:none!important}
+  /* Completely reset & contain site-nav so desktop links never float over hero copy */
+  body.premium-home #site-nav,
+  body.premium-home .pro-topbar #site-nav{position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;z-index:999!important}
+
+  body.premium-home #site-nav a,
+  body.premium-home .pro-topbar #site-nav>a{display:none!important}
+
+  body.premium-home #site-nav a.nav-account,
+  body.premium-home #site-nav a.video-get-started,
+  body.premium-home .pro-topbar #site-nav>a.nav-account,
+  body.premium-home .pro-topbar #site-nav>a.video-get-started{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;text-decoration:none!important}
+
+  body.premium-home #site-nav a.nav-account{height:30px!important;padding:0 6px!important;font-size:10px!important;font-weight:600!important;color:#cbd5e1!important;background:transparent!important;border:0!important}
+  body.premium-home #site-nav a.video-get-started{height:32px!important;padding:0 10px!important;border-radius:999px!important;font-size:10px!important;font-weight:800!important;background:linear-gradient(90deg,#06b6d4,#2563eb)!important;border:0!important;color:#fff!important;box-shadow:0 0 12px rgba(37,99,235,.25)!important}
+
+  /* Hero Section: Generous top spacing so header never overlaps copy on iPhone/PWA */
+  body.premium-home .ref-hero{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;margin:0!important;padding:20px 0 12px!important;overflow:hidden!important;background:#06090e!important;transform:none!important;filter:none!important;perspective:none!important}
   body.premium-home .ref-hero:before,body.premium-home .ref-hero:after{display:none!important;content:none!important}
   body.premium-home .ref-hero>.container{display:block!important;width:100%!important;max-width:430px!important;margin:0 auto!important;padding:0 14px!important;box-sizing:border-box!important;overflow:visible!important}
   body.premium-home .ref-hero-grid{display:block!important;width:100%!important;max-width:100%!important;min-height:0!important;margin:0!important;padding:0!important;grid-template-columns:none!important;gap:0!important;overflow:visible!important;transform:none!important}
   body.premium-home .ref-hero-copy{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;position:relative!important;z-index:2!important;transform:none!important}
-  body.premium-home .ref-kicker{display:inline-flex!important;align-items:center!important;padding:6px 10px!important;margin:0!important;border-radius:999px!important;background:rgba(8,51,68,.42)!important;border:1px solid rgba(6,182,212,.30)!important;color:#22d3ee!important;font-size:9px!important;font-weight:800!important;line-height:1!important;letter-spacing:.05em!important}
-  body.premium-home .ref-hero-copy h1{display:block!important;margin:13px 0 9px!important;padding:0!important;color:#f8fafc!important;font-size:36px!important;font-weight:900!important;line-height:1.05!important;letter-spacing:-.04em!important;text-align:left!important;text-shadow:none!important}
+  body.premium-home .ref-kicker{display:inline-flex!important;align-items:center!important;padding:5px 9px!important;margin:0 0 8px!important;border-radius:999px!important;background:rgba(8,51,68,.42)!important;border:1px solid rgba(6,182,212,.30)!important;color:#22d3ee!important;font-size:9px!important;font-weight:800!important;line-height:1!important;letter-spacing:.05em!important}
+  body.premium-home .ref-hero-copy h1{display:block!important;margin:0 0 8px!important;padding:0!important;color:#f8fafc!important;font-size:32px!important;font-weight:900!important;line-height:1.08!important;letter-spacing:-.03em!important;text-align:left!important;text-shadow:none!important}
   body.premium-home .ref-hero-copy h1 span{display:block!important;background:linear-gradient(90deg,#22d3ee,#7dd3fc,#818cf8)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
-  body.premium-home .ref-hero-copy>p{display:block!important;margin:0!important;padding:0!important;color:#94a3b8!important;font-size:11.5px!important;line-height:1.58!important;text-align:left!important}
+  body.premium-home .ref-hero-copy>p{display:block!important;margin:0!important;padding:0!important;color:#94a3b8!important;font-size:11px!important;line-height:1.5!important;text-align:left!important}
   body.premium-home .ref-mini-trust,body.premium-home .ref-customer-proof{display:none!important}
-  body.premium-home .ref-hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;width:100%!important;margin:16px 0 0!important;padding:0!important}
-  body.premium-home .ref-btn-primary,body.premium-home .ref-btn-secondary{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;width:100%!important;min-height:44px!important;height:44px!important;margin:0!important;padding:0 10px!important;border-radius:12px!important;box-sizing:border-box!important;font-size:10px!important;font-weight:800!important;line-height:1!important;text-decoration:none!important;transform:none!important}
-  body.premium-home .ref-btn-primary{background:linear-gradient(90deg,#06b6d4,#2563eb)!important;border:0!important;color:#fff!important;box-shadow:0 10px 28px rgba(6,182,212,.18)!important}
+  body.premium-home .ref-hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;width:100%!important;margin:14px 0 0!important;padding:0!important}
+  body.premium-home .ref-btn-primary,body.premium-home .ref-btn-secondary{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;width:100%!important;min-height:42px!important;height:42px!important;margin:0!important;padding:0 8px!important;border-radius:12px!important;box-sizing:border-box!important;font-size:10px!important;font-weight:800!important;line-height:1!important;text-decoration:none!important;transform:none!important}
+  body.premium-home .ref-btn-primary{background:linear-gradient(90deg,#06b6d4,#2563eb)!important;border:0!important;color:#fff!important;box-shadow:0 8px 24px rgba(6,182,212,.18)!important}
   body.premium-home .ref-btn-secondary{background:#0f172a!important;border:1px solid #1e293b!important;color:#e2e8f0!important;box-shadow:none!important}
 
-  body.premium-home .ref-visual{display:flex!important;position:relative!important;align-items:center!important;justify-content:center!important;isolation:isolate!important;width:100%!important;max-width:430px!important;height:400px!important;min-height:400px!important;margin:6px auto 0!important;padding:0 38px!important;overflow:visible!important;visibility:visible!important;opacity:1!important;background:transparent!important;border:0!important;box-shadow:none!important;transform:none!important;filter:none!important;animation:none!important;box-sizing:border-box!important}
-  body.premium-home .ref-visual:before{content:""!important;display:block!important;position:absolute!important;left:50%!important;top:50%!important;width:280px!important;height:280px!important;transform:translate(-50%,-50%)!important;border-radius:50%!important;background:radial-gradient(circle,rgba(34,211,238,.16),rgba(59,130,246,.07) 46%,transparent 72%)!important;filter:blur(20px)!important;pointer-events:none!important}
-  body.premium-home .ref-visual:after{display:none!important;content:none!important}
+  /* Visual Container: Holds central Orb + centered Orbit Ring + 8 Floating Cards */
+  body.premium-home .ref-visual{display:flex!important;position:relative!important;align-items:center!important;justify-content:center!important;isolation:isolate!important;width:100%!important;max-width:100%!important;height:270px!important;min-height:270px!important;margin:16px auto 0!important;padding:0!important;overflow:visible!important;visibility:visible!important;opacity:1!important;background:transparent!important;border:0!important;box-shadow:none!important;transform:none!important;filter:none!important;animation:none!important;box-sizing:border-box!important}
+
+  /* Background Glow Halo behind central Orb */
+  body.premium-home .ref-visual:before{content:""!important;display:block!important;position:absolute!important;left:50%!important;top:50%!important;width:200px!important;height:200px!important;transform:translate(-50%,-50%)!important;border-radius:50%!important;background:radial-gradient(circle,rgba(168,85,247,.25),rgba(34,211,238,.12) 50%,transparent 72%)!important;filter:blur(20px)!important;pointer-events:none!important;z-index:1!important;animation:evaOrbHaloColor 12s ease-in-out infinite!important}
+
+  /* Centered Pink Orbit Ring: Exactly centered behind/around orb, strictly inside container */
+  body.premium-home .ref-visual:after{content:""!important;display:block!important;position:absolute!important;left:50%!important;top:50%!important;width:210px!important;height:100px!important;transform:translate(-50%,-50%) rotate(-12deg)!important;border-radius:50%!important;border:1.5px solid rgba(244,114,182,.55)!important;box-shadow:0 0 15px rgba(236,72,153,.30),inset 0 0 15px rgba(236,72,153,.20)!important;pointer-events:none!important;z-index:2!important;animation:evaPinkRingPulse 6s ease-in-out infinite!important}
+
   body.premium-home .eva-orb-html-img,body.premium-home .eva-orb-direct-img{display:none!important;visibility:hidden!important;opacity:0!important;width:0!important;height:0!important}
 
-  body.premium-home .ref-cyber-head{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;inset:auto!important;width:286px!important;height:286px!important;max-width:calc(100vw - 88px)!important;max-height:calc(100vw - 88px)!important;margin:0 auto!important;padding:0!important;border-radius:50%!important;border:1px solid rgba(103,232,249,.34)!important;overflow:visible!important;background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.96) 0 7%,rgba(224,231,255,.94) 8% 16%,rgba(165,180,252,.84) 17% 30%,rgba(129,140,248,.72) 31% 42%,rgba(59,130,246,.62) 43% 56%,rgba(34,211,238,.50) 57% 68%,rgba(30,41,59,.90) 69% 82%,#07111f 83% 100%)!important;box-shadow:0 0 0 7px rgba(34,211,238,.06),0 0 44px rgba(34,211,238,.26),0 0 72px rgba(99,102,241,.20),inset 0 -34px 52px rgba(2,6,23,.54),0 26px 54px rgba(0,0,0,.50)!important;transform:none!important;filter:none!important;animation:evaCleanOrbFloat 5.8s ease-in-out infinite!important;pointer-events:none!important;z-index:3!important}
-  body.premium-home .ref-cyber-head:before{content:'♛'!important;display:flex!important;align-items:center!important;justify-content:center!important;position:absolute!important;top:-34px!important;left:50%!important;width:52px!important;height:52px!important;transform:translateX(-50%)!important;border-radius:16px!important;background:linear-gradient(180deg,#fde68a,#f59e0b)!important;border:1px solid rgba(253,230,138,.64)!important;color:#111827!important;font-size:26px!important;line-height:1!important;box-shadow:0 0 30px rgba(245,158,11,.62),0 10px 22px rgba(0,0,0,.42)!important;z-index:15!important}
-  body.premium-home .ref-cyber-head:after{content:""!important;display:block!important;position:absolute!important;inset:12px!important;border-radius:50%!important;background:linear-gradient(150deg,rgba(255,255,255,.17),transparent 36%,rgba(2,6,23,.22) 72%)!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:inset 0 0 28px rgba(255,255,255,.08)!important;pointer-events:none!important}
-  body.premium-home .ref-eye{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:50%!important;top:49%!important;width:112px!important;height:48px!important;transform:translate(-50%,-50%)!important;border-radius:60% 60% 52% 52%/72% 72% 38% 38%!important;background:radial-gradient(ellipse at center,#e0f2fe 0 9%,#67e8f9 10% 28%,#22d3ee 29% 45%,#0ea5e9 46% 64%,rgba(14,165,233,.14) 65% 100%)!important;box-shadow:0 0 15px #67e8f9,0 0 32px rgba(34,211,238,.72),inset 0 0 14px rgba(255,255,255,.65)!important;clip-path:none!important;-webkit-clip-path:none!important;mask:none!important;-webkit-mask:none!important;z-index:8!important}
-  body.premium-home .ref-head-label{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:50%!important;bottom:38px!important;transform:translateX(-50%)!important;width:max-content!important;max-width:86%!important;color:#cffafe!important;font-size:12px!important;font-weight:900!important;letter-spacing:.11em!important;text-shadow:0 2px 8px rgba(0,0,0,.75),0 0 10px rgba(34,211,238,.42)!important;z-index:12!important}
-  body.premium-home .ref-head-label:after{content:'SMART TOOLS • BIGGER POSSIBILITIES'!important;display:block!important;margin-top:5px!important;color:#cbd5e1!important;font-size:6.4px!important;font-weight:700!important;letter-spacing:.12em!important;white-space:nowrap!important}
+  /* Central Blue/Purple "E" CSS 3D Orb */
+  body.premium-home .ref-cyber-head{display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;position:relative!important;inset:auto!important;width:130px!important;height:130px!important;margin:0 auto!important;padding:0!important;border-radius:50%!important;border:1.5px solid rgba(168,85,247,.45)!important;overflow:visible!important;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.95) 0%,rgba(192,132,252,.9) 15%,rgba(147,51,234,.85) 35%,rgba(59,130,246,.8) 60%,#090d16 90%)!important;box-shadow:0 0 25px rgba(168,85,247,.40),0 0 50px rgba(34,211,238,.25),inset 0 -20px 30px rgba(0,0,0,.60)!important;transform:none!important;filter:none!important;animation:evaCleanOrbFloat 5.5s ease-in-out infinite!important;pointer-events:none!important;z-index:10!important}
+
+  /* Top Crown on Central Orb */
+  body.premium-home .ref-cyber-head:before{content:'♛'!important;display:flex!important;align-items:center!important;justify-content:center!important;position:absolute!important;top:-18px!important;left:50%!important;width:30px!important;height:30px!important;transform:translateX(-50%)!important;border-radius:9px!important;background:linear-gradient(180deg,#fde68a,#f59e0b)!important;border:1px solid rgba(253,230,138,.64)!important;color:#111827!important;font-size:16px!important;line-height:1!important;box-shadow:0 0 14px rgba(245,158,11,.55)!important;z-index:15!important}
+
+  /* Orb Inner Glass Shine */
+  body.premium-home .ref-cyber-head:after{content:""!important;display:block!important;position:absolute!important;inset:6px!important;border-radius:50%!important;background:linear-gradient(140deg,rgba(255,255,255,.25),transparent 45%,rgba(2,6,23,.30) 80%)!important;border:1px solid rgba(255,255,255,.15)!important;pointer-events:none!important;z-index:11!important}
+
+  /* Central "E" Mark inside Orb */
+  body.premium-home .ref-eye{display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:50%!important;top:50%!important;width:50px!important;height:50px!important;transform:translate(-50%,-50%)!important;border-radius:50%!important;background:transparent!important;box-shadow:none!important;clip-path:none!important;-webkit-clip-path:none!important;mask:none!important;-webkit-mask:none!important;z-index:12!important}
+  body.premium-home .ref-eye:before{content:'E'!important;color:#ffffff!important;font-size:34px!important;font-weight:900!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;line-height:1!important;text-shadow:0 0 10px rgba(255,255,255,.9),0 0 20px rgba(34,211,238,.8),0 0 30px rgba(168,85,247,.7)!important;letter-spacing:-.02em!important}
+
+  /* Subtitle Label under Orb */
+  body.premium-home .ref-head-label{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:50%!important;bottom:-22px!important;transform:translateX(-50%)!important;width:max-content!important;color:#cffafe!important;font-size:9px!important;font-weight:900!important;letter-spacing:.08em!important;text-shadow:0 2px 6px rgba(0,0,0,.8)!important;z-index:12!important;white-space:nowrap!important}
+  body.premium-home .ref-head-label:after{content:'EVA AI MARKET'!important;display:block!important;margin-top:1px!important;color:#94a3b8!important;font-size:5.5px!important;font-weight:700!important;letter-spacing:.1em!important;text-align:center!important}
   body.premium-home .ref-side-promise{display:none!important}
 
-  body.premium-home .ref-orbit-card{display:flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;z-index:20!important;align-items:center!important;gap:7px!important;padding:8px 12px!important;border-radius:999px!important;background:rgba(7,17,31,.94)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 8px 24px rgba(0,0,0,.58),inset 0 1px 1px rgba(255,255,255,.08)!important;color:#f8fafc!important;font-size:10.5px!important;font-weight:800!important;line-height:1!important;white-space:nowrap!important;will-change:transform!important}
-  body.premium-home .ref-orbit-card b{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:21px!important;height:21px!important;border-radius:50%!important;background:rgba(255,255,255,.07)!important;color:#e2e8f0!important;font-size:9px!important}
-  body.premium-home .ref-orbit-card.c1{top:-10px!important;left:-34px!important;border-color:rgba(16,185,129,.48)!important;animation:evaOrbit1 4.2s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c2{top:82px!important;left:-53px!important;border-color:rgba(249,115,22,.48)!important;animation:evaOrbit2 5s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c3{bottom:88px!important;left:-50px!important;border-color:rgba(59,130,246,.48)!important;animation:evaOrbit3 4.6s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c4{top:3px!important;right:-38px!important;border-color:rgba(245,158,11,.48)!important;animation:evaOrbit4 5.2s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c5{top:78px!important;right:-56px!important;border-color:rgba(34,211,238,.48)!important;animation:evaOrbit5 4.4s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c6{bottom:86px!important;right:-52px!important;border-color:rgba(236,72,153,.48)!important;animation:evaOrbit6 5.4s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c7{bottom:-18px!important;right:-10px!important;border-color:rgba(168,85,247,.52)!important;animation:evaOrbit7 4.8s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card.c8{bottom:-18px!important;left:-16px!important;border-color:rgba(100,116,139,.70)!important;animation:evaOrbit8 5.6s ease-in-out infinite!important}
+  /* 8 Small Floating Product Logo Cards (4 on Left, 4 on Right) */
+  /* Coordinates are relative to .ref-cyber-head (130px centered). Negative offsets position them outside the orb. */
+  body.premium-home .ref-orbit-card{display:flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;z-index:20!important;align-items:center!important;gap:4px!important;padding:4px 8px!important;border-radius:999px!important;background:rgba(10,16,28,.94)!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 4px 14px rgba(0,0,0,.65)!important;color:#f8fafc!important;font-size:8.5px!important;font-weight:800!important;line-height:1!important;white-space:nowrap!important;will-change:transform!important;pointer-events:auto!important}
+  body.premium-home .ref-orbit-card b{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:15px!important;height:15px!important;border-radius:50%!important;background:rgba(255,255,255,.10)!important;color:#e2e8f0!important;font-size:7.5px!important}
 
-  body.premium-home .ref-stat-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;width:100%!important;max-width:430px!important;margin:0 auto 16px!important;padding:0 14px!important;box-sizing:border-box!important}
-  body.premium-home .ref-stat{display:flex!important;align-items:center!important;min-width:0!important;min-height:82px!important;margin:0!important;padding:13px!important;border-radius:16px!important;background:rgba(15,23,42,.70)!important;border:1px solid #1e293b!important;box-shadow:0 12px 30px rgba(0,0,0,.20)!important;box-sizing:border-box!important;transform:none!important}
-  body.premium-home .ref-stat i{display:flex!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:11px!important;background:rgba(8,47,73,.58)!important;border:1px solid rgba(34,211,238,.15)!important;color:#22d3ee!important;font-size:14px!important}
-  body.premium-home .ref-stat strong{display:block!important;font-size:16px!important;line-height:1.15!important}
-  body.premium-home .ref-stat small{display:block!important;margin-top:3px!important;font-size:8px!important;color:#94a3b8!important}
+  /* Left Side Cards (4) */
+  body.premium-home .ref-orbit-card.c1{top:-12px!important;left:-82px!important;border-color:rgba(16,185,129,.45)!important;animation:evaOrbitLeft1 4.2s ease-in-out infinite!important}
+  body.premium-home .ref-orbit-card.c2{top:28px!important;left:-95px!important;border-color:rgba(249,115,22,.45)!important;animation:evaOrbitLeft2 5.0s ease-in-out infinite!important}
+  body.premium-home .ref-orbit-card.c3{top:68px!important;left:-95px!important;border-color:rgba(59,130,246,.45)!important;animation:evaOrbitLeft3 4.6s ease-in-out infinite!important}
+  body.premium-home .ref-orbit-card.c8{top:108px!important;left:-82px!important;border-color:rgba(148,163,184,.60)!important;animation:evaOrbitLeft4 5.4s ease-in-out infinite!important}
+
+  /* Right Side Cards (4) */
+  body.premium-home .ref-orbit-card.c4{top:-12px!important;right:-82px!important;border-color:rgba(245,158,11,.45)!important;animation:evaOrbitRight1 5.2s ease-in-out infinite!important}
+  body.premium-home .ref-orbit-card.c5{top:28px!important;right:-105px!important;border-color:rgba(34,211,238,.45)!important;animation:evaOrbitRight2 4.4s ease-in-out infinite!important}
+  body.premium-home .ref-orbit-card.c6{top:68px!important;right:-105px!important;border-color:rgba(236,72,153,.45)!important;animation:evaOrbitRight3 5.1s ease-in-out infinite!important}
+  body.premium-home .ref-orbit-card.c7{top:108px!important;right:-82px!important;border-color:rgba(168,85,247,.48)!important;animation:evaOrbitRight4 4.8s ease-in-out infinite!important}
+
+  /* Stats Grid */
+  body.premium-home .ref-stat-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;width:100%!important;max-width:430px!important;margin:0 auto 16px!important;padding:0 14px!important;box-sizing:border-box!important}
+  body.premium-home .ref-stat{display:flex!important;align-items:center!important;min-width:0!important;min-height:72px!important;margin:0!important;padding:10px!important;border-radius:14px!important;background:rgba(15,23,42,.70)!important;border:1px solid #1e293b!important;box-shadow:0 8px 24px rgba(0,0,0,.20)!important;box-sizing:border-box!important;transform:none!important}
+  body.premium-home .ref-stat i{display:flex!important;align-items:center!important;justify-content:center!important;width:32px!important;height:32px!important;flex:0 0 32px!important;border-radius:10px!important;background:rgba(8,47,73,.58)!important;border:1px solid rgba(34,211,238,.15)!important;color:#22d3ee!important;font-size:12px!important}
+  body.premium-home .ref-stat strong{display:block!important;font-size:14px!important;line-height:1.15!important}
+  body.premium-home .ref-stat small{display:block!important;margin-top:2px!important;font-size:8px!important;color:#94a3b8!important}
 }
 
-@keyframes evaCleanOrbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.006)}}
-@keyframes evaOrbit1{0%,100%{transform:translate3d(0,0,0) rotate(0)}45%{transform:translate3d(11px,-9px,0) rotate(1.4deg)}75%{transform:translate3d(5px,4px,0) rotate(-.6deg)}}
-@keyframes evaOrbit2{0%,100%{transform:translate3d(0,0,0) rotate(0)}40%{transform:translate3d(9px,8px,0) rotate(-1.2deg)}72%{transform:translate3d(-4px,-5px,0) rotate(.8deg)}}
-@keyframes evaOrbit3{0%,100%{transform:translate3d(0,0,0) rotate(0)}42%{transform:translate3d(12px,-6px,0) rotate(1deg)}70%{transform:translate3d(3px,7px,0) rotate(-.8deg)}}
-@keyframes evaOrbit4{0%,100%{transform:translate3d(0,0,0) rotate(0)}46%{transform:translate3d(-11px,-8px,0) rotate(-1.4deg)}74%{transform:translate3d(-3px,5px,0) rotate(.7deg)}}
-@keyframes evaOrbit5{0%,100%{transform:translate3d(0,0,0) rotate(0)}38%{transform:translate3d(-10px,9px,0) rotate(1.1deg)}68%{transform:translate3d(5px,-4px,0) rotate(-.7deg)}}
-@keyframes evaOrbit6{0%,100%{transform:translate3d(0,0,0) rotate(0)}43%{transform:translate3d(-12px,-6px,0) rotate(-1deg)}73%{transform:translate3d(-2px,8px,0) rotate(.8deg)}}
-@keyframes evaOrbit7{0%,100%{transform:translate3d(0,0,0) rotate(0)}41%{transform:translate3d(-8px,-11px,0) rotate(1.3deg)}71%{transform:translate3d(5px,-2px,0) rotate(-.7deg)}}
-@keyframes evaOrbit8{0%,100%{transform:translate3d(0,0,0) rotate(0)}44%{transform:translate3d(9px,-10px,0) rotate(-1.2deg)}76%{transform:translate3d(-4px,3px,0) rotate(.6deg)}}
+/* Animations: Pure CSS floating and transform effects */
+@keyframes evaCleanOrbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.02)}}
+@keyframes evaPinkRingPulse{0%,100%{transform:translate(-50%,-50%) rotate(-12deg) scale(1);opacity:.75}50%{transform:translate(-50%,-50%) rotate(-10deg) scale(1.03);opacity:.95}}
 
-@media (max-width:390px){
-  body.premium-home .pro-topbar .nav-wrap{padding:0 12px!important}
-  body.premium-home .ref-hero>.container{padding:0 12px!important}
-  body.premium-home .ref-hero-copy h1{font-size:33px!important}
-  body.premium-home .ref-visual{height:382px!important;min-height:382px!important;padding:0 36px!important}
-  body.premium-home .ref-cyber-head{width:270px!important;height:270px!important}
-  body.premium-home .ref-orbit-card{padding:7px 10px!important;font-size:9.5px!important}
-  body.premium-home .ref-stat-grid{padding:0 12px!important;gap:10px!important}
+@keyframes evaOrbitLeft1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(3px,-4px,0)}}
+@keyframes evaOrbitLeft2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(4px,3px,0)}}
+@keyframes evaOrbitLeft3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(3px,-3px,0)}}
+@keyframes evaOrbitLeft4{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(4px,4px,0)}}
+
+@keyframes evaOrbitRight1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-3px,-4px,0)}}
+@keyframes evaOrbitRight2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-4px,3px,0)}}
+@keyframes evaOrbitRight3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-3px,-3px,0)}}
+@keyframes evaOrbitRight4{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-4px,4px,0)}}
+
+@keyframes evaOrbHaloColor{
+  0%,100%{background:radial-gradient(circle,rgba(168,85,247,.25),rgba(34,211,238,.12) 50%,transparent 72%)}
+  50%{background:radial-gradient(circle,rgba(34,211,238,.25),rgba(168,85,247,.12) 50%,transparent 72%)}
+}
+
+/* Extra small screens (320px - 360px) adjustment */
+@media (max-width:360px){
+  body.premium-home .ref-hero-copy h1{font-size:27px!important}
+  body.premium-home .ref-visual{height:250px!important;min-height:250px!important}
+  body.premium-home .ref-cyber-head{width:115px!important;height:115px!important}
+  body.premium-home .ref-eye:before{font-size:28px!important}
+  body.premium-home .ref-visual:after{width:180px!important;height:90px!important}
+  body.premium-home .ref-orbit-card{padding:3px 6px!important;font-size:7.5px!important;gap:2px!important}
+  body.premium-home .ref-orbit-card b{width:12px!important;height:12px!important;font-size:6.5px!important}
+  body.premium-home .ref-orbit-card.c1{left:-70px!important}
+  body.premium-home .ref-orbit-card.c2{left:-78px!important}
+  body.premium-home .ref-orbit-card.c3{left:-78px!important}
+  body.premium-home .ref-orbit-card.c8{left:-70px!important}
+  body.premium-home .ref-orbit-card.c4{right:-70px!important}
+  body.premium-home .ref-orbit-card.c5{right:-88px!important}
+  body.premium-home .ref-orbit-card.c6{right:-88px!important}
+  body.premium-home .ref-orbit-card.c7{right:-70px!important}
 }
 
 @media (prefers-reduced-motion:reduce){
-  body.premium-home .ref-cyber-head{animation:evaCleanOrbFloat 8s ease-in-out infinite!important}
-  body.premium-home .ref-orbit-card{animation-duration:8s!important}
-}
-
-/* Premium slow color cycling for the central orb and its halo. */
-@media (max-width:760px){
-  body.premium-home .ref-cyber-head:after{animation:evaOrbColorWash 15s ease-in-out infinite!important;opacity:.82!important;mix-blend-mode:screen!important}
-  body.premium-home .ref-visual:before{animation:evaOrbHaloColor 15s ease-in-out infinite!important}
-}
-
-@keyframes evaOrbColorWash{
-  0%,100%{background:radial-gradient(circle at 34% 28%,rgba(34,211,238,.48),transparent 34%),radial-gradient(circle at 68% 72%,rgba(59,130,246,.40),transparent 42%),linear-gradient(150deg,rgba(255,255,255,.14),transparent 36%,rgba(2,6,23,.16) 72%)}
-  25%{background:radial-gradient(circle at 34% 28%,rgba(168,85,247,.50),transparent 34%),radial-gradient(circle at 68% 72%,rgba(236,72,153,.38),transparent 42%),linear-gradient(150deg,rgba(255,255,255,.12),transparent 36%,rgba(2,6,23,.16) 72%)}
-  50%{background:radial-gradient(circle at 34% 28%,rgba(16,185,129,.48),transparent 34%),radial-gradient(circle at 68% 72%,rgba(34,211,238,.40),transparent 42%),linear-gradient(150deg,rgba(255,255,255,.13),transparent 36%,rgba(2,6,23,.16) 72%)}
-  75%{background:radial-gradient(circle at 34% 28%,rgba(245,158,11,.48),transparent 34%),radial-gradient(circle at 68% 72%,rgba(249,115,22,.38),transparent 42%),linear-gradient(150deg,rgba(255,255,255,.13),transparent 36%,rgba(2,6,23,.16) 72%)}
-}
-@keyframes evaOrbHaloColor{
-  0%,100%{background:radial-gradient(circle,rgba(34,211,238,.22),rgba(59,130,246,.09) 46%,transparent 72%)}
-  25%{background:radial-gradient(circle,rgba(168,85,247,.22),rgba(236,72,153,.08) 46%,transparent 72%)}
-  50%{background:radial-gradient(circle,rgba(16,185,129,.22),rgba(34,211,238,.09) 46%,transparent 72%)}
-  75%{background:radial-gradient(circle,rgba(245,158,11,.22),rgba(249,115,22,.08) 46%,transparent 72%)}
-}
-
-/* Reference-matched mobile topbar: crown brand, visible Sign In and outlined Get Started. */
-@media (max-width:760px){
-  body.premium-home .pro-topbar{height:76px!important;min-height:76px!important;background:#070b12!important;border-bottom:1px solid rgba(59,130,246,.16)!important}
-  body.premium-home .pro-topbar .nav-wrap{height:76px!important;min-height:76px!important;max-width:430px!important;padding:0 12px!important;gap:8px!important}
-  body.premium-home .pro-mobile-brand{flex:1 1 auto!important;min-width:0!important;gap:9px!important;font-size:12px!important;font-weight:900!important;line-height:1.05!important;letter-spacing:.045em!important}
-  body.premium-home .pro-mobile-brand .brand-mark{position:relative!important;width:42px!important;height:42px!important;flex:0 0 42px!important;border-radius:13px!important;font-size:0!important;color:transparent!important;background:#090f1d!important;border:2px solid transparent!important;background-image:linear-gradient(#090f1d,#090f1d),linear-gradient(145deg,#f59e0b,#f97316)!important;background-origin:border-box!important;background-clip:padding-box,border-box!important;box-shadow:0 0 16px rgba(245,158,11,.22)!important}
-  body.premium-home .pro-mobile-brand .brand-mark:after{content:'♛'!important;color:#fbbf24!important;font-size:21px!important;line-height:1!important;text-shadow:0 0 10px rgba(251,191,36,.22)!important}
-  body.premium-home .pro-mobile-brand>span:last-child{display:block!important;position:relative!important;padding-bottom:11px!important;white-space:nowrap!important}
-  body.premium-home .pro-mobile-brand>span:last-child:after{content:'PREMIUM AI TOOLS'!important;position:absolute!important;left:0!important;bottom:0!important;color:#22d3ee!important;font-size:6.7px!important;font-weight:800!important;letter-spacing:.12em!important;white-space:nowrap!important}
-  body.premium-home .pro-topbar nav{display:flex!important;align-items:center!important;gap:8px!important;flex:0 0 auto!important;margin-left:auto!important}
-  body.premium-home .pro-topbar nav .nav-account,body.premium-home .pro-topbar nav .video-get-started{display:flex!important;visibility:visible!important;opacity:1!important;position:relative!important;inset:auto!important;transform:none!important;white-space:nowrap!important}
-  body.premium-home .pro-topbar nav .nav-account{height:36px!important;padding:0 6px!important;font-size:12px!important;font-weight:500!important;color:#e2e8f0!important;background:transparent!important;border:0!important}
-  body.premium-home .pro-topbar nav .video-get-started{height:38px!important;padding:0 15px!important;border-radius:999px!important;font-size:12px!important;font-weight:700!important;color:#fff!important;background:#08101f!important;border:2px solid transparent!important;background-image:linear-gradient(#08101f,#08101f),linear-gradient(90deg,#22d3ee,#2563eb,#4f46e5)!important;background-origin:border-box!important;background-clip:padding-box,border-box!important;box-shadow:0 0 14px rgba(37,99,235,.18)!important}
-}
-@media (max-width:390px){
-  body.premium-home .pro-topbar .nav-wrap{padding:0 9px!important;gap:5px!important}
-  body.premium-home .pro-mobile-brand{gap:7px!important;font-size:10.5px!important}
-  body.premium-home .pro-mobile-brand .brand-mark{width:38px!important;height:38px!important;flex-basis:38px!important}
-  body.premium-home .pro-mobile-brand>span:last-child:after{font-size:5.8px!important}
-  body.premium-home .pro-topbar nav{gap:4px!important}
-  body.premium-home .pro-topbar nav .nav-account{font-size:10px!important;padding:0 3px!important}
-  body.premium-home .pro-topbar nav .video-get-started{height:34px!important;padding:0 10px!important;font-size:10px!important}
-}
-
-/* Hard override for iPhone/in-app browsers: keep account actions inside the viewport. */
-@media (max-width:760px){
-  body.premium-home .pro-topbar .nav-wrap{position:relative!important;padding-right:172px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand{max-width:190px!important;flex:0 1 190px!important;overflow:visible!important}
-  body.premium-home .pro-topbar #site-nav{display:flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;right:10px!important;top:50%!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;width:auto!important;max-width:none!important;height:42px!important;min-height:42px!important;overflow:visible!important;z-index:999!important;margin:0!important;padding:0!important;gap:7px!important;pointer-events:auto!important}
-  body.premium-home .pro-topbar #site-nav>a{display:none!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account,body.premium-home .pro-topbar #site-nav>a.video-get-started{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{height:38px!important;padding:0 5px!important;font-size:12px!important;color:#f1f5f9!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{height:40px!important;padding:0 14px!important;font-size:12px!important;border-radius:999px!important}
-}
-@media (max-width:390px){
-  body.premium-home .pro-topbar .nav-wrap{padding-right:158px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand{max-width:174px!important;flex-basis:174px!important;font-size:9.8px!important}
-  body.premium-home .pro-topbar #site-nav{right:7px!important;gap:4px!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{font-size:10px!important;padding:0 2px!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{height:36px!important;padding:0 9px!important;font-size:10px!important}
-}
-
-/* Compact reference row: brand + Sign In + Get Started stay side-by-side without making the header tall. */
-@media (max-width:760px){
-  body.premium-home .pro-topbar{height:64px!important;min-height:64px!important}
-  body.premium-home .pro-topbar .nav-wrap{height:64px!important;min-height:64px!important;padding:0 10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:6px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand{max-width:156px!important;flex:0 1 156px!important;gap:6px!important;font-size:10px!important;line-height:1!important;overflow:hidden!important}
-  body.premium-home .pro-topbar .pro-mobile-brand .brand-mark{width:36px!important;height:36px!important;flex:0 0 36px!important;border-radius:11px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand .brand-mark:after{font-size:18px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand>span:last-child{padding-bottom:9px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand>span:last-child:after{font-size:5.4px!important;letter-spacing:.09em!important}
-  body.premium-home .pro-topbar #site-nav{position:static!important;transform:none!important;right:auto!important;top:auto!important;left:auto!important;width:auto!important;height:auto!important;min-height:0!important;display:flex!important;flex:0 0 auto!important;align-items:center!important;gap:5px!important;margin:0!important;padding:0!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{height:32px!important;padding:0 5px!important;font-size:10px!important;line-height:1!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{height:34px!important;padding:0 10px!important;font-size:10px!important;line-height:1!important;border-radius:999px!important}
-}
-@media (max-width:390px){
-  body.premium-home .pro-topbar .nav-wrap{padding:0 8px!important;gap:4px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand{max-width:145px!important;flex-basis:145px!important;font-size:9.2px!important;gap:5px!important}
-  body.premium-home .pro-topbar .pro-mobile-brand .brand-mark{width:34px!important;height:34px!important;flex-basis:34px!important}
-  body.premium-home .pro-topbar #site-nav{gap:3px!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{height:30px!important;padding:0 3px!important;font-size:9px!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{height:32px!important;padding:0 8px!important;font-size:9px!important}
-}
-
-/* Final mobile header lock: both account actions stay horizontally inside the black header. */
-@media (max-width:760px){
-  body.premium-home .pro-topbar{height:64px!important;min-height:64px!important;max-height:64px!important;overflow:hidden!important;background:#070b12!important}
-  body.premium-home .pro-topbar .nav-wrap{position:relative!important;height:64px!important;min-height:64px!important;max-height:64px!important;padding:0 8px!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;justify-content:flex-start!important;overflow:hidden!important}
-  body.premium-home .pro-topbar .pro-mobile-brand{width:145px!important;max-width:145px!important;min-width:0!important;flex:0 0 145px!important;margin:0!important}
-  body.premium-home .pro-topbar #site-nav{display:flex!important;flex-flow:row nowrap!important;align-items:center!important;justify-content:flex-end!important;position:absolute!important;right:8px!important;top:0!important;bottom:0!important;left:auto!important;transform:none!important;width:calc(100% - 158px)!important;max-width:none!important;height:64px!important;min-height:64px!important;margin:0!important;padding:0!important;gap:5px!important;overflow:hidden!important;z-index:999!important;background:transparent!important;border:0!important;box-shadow:none!important}
-  body.premium-home .pro-topbar #site-nav>a{display:none!important;float:none!important;position:static!important;inset:auto!important;margin:0!important;transform:none!important;flex:none!important;width:auto!important;max-width:none!important;min-width:0!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account,body.premium-home .pro-topbar #site-nav>a.video-get-started{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;vertical-align:middle!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{height:34px!important;padding:0 7px!important;font-size:10px!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{height:36px!important;padding:0 10px!important;font-size:10px!important;border-radius:999px!important}
-}
-@media (max-width:390px){
-  body.premium-home .pro-topbar .pro-mobile-brand{width:136px!important;max-width:136px!important;flex-basis:136px!important;font-size:8.8px!important}
-  body.premium-home .pro-topbar #site-nav{width:calc(100% - 146px)!important;right:6px!important;gap:3px!important}
-  body.premium-home .pro-topbar #site-nav>a.nav-account{height:32px!important;padding:0 4px!important;font-size:9px!important}
-  body.premium-home .pro-topbar #site-nav>a.video-get-started{height:34px!important;padding:0 7px!important;font-size:9px!important}
+  body.premium-home .ref-cyber-head,
+  body.premium-home .ref-visual:after,
+  body.premium-home .ref-orbit-card{animation:none!important}
 }
