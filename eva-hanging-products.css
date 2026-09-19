@@ -1,11 +1,18 @@
-/* EVA AI MARKET — hanging product logo hero */
-.ref-visual.eva-hanging-visual{
-  height:385px!important;
-  display:block!important;
-  position:relative!important;
-  overflow:visible!important;
+/* EVA AI MARKET — hanging product logos inside Product Catalog */
+.eva-catalog-hanging{
+  position:relative;
+  width:100%;
+  min-height:385px;
+  margin:8px 0 18px;
+  padding:8px 0 0;
+  overflow:visible;
+  border:1px solid rgba(72,160,245,.14);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(34,211,238,.08),transparent 34%),
+    linear-gradient(180deg,rgba(5,15,29,.72),rgba(3,9,19,.40));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
 }
-.ref-visual.eva-hanging-visual:before{display:none!important}
 .eva-hanging-stage{
   position:relative;
   width:min(100%,440px);
@@ -150,11 +157,12 @@
 .eva-hanging-dot.d3{left:86%;color:var(--eva-aws);background:var(--eva-aws)}
 .eva-hanging-stage.is-physics .eva-hanging-fallback-rope{opacity:0}
 
-/* Hide the old cyber-head/orbit visual if older CSS still targets it. */
-.eva-hanging-visual .ref-cyber-head{display:none!important}
-
 @media(max-width:760px){
-  .ref-visual.eva-hanging-visual{height:360px!important}
+  .eva-catalog-hanging{
+    min-height:360px;
+    margin:6px 0 14px;
+    border-radius:16px;
+  }
   .eva-hanging-stage{height:360px}
 }
 @media(max-width:390px){
