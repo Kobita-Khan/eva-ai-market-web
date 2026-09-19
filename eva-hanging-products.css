@@ -1,0 +1,168 @@
+/* EVA AI MARKET — hanging product logo hero */
+.ref-visual.eva-hanging-visual{
+  height:385px!important;
+  display:block!important;
+  position:relative!important;
+  overflow:visible!important;
+}
+.ref-visual.eva-hanging-visual:before{display:none!important}
+.eva-hanging-stage{
+  position:relative;
+  width:min(100%,440px);
+  height:385px;
+  margin:0 auto;
+  pointer-events:none;
+  --eva-chatgpt:#10a37f;
+  --eva-claude:#d97757;
+  --eva-gemini:#8b5cf6;
+  --eva-aws:#f59e0b;
+}
+.eva-hanging-beam{
+  position:absolute;
+  top:16px;
+  left:8px;
+  right:8px;
+  height:14px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.36);
+  background:linear-gradient(180deg,#334155,#1f2937);
+  box-shadow:0 4px 16px rgba(0,0,0,.9);
+  z-index:4;
+}
+.eva-hanging-beam:after{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  top:4px;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--eva-chatgpt),var(--eva-claude),var(--eva-gemini),var(--eva-aws));
+  opacity:.86;
+}
+.eva-hanging-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
+  filter:drop-shadow(0 3px 5px rgba(0,0,0,.7));
+  z-index:3;
+}
+.eva-hanging-node{
+  position:absolute;
+  width:64px;
+  margin-left:-32px;
+  pointer-events:auto;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:none;
+  will-change:transform;
+  z-index:5;
+}
+.eva-hanging-node:active{cursor:grabbing}
+.eva-hanging-node[data-index="0"]{left:14%;top:133px}
+.eva-hanging-node[data-index="1"]{left:38%;top:173px}
+.eva-hanging-node[data-index="2"]{left:62%;top:153px}
+.eva-hanging-node[data-index="3"]{left:86%;top:193px}
+.eva-hanging-pin{
+  width:15px;
+  height:8px;
+  margin:0 auto 3px;
+  border-radius:5px;
+  background:linear-gradient(#e2e8f0,#64748b);
+  box-shadow:0 1px 4px rgba(0,0,0,.7);
+}
+.eva-hanging-badge{
+  width:64px;
+  height:64px;
+  border-radius:20px;
+  background:#0c0e18;
+  border:2.5px solid currentColor;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+}
+.eva-hanging-logo{
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  color:#fff;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,.10);
+}
+.eva-hanging-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.eva-hanging-name{
+  color:#dbe4ef;
+  font-size:8.5px;
+  font-weight:800;
+  line-height:1;
+  white-space:nowrap;
+}
+.eva-chatgpt{color:var(--eva-chatgpt);box-shadow:0 0 22px rgba(16,163,127,.34)}
+.eva-chatgpt .eva-hanging-logo{background:#10a37f;font-size:20px}
+.eva-claude{color:var(--eva-claude);box-shadow:0 0 22px rgba(217,119,87,.32)}
+.eva-claude .eva-hanging-logo{background:#f2e6da}
+.eva-gemini{color:var(--eva-gemini);box-shadow:0 0 22px rgba(139,92,246,.34)}
+.eva-gemini .eva-hanging-logo{background:linear-gradient(145deg,#2563eb,#8b5cf6,#ec4899);font-size:21px}
+.eva-aws{color:var(--eva-aws);box-shadow:0 0 22px rgba(245,158,11,.34)}
+.eva-aws .eva-hanging-logo{background:#111827}
+
+/* Static fallback ropes: visible before JS and if JS is unavailable. */
+.eva-hanging-fallback-rope{
+  position:absolute;
+  top:21px;
+  width:2.5px;
+  transform:translateX(-50%);
+  transform-origin:top center;
+  border-radius:999px;
+  z-index:2;
+}
+.eva-hanging-fallback-rope.r0{left:14%;height:112px;background:linear-gradient(#f8fafc,var(--eva-chatgpt))}
+.eva-hanging-fallback-rope.r1{left:38%;height:152px;background:linear-gradient(#f8fafc,var(--eva-claude))}
+.eva-hanging-fallback-rope.r2{left:62%;height:132px;background:linear-gradient(#f8fafc,var(--eva-gemini))}
+.eva-hanging-fallback-rope.r3{left:86%;height:172px;background:linear-gradient(#f8fafc,var(--eva-aws))}
+.eva-hanging-dot{
+  position:absolute;
+  top:15.5px;
+  width:11px;
+  height:11px;
+  margin-left:-5.5px;
+  border-radius:50%;
+  z-index:6;
+  box-shadow:0 0 10px currentColor;
+}
+.eva-hanging-dot.d0{left:14%;color:var(--eva-chatgpt);background:var(--eva-chatgpt)}
+.eva-hanging-dot.d1{left:38%;color:var(--eva-claude);background:var(--eva-claude)}
+.eva-hanging-dot.d2{left:62%;color:var(--eva-gemini);background:var(--eva-gemini)}
+.eva-hanging-dot.d3{left:86%;color:var(--eva-aws);background:var(--eva-aws)}
+.eva-hanging-stage.is-physics .eva-hanging-fallback-rope{opacity:0}
+
+/* Hide the old cyber-head/orbit visual if older CSS still targets it. */
+.eva-hanging-visual .ref-cyber-head{display:none!important}
+
+@media(max-width:760px){
+  .ref-visual.eva-hanging-visual{height:360px!important}
+  .eva-hanging-stage{height:360px}
+}
+@media(max-width:390px){
+  .eva-hanging-node{width:58px;margin-left:-29px}
+  .eva-hanging-badge{width:58px;height:58px;border-radius:18px}
+  .eva-hanging-logo{width:27px;height:27px;border-radius:9px}
+  .eva-hanging-name{font-size:7.7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .eva-hanging-node{transition:none!important}
+}
