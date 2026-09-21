@@ -58,7 +58,8 @@ body.dashboard-page .functional-zone{order:initial!important}
  body.dashboard-page .bottom-nav .spider-fab-inner{font-size:0!important;background:radial-gradient(circle,#4a168f,#060713 70%)!important}
  body.dashboard-page .functional-zone{padding-top:18px!important;background:#02050c!important}
 }
-</style></head>
+</style><link rel="stylesheet" href="/eva-premium-2026.css?v=20260922-1">
+</head>
 <body class="dashboard-page">
 <div class="app-container">
 <div class="glow-bg-top"></div>
@@ -152,4 +153,5 @@ body.dashboard-page .functional-zone{order:initial!important}
 <script>
 (()=>{const A={TRC20:'TJCFS6hDKsEnquGuvw43krk141QLvHnGbG',ERC20:'0x644ed89caecc120d3a3180e9f20a90d970cfa3e8',BEP20:'0x644ed89caecc120d3a3180e9f20a90d970cfa3e8',SOLANA:'6r4BGQ4KTcgCzeNwbWsx5v6qNLTwU92iESYNukSC9c6Y'};const s=document.getElementById('dash-network'),a=document.getElementById('deposit-wallet-address'),n=document.getElementById('deposit-network-name'),b=document.getElementById('quantum-badge'),q=document.getElementById('deposit-qr'),tabs=[...document.querySelectorAll('.quantum-networks button')];function render(){const k=s.value;a.textContent=A[k];n.textContent=k;b.textContent=k;tabs.forEach(x=>x.classList.toggle('active',x.dataset.net===k));q.innerHTML='';if(window.QRCode)new QRCode(q,{text:A[k],width:132,height:132,colorDark:'#07111d',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.H})}tabs.forEach(x=>x.onclick=()=>{s.value=x.dataset.net;s.dispatchEvent(new Event('change'))});s.onchange=render;document.getElementById('copy-deposit-address').onclick=async()=>{try{await navigator.clipboard.writeText(a.textContent.trim())}catch(e){}};render()})();
 </script>
+<script src="/eva-premium-runtime.js?v=20260922-1"></script>
 </body></html>
