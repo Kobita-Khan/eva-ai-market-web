@@ -50,6 +50,7 @@ body{background:#030712;background-image:radial-gradient(at 50% 15%,rgba(139,92,
   });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="/eva-premium-2026.css?v=20260922-1">
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 relative selection:bg-cyan-500 selection:text-black">
   <div class="fixed top-10 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -115,5 +116,6 @@ body{background:#030712;background-image:radial-gradient(at 50% 15%,rgba(139,92,
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/eva-market-sw.js',{scope:'/'}).catch(function(){});});}</script>
 <script>
 (()=>{const card=document.querySelector('.neural-card'),signup=document.getElementById('signup-form'),login=document.getElementById('login-form');const sync=()=>card&&card.classList.toggle('signup-active',!signup.hidden);new MutationObserver(sync).observe(signup,{attributes:true,attributeFilter:['hidden']});sync();window.evaStrength=v=>{const b=document.getElementById('signup-strength-bar'),t=document.getElementById('signup-strength-text');let s=0;if(v.length>=8)s++;if(v.length>=12)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;if(!v){b.style.width='0';b.style.background='#64748b';t.textContent='Strength: Empty';return}if(s<=2){b.style.width='33%';b.style.background='#f43f5e';t.textContent='Strength: Weak'}else if(s<=4){b.style.width='66%';b.style.background='#f59e0b';t.textContent='Strength: Moderate'}else{b.style.width='100%';b.style.background='#34d399';t.textContent='Strength: Strong'}}})();
-</script></body>
+</script><script src="/eva-premium-runtime.js?v=20260922-1"></script>
+</body>
 </html>
