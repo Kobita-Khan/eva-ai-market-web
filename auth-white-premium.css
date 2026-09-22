@@ -1,0 +1,17 @@
+:root{--eva-blue:#1688ff;--eva-blue2:#38b5ff;--eva-navy:#0a2148;--eva-muted:#7f8fa6;--eva-line:#e4edf6;--eva-bg:#f3f8fd;--eva-card:#fff;--eva-shadow:0 18px 44px rgba(38,94,153,.10)}
+html,body{background:#edf5fb!important;color:var(--eva-navy)!important;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif!important}
+body.eva-auth-page,body.account-page,body:has(.neural-stage){background:radial-gradient(circle at 50% 0,#e8f5ff,transparent 36%),linear-gradient(180deg,#fbfdff,#eef6fc)!important;min-height:100svh!important;color:var(--eva-navy)!important}
+.auth-shell,.login-shell,.neural-stage{width:min(100%,480px)!important;max-width:480px!important;margin:0 auto!important;padding:calc(28px + env(safe-area-inset-top)) 18px 32px!important;min-height:100svh!important;display:flex!important;align-items:center!important}
+.auth-card,.neural-card,.glass{width:100%!important;background:#fff!important;border:1px solid #e3edf6!important;border-radius:28px!important;box-shadow:var(--eva-shadow)!important;color:var(--eva-navy)!important;backdrop-filter:none!important}
+.auth-card{padding:28px!important}.neural-card{padding:34px 24px 28px!important;transform:none!important}
+.neural-brain{background:linear-gradient(145deg,#f4fbff,#e0f1ff)!important;color:#1688ff!important;filter:none!important;box-shadow:0 14px 28px rgba(35,90,149,.10)!important;animation:none!important}
+.neural-badge{color:#1688ff!important}.brand{color:var(--eva-navy)!important}.mark,.brand-mark{background:linear-gradient(145deg,#38b5ff,#1688ff)!important;color:#fff!important;box-shadow:0 8px 18px rgba(22,126,255,.20)!important}
+.auth-card h1,.auth-card h2,.neural-card h1,.neural-card h2{color:var(--eva-navy)!important;font-weight:950!important;letter-spacing:-.03em!important}.auth-card p,.neural-card p{color:#7f8fa6!important}
+.auth-card label,.neural-card label{color:#38506e!important}
+.auth-card input,.neural-card input{background:#fbfdff!important;color:#173558!important;border:1px solid #dbe7f2!important;border-radius:14px!important;height:50px!important;box-shadow:inset 0 1px 2px rgba(35,90,149,.03)!important}
+.auth-card input:focus,.neural-card input:focus{border-color:#1688ff!important;box-shadow:0 0 0 3px rgba(22,136,255,.10)!important}
+.cta,.button.primary,.signup-create-btn,.neural-key-submit,.auth-card button[type="submit"]{border:0!important;border-radius:25px!important;background:linear-gradient(180deg,#35b4ff,#1684ff)!important;color:#fff!important;font-weight:900!important;box-shadow:0 6px 0 #075bc0,0 12px 20px rgba(18,126,245,.18)!important}
+.auth-tab{background:#f3f8fd!important;color:#71829a!important;border:1px solid #dfe9f3!important}.auth-tab.active{background:linear-gradient(180deg,#35b4ff,#1684ff)!important;color:#fff!important;box-shadow:0 5px 0 #075bc0!important}
+.password-toggle,.links a,.back-link,.auth-card a{color:#1479e9!important}.auth-status,#status{color:#7f8fa6!important}.auth-status.success{color:#179b69!important}.auth-status.error{color:#e34d65!important}
+.signup-strength{background:#edf2f7!important}
+@media(max-width:430px){.auth-shell,.login-shell,.neural-stage{padding-left:14px!important;padding-right:14px!important}.auth-card,.neural-card{border-radius:22px!important;padding:24px 18px!important}}
