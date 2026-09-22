@@ -1,59 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#030008">
-<title>EVA AI Market</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f7fbff">
+<title>EVA AI 市场｜全球优质 AI 服务</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#000;font-family:Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}body{display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
-.app-container{width:100%;max-width:400px;background:#030008;min-height:100svh;height:100svh;position:relative;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;box-shadow:0 0 50px rgba(74,21,168,.2)}.app-container::-webkit-scrollbar{display:none}.app-container{scrollbar-width:none}
-.hero-bg-container{position:absolute;top:0;left:0;width:100%;height:390px;z-index:0;overflow:hidden;background:radial-gradient(circle at 50% 24%,rgba(106,32,220,.26),transparent 45%),#030008}.hero-bg-container img{display:none!important}.hero-bg-mask{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(3,0,8,0) 0%,rgba(3,0,8,.4) 60%,rgba(3,0,8,.95) 85%,#030008 100%)}
-.text-grad-title{background:linear-gradient(180deg,#fff 0%,#e0c2ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.text-grad-subtitle{background:linear-gradient(90deg,#4adede 0%,#4a90e2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.text-grad-pink{background:linear-gradient(180deg,#ff8aeb 0%,#c452b4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.glass-panel{background:rgba(14,8,26,.6);border:1px solid rgba(45,34,66,.8);border-radius:14px;backdrop-filter:blur(10px)}.grid-card{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 0;gap:8px;background:rgba(10,5,20,.7);border:1px solid rgba(45,34,66,.6);border-radius:12px;text-decoration:none}.grid-card:active{background:rgba(31,23,61,.8)}.explore-btn{background:linear-gradient(90deg,#6222f5,#7b3dff);box-shadow:0 4px 20px rgba(98,34,245,.4);border-radius:14px}
-.menu-overlay{position:fixed;inset:0;z-index:80;display:none;background:linear-gradient(rgba(4,1,10,.82),rgba(4,1,10,.92)),radial-gradient(circle at 70% 20%,rgba(120,40,220,.18),transparent 42%),#030008}.menu-overlay.open{display:block}.menu-panel{position:absolute;top:0;left:0;width:80%;max-width:320px;height:100%;padding:52px 24px 40px;background:rgba(7,3,14,.98);border-right:1px solid rgba(45,34,66,.8);box-shadow:30px 0 50px rgba(0,0,0,.9);display:flex;flex-direction:column}.menu-close{position:fixed;top:52px;right:20px;width:36px;height:36px;border-radius:10px;background:rgba(10,5,20,.8);border:1px solid rgba(45,34,66,.8);color:#fff;font-size:24px;display:grid;place-items:center;z-index:90}.menu-brand{display:flex;align-items:center;gap:10px;margin-bottom:45px}.menu-brand b{display:block;font-size:17px;font-weight:800;letter-spacing:.02em;background:linear-gradient(180deg,#fff,#d4b3ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.menu-brand small{display:block;margin-top:2px;color:#716a85;font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.menu-panel nav{display:flex;flex-direction:column;gap:22px;padding-left:4px}.menu-panel nav a{display:flex;align-items:center;min-height:38px;padding:8px 0;gap:18px;color:#fff;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:.02em}.menu-login{margin-top:auto;height:50px;border:1px solid #7c3aed;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+:root{--blue:#1479ff;--blue2:#0aa6ff;--navy:#09214a;--red:#ff304b;--muted:#7b8aa5;--line:#e6eef8;--shadow:0 12px 32px rgba(35,102,180,.12)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#eef5fb;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;color:#0a1732;-webkit-font-smoothing:antialiased}
+body{display:flex;justify-content:center}.app{width:100%;max-width:430px;min-height:100svh;background:linear-gradient(180deg,#f9fcff,#f3f8fd 64%,#fff);padding-bottom:88px;box-shadow:0 0 50px rgba(30,89,150,.12)}
+header{padding:calc(16px + env(safe-area-inset-top)) 18px 10px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a1732}.crown{font-size:32px;filter:drop-shadow(0 5px 7px rgba(28,120,255,.25))}.brand b{display:block;font-size:21px;font-weight:900;letter-spacing:-.02em}.brand small{display:block;color:#8ea2bf;font-size:10px;margin-top:2px}
+.head-actions{display:flex;gap:12px}.iconbtn{border:0;background:transparent;font-size:23px;color:#12284d;position:relative}.dot{position:absolute;right:1px;top:0;width:8px;height:8px;border-radius:50%;background:#ff3852}
+.search{margin:4px 18px 14px;height:54px;border-radius:28px;background:#fff;box-shadow:0 10px 26px rgba(50,110,180,.10),inset 0 0 0 1px #e9f0f8;display:flex;align-items:center;padding:0 18px;gap:12px}
+.search span{font-size:22px}.search input{flex:1;border:0;outline:0;background:transparent;font-size:14px;color:#263650}.search input::placeholder{color:#9aa9bf}
+.hero{margin:0 14px 18px;min-height:294px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(120deg,#eaf5ff 0%,#fafdff 45%,#dbeeff 100%);box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,252,255,.98) 0%,rgba(247,252,255,.88) 42%,rgba(247,252,255,.12) 68%,rgba(247,252,255,0) 100%)}
+.hero img{position:absolute;right:-70px;top:0;height:100%;width:72%;object-fit:cover;object-position:center}
+.hero-content{position:relative;z-index:2;width:63%;padding:31px 0 24px 28px}.mini{font-size:10px;color:#1479ff;font-weight:900;letter-spacing:.14em}.hero h1{margin:10px 0 9px;font-size:37px;line-height:1.15;letter-spacing:-.04em;color:#09214a}.hero p{margin:0;color:#667b99;font-size:13px;line-height:1.7}.dots{display:flex;gap:6px;position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%)}.dots i{display:block;width:7px;height:7px;border-radius:10px;background:#c7d7e9}.dots i:first-child{width:18px;background:#177eff}
+.btn3d{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;text-decoration:none;cursor:pointer;font-weight:900;user-select:none;transition:.08s transform,.08s box-shadow}
+.btn3d.blue{margin-top:17px;height:47px;padding:0 24px;border-radius:24px;color:#fff;background:linear-gradient(180deg,#31a7ff,#127bff 62%,#0665e5);box-shadow:0 7px 0 #0754c7,0 15px 24px rgba(14,116,245,.28),inset 0 2px 0 rgba(255,255,255,.38)}
+.btn3d.blue:active,.buy:active{transform:translateY(5px);box-shadow:0 2px 0 #0754c7,0 8px 14px rgba(14,116,245,.18)}
+.categories{padding:0 14px 18px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center}.cat{text-decoration:none;color:#17233d;font-size:11px;font-weight:700}.cat .ci{width:49px;height:49px;border-radius:17px;margin:0 auto 7px;display:grid;place-items:center;font-size:22px;background:linear-gradient(180deg,#fff,#eaf4ff);box-shadow:0 9px 20px rgba(38,103,176,.12),inset 0 1px 0 #fff}.cat:nth-child(2) .ci{background:linear-gradient(180deg,#fff5e9,#ffe9d5)}.cat:nth-child(4) .ci{background:linear-gradient(180deg,#fff1fa,#ffe7f4)}
+.section{padding:0 14px 20px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px}.section-head h2{font-size:22px;margin:0;font-weight:950;letter-spacing:-.02em}.section-head h2 span{color:#ff384f;margin-right:6px}.section-head p{margin:3px 0 0;color:#9aa6b8;font-size:11px}.section-head a{text-decoration:none;color:#8290a6;font-size:11px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.product{position:relative;background:#fff;border:1px solid #edf2f8;border-radius:19px;padding:13px 12px 12px;min-height:220px;box-shadow:0 9px 24px rgba(28,86,150,.08);display:flex;flex-direction:column}.hot{position:absolute;right:10px;top:9px;font-size:9px;color:#ff4359;background:#fff0f2;padding:3px 6px;border-radius:7px;font-weight:800}.plogo{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#edf6ff,#fff);box-shadow:inset 0 0 0 1px #edf2f8;font-size:20px;font-weight:950;margin-bottom:11px;overflow:hidden}.plogo img{max-width:100%;max-height:100%;object-fit:cover}.product h3{margin:0 0 5px;font-size:12px;line-height:1.25;min-height:30px}.product .desc{font-size:10px;color:#7d8da7;line-height:1.45;min-height:30px}.price{font-size:17px;color:#ff2847;font-weight:950;margin:10px 0 9px}.price small{font-size:9px;font-weight:700}.buy{margin-top:auto;height:35px;border:0;border-radius:18px;color:#fff;font-size:11px;font-weight:900;background:linear-gradient(180deg,#2ca7ff,#117bff 62%,#0967dc);box-shadow:0 5px 0 #0753bd,0 10px 18px rgba(14,116,245,.20);cursor:pointer}
+.enterprise{margin:2px 14px 16px;border-radius:21px;padding:20px;background:linear-gradient(110deg,#e9f5ff,#f8fcff 58%,#d8ecff);box-shadow:var(--shadow);position:relative;overflow:hidden}.enterprise:after{content:"";position:absolute;right:-28px;bottom:-45px;width:170px;height:150px;background:linear-gradient(135deg,rgba(70,144,220,.18),rgba(255,255,255,.4));transform:skew(-15deg);border-left:1px solid rgba(71,136,208,.18)}.enterprise h3{font-size:24px;margin:0 0 5px}.enterprise p{margin:0;color:#7488a4;font-size:12px}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:0 14px 14px}.feature{background:#fff;border:1px solid #edf2f8;border-radius:15px;padding:12px 5px;text-align:center;box-shadow:0 7px 18px rgba(31,88,150,.07)}.feature b{display:block;font-size:11px;margin-top:4px}.feature small{font-size:8px;color:#94a1b4}
+.telegram{margin:0 14px 18px;border-radius:18px;padding:13px 14px;background:linear-gradient(100deg,#dff2ff,#f8fcff);display:flex;align-items:center;gap:11px;border:1px solid #e2effa}.tg{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#36baff,#1595ea);font-size:24px;box-shadow:0 8px 17px rgba(30,159,235,.24)}.telegram b{display:block;font-size:13px}.telegram small{display:block;color:#7d8da6;font-size:9px;margin-top:3px}.telegram a{margin-left:auto;text-decoration:none;color:#1678eb;font-size:12px;font-weight:900;background:#fff;padding:9px 13px;border-radius:18px;box-shadow:0 6px 15px rgba(40,105,170,.08)}
+.bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;height:76px;padding-bottom:env(safe-area-inset-bottom);background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border-top:1px solid #e7eef7;display:grid;grid-template-columns:repeat(5,1fr);z-index:30}.bottom a{display:flex;align-items:center;justify-content:center;flex-direction:column;text-decoration:none;color:#7d899d;font-size:10px;gap:4px}.bottom span{font-size:22px}.bottom .active{color:#167bff;font-weight:800}
+.notice{grid-column:1/-1;text-align:center;background:#fff;border:1px solid #e5eef8;border-radius:16px;padding:20px;color:#8090a8}
+@media(max-width:370px){.hero h1{font-size:32px}.products{gap:7px}.product{padding:10px 9px}.categories{gap:4px}.cat .ci{width:44px;height:44px}.features{gap:5px}}
+@media(min-width:760px){body{background:#e8f0f8}.app{max-width:1180px;padding:24px 34px 110px;border-radius:0}.hero{min-height:420px}.hero-content{padding:54px;width:55%}.hero h1{font-size:62px}.hero p{font-size:16px}.categories{grid-template-columns:repeat(6,120px);justify-content:center}.products{grid-template-columns:repeat(6,1fr)}.bottom{max-width:1180px}}
 </style>
-<link rel="stylesheet" href="/eva-premium-2026.css?v=20260922-1">
 </head>
 <body>
-<div class="app-container">
-<div class="hero-bg-container" aria-hidden="true"><div class="hero-bg-mask"></div></div>
-
-<header class="flex justify-between items-center px-6 pt-[calc(20px+env(safe-area-inset-top))] pb-6 relative z-10">
-<a href="/" class="flex items-center gap-[10px] no-underline">
-<div class="w-11 h-11 flex justify-center items-center flex-shrink-0">
-<svg width="44" height="44" viewBox="0 0 100 100" fill="none"><defs><linearGradient id="logoGrad" x1="50%" y1="0%" x2="50%" y2="100%"><stop offset="0%" stop-color="#fff"/><stop offset="50%" stop-color="#E9D5FF"/><stop offset="100%" stop-color="#A855F7"/></linearGradient></defs><path d="M18 35C18 60 30 80 50 90C70 80 82 60 82 35C65 48 50 48 50 48C50 48 35 48 18 35Z" fill="none" stroke="url(#logoGrad)" stroke-width="3.5"/><path d="M32 46C35 55 45 65 50 65V55C45 55 38 48 32 46Z" fill="url(#logoGrad)"/><path d="M68 46C65 55 55 65 50 65V55C55 55 62 48 68 46Z" fill="url(#logoGrad)"/><path d="M50 12L54 38H46Z" fill="url(#logoGrad)"/><circle cx="28" cy="22" r="3" fill="url(#logoGrad)"/><circle cx="72" cy="22" r="3" fill="url(#logoGrad)"/><path d="M50 70L58 82L50 90L42 82Z" fill="url(#logoGrad)"/></svg>
-</div><div><h1 class="text-[17px] font-[800] tracking-[0.02em] text-white leading-tight">EVA AI MARKET</h1><p class="text-[8px] text-[#716a85] font-[800] tracking-[0.16em] uppercase leading-tight mt-[2px]">AI & Cloud Solutions</p></div>
-</a>
-<div class="flex gap-2.5"><button onclick="location.href='/products.html'" class="w-[38px] h-[38px] bg-transparent border border-[#2d2242] rounded-[10px] flex items-center justify-center text-white/90 backdrop-blur-md" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button><button id="menuBtn" class="w-[38px] h-[38px] bg-transparent border border-[#2d2242] rounded-[10px] flex items-center justify-center text-white/90 backdrop-blur-md" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button></div>
+<main class="app">
+<header>
+  <a class="brand" href="/"><span class="crown">♛</span><span><b>EVA AI 市场</b><small>全球优质 AI 服务 · 一站式购买平台</small></span></a>
+  <div class="head-actions"><button class="iconbtn" onclick="location.href='/dashboard.html'" aria-label="通知">♧<i class="dot"></i></button><button class="iconbtn" onclick="location.href='/checkout.html'" aria-label="购物车">🛒</button></div>
 </header>
 
-<div class="mt-[18px] relative z-10"></div>
-<div class="px-6 text-center mb-7 relative z-10"><h2 class="text-[34px] font-[900] tracking-[-0.02em] text-grad-title leading-none mb-2">EVA AI MARKET</h2><h3 class="text-[12px] font-[800] tracking-[0.12em] text-grad-subtitle uppercase mb-2">PREMIUM AI & CLOUD TOOLS</h3><p class="text-[13px] text-[#a59ab8] font-medium"><span class="text-[#ff7deb] font-bold">AI</span> Today, A Better Tomorrow.</p></div>
+<div class="search"><span>⌕</span><input id="homeSearch" placeholder="搜索 AI 产品、服务或品牌..."><span style="font-size:18px">⌗</span></div>
 
-<div class="px-6 mb-7 relative z-10"><div class="grid grid-cols-4 gap-[10px]">
-<a href="/products.html" class="grid-card"><div class="w-8 h-8 rounded-full border-2 border-[#74aa9c] text-[#74aa9c] grid place-items-center text-[14px] font-bold">◎</div><span class="text-white text-[11px] font-semibold">ChatGPT</span></a>
-<a href="/products.html" class="grid-card"><div class="text-[#d97757] text-[30px] leading-none">✺</div><span class="text-white text-[11px] font-semibold">Claude</span></a>
-<a href="/products.html" class="grid-card"><div class="text-[#6f79ff] text-[30px] leading-none">✦</div><span class="text-white text-[11px] font-semibold">Gemini</span></a>
-<a href="/products.html" class="grid-card"><div class="w-8 h-8 rounded-full border-2 border-white text-white grid place-items-center text-[16px]">╱</div><span class="text-white text-[11px] font-semibold">Grok</span></a>
-<a href="/products.html" class="grid-card"><div class="text-white text-[20px] font-bold leading-none">aws</div><span class="text-white text-[11px] font-semibold">AWS</span></a>
-<a href="/products.html" class="grid-card text-center"><div class="text-[#4285f4] text-[28px] leading-none">☁</div><span class="text-white text-[11px] font-semibold leading-tight">Google<br>Cloud</span></a>
-<a href="/products.html" class="grid-card"><div class="text-white text-[28px] leading-none">✂</div><span class="text-white text-[11px] font-semibold">CapCut</span></a>
-<a href="/products.html" class="grid-card"><div class="w-8 h-8 rounded-full bg-[rgba(108,50,252,.15)] text-[#b493ff] grid place-items-center text-[25px] font-black italic">K</div><span class="text-white text-[11px] font-semibold">Kiro</span></a>
-</div></div>
+<section class="hero">
+  <img src="/assets/ai-cyborg-hero.webp" alt="EVA AI">
+  <div class="hero-content">
+    <div class="mini">♛ EVA AI MARKET</div>
+    <h1>让 AI 为你<br>创造更多可能</h1>
+    <p>更智能 · 更高效 · 更美好的未来</p>
+    <a class="btn3d blue" href="/products.html">立即探索 <b>→</b></a>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i></div>
+</section>
 
-<div class="px-6 mb-7 relative z-10"><div class="glass-panel flex justify-between items-center px-5 py-[18px]"><div class="flex flex-col items-center gap-[2px]"><span class="text-[15px] font-[800] text-white">50,000+</span><span class="text-[9px] text-[#867b9f] font-semibold">Customers</span></div><div class="flex flex-col items-center gap-[2px]"><span id="liveProductCount" class="text-[15px] font-[800] text-white">—</span><span class="text-[9px] text-[#867b9f] font-semibold">Products</span></div><div class="flex flex-col items-center gap-[2px]"><span class="text-[15px] font-[800] text-white">100+</span><span class="text-[9px] text-[#867b9f] font-semibold">Countries</span></div><div class="flex flex-col items-center gap-[2px]"><span class="text-[15px] font-[800] text-grad-pink">99.9%</span><span class="text-[9px] text-[#867b9f] font-semibold">Success</span></div></div></div>
+<section class="categories">
+  <a class="cat" href="/products.html"><div class="ci">💬</div>AI聊天</a>
+  <a class="cat" href="/products.html"><div class="ci">🎨</div>AI绘画</a>
+  <a class="cat" href="/products.html"><div class="ci">☁️</div>云服务</a>
+  <a class="cat" href="/products.html"><div class="ci">▶</div>视频工具</a>
+  <a class="cat" href="/api-docs"><div class="ci">‹/›</div>API服务</a>
+  <a class="cat" href="/products.html"><div class="ci">•••</div>更多</a>
+</section>
 
-<div class="px-6 mb-8 relative z-10"><button onclick="location.href='/products.html'" class="explore-btn w-full h-[54px] flex justify-center items-center gap-3 text-white active:scale-95"><span class="text-[15px] font-[700] tracking-wide">Explore Products</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+<section class="section">
+  <div class="section-head"><div><h2><span>🔥</span>热门推荐</h2><p>全球热门 AI 产品 · 正品保障 · 即买即用</p></div><a href="/products.html">查看全部 ›</a></div>
+  <div class="products" id="homeProducts"><div class="notice">正在加载热门产品…</div></div>
+</section>
 
-<div class="px-10 pb-8 flex justify-between items-end relative z-10"><div class="flex flex-col items-center gap-[6px]"><span class="text-[#a59ab8] text-[22px]">◌</span><span class="text-[#867b9f] text-[10px] font-medium">Fast Delivery</span></div><div class="flex flex-col items-center gap-[6px]"><span class="text-[#a59ab8] text-[22px]">▣</span><span class="text-[#867b9f] text-[10px] font-medium">Secure Payment</span></div><div class="flex flex-col items-center gap-[6px]"><span class="text-[#a59ab8] text-[22px]">◉</span><span class="text-[#867b9f] text-[10px] font-medium">24/7 Support</span></div></div>
-</div>
+<section class="enterprise">
+  <h3>企业定制方案</h3><p>一站式 AI 解决方案 · 助力企业数字化转型</p>
+  <a class="btn3d blue" style="height:40px;margin-top:14px;padding:0 18px;font-size:12px" href="https://t.me/AWSXCLOUDEBUYSELL">立即咨询 →</a>
+</section>
 
-<div class="menu-overlay" id="menuOverlay"><button class="menu-close" id="menuClose">×</button><div class="menu-panel"><div class="menu-brand"><div class="w-11 h-11 flex items-center justify-center text-[#d5a5ff] text-[38px]">♛</div><div><b>EVA AI MARKET</b><small>AI & Cloud Solutions</small></div></div><nav><a href="/">⌂ Home</a><a href="/products.html">▣ Products</a><a href="/products.html">▦ Categories</a><a href="/#pricing">♢ Pricing</a><a href="/#blog">▤ Blog / News</a><a href="/#about">♤ About Us</a><a href="/#contact">@ Contact</a><a href="/#faq">? FAQ</a></nav><a href="/login.html" class="menu-login">Login / Sign Up</a></div></div>
+<section class="features">
+  <div class="feature"><span>🛡️</span><b>正品保障</b><small>官方授权 正规渠道</small></div>
+  <div class="feature"><span>⚡</span><b>快速交付</b><small>自动发货 即买即用</small></div>
+  <div class="feature"><span>🎧</span><b>售后支持</b><small>专业团队 7×24小时</small></div>
+  <div class="feature"><span>🌐</span><b>全球服务</b><small>服务全球用户</small></div>
+</section>
+
+<section class="telegram">
+  <div class="tg">➤</div><div><b>加入我们的 Telegram 社群</b><small>获取最新优惠 · 产品资讯 · 专属客服</small></div><a href="https://t.me/AWSXCLOUDEBUYSELL">立即加入 →</a>
+</section>
+</main>
+
+<nav class="bottom">
+  <a class="active" href="/"><span>⌂</span>首页</a>
+  <a href="/products.html"><span>▦</span>分类</a>
+  <a href="/checkout.html"><span>🛒</span>购物车</a>
+  <a href="/dashboard.html"><span>▤</span>订单</a>
+  <a href="/dashboard.html"><span>♙</span>我的</a>
+</nav>
+
 <script>
-const mb=document.getElementById('menuBtn'),mo=document.getElementById('menuOverlay'),mc=document.getElementById('menuClose');mb.onclick=()=>mo.classList.add('open');mc.onclick=()=>mo.classList.remove('open');mo.onclick=e=>{if(e.target===mo)mo.classList.remove('open')};fetch('/api/store',{cache:'no-store'}).then(r=>r.json()).then(b=>{const el=document.getElementById('liveProductCount');if(el&&Array.isArray(b.products)){const unique=new Set(b.products.map(p=>String(p.name||'').trim().toLowerCase()).filter(Boolean));el.textContent=unique.size+'+'}}).catch(()=>{});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const icon=p=>{const s=((p?.name||'')+' '+(p?.category||'')).toLowerCase();if(s.includes('chatgpt')||s.includes('openai'))return '◎';if(s.includes('claude'))return '✺';if(s.includes('gemini'))return '✦';if(s.includes('aws'))return 'aws';if(s.includes('google')||s.includes('gcp'))return 'GCP';if(s.includes('capcut'))return 'CC';if(s.includes('kiro'))return 'K';return 'AI'};
+const subtitle=p=>p.subtitle||p.category||'优质 AI 服务';
+fetch('/api/store',{cache:'no-store'}).then(async r=>{const b=await r.json();if(!r.ok)throw new Error(b.error||'Catalog unavailable');return b}).then(b=>{
+ const products=Array.isArray(b.products)?b.products:[];
+ const seen=new Set();
+ const priority=['chatgpt','claude','gemini','midjourney','aws','google','gcp','capcut','kiro'];
+ const list=products.filter(p=>{const k=String(p.name||'').trim().toLowerCase();if(!k||seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>{const A=String(a.name||'').toLowerCase(),B=String(b.name||'').toLowerCase();let ai=priority.findIndex(x=>A.includes(x)),bi=priority.findIndex(x=>B.includes(x));if(ai<0)ai=99;if(bi<0)bi=99;return ai-bi}).slice(0,6);
+ const root=document.getElementById('homeProducts');
+ if(!list.length){root.innerHTML='<div class="notice">暂无产品</div>';return}
+ root.innerHTML=list.map((p,i)=>'<article class="product"><span class="hot">'+(i<3?'热门':'推荐')+'</span><div class="plogo">'+icon(p)+'</div><h3>'+esc(p.name)+'</h3><div class="desc">'+esc(subtitle(p))+'</div><div class="price">US$ '+Number(p.price_usd||0).toFixed(1)+'<small> / '+esc(p.official_price_label||'方案')+'</small></div><button class="buy" data-id="'+esc(p.id)+'" '+(Number(p.stock)<=0?'disabled':'')+'>'+(Number(p.stock)<=0?'暂时缺货':'立即购买 →')+'</button></article>').join('');
+ root.querySelectorAll('.buy:not([disabled])').forEach(btn=>btn.onclick=()=>{const p=products.find(x=>String(x.id)===String(btn.dataset.id));if(p)sessionStorage.setItem('eva-checkout-product',JSON.stringify(p));location.href='/product.html?id='+encodeURIComponent(btn.dataset.id)});
+}).catch(e=>document.getElementById('homeProducts').innerHTML='<div class="notice">'+esc(e.message)+'</div>');
+document.getElementById('homeSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){location.href='/products.html?q='+encodeURIComponent(e.target.value||'')}})
 </script>
-<script src="/eva-premium-runtime.js?v=20260922-1"></script>
-</body></html>
+</body>
+</html>
