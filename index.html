@@ -6,50 +6,54 @@
 <meta name="theme-color" content="#f7fbff">
 <title>EVA AI 市场｜全球优质 AI 服务</title>
 <style>
-:root{--blue:#1479ff;--blue2:#0aa6ff;--navy:#09214a;--red:#ff304b;--muted:#7b8aa5;--line:#e6eef8;--shadow:0 12px 32px rgba(35,102,180,.12)}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#eef5fb;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;color:#0a1732;-webkit-font-smoothing:antialiased}
-body{display:flex;justify-content:center}.app{width:100%;max-width:430px;min-height:100svh;background:linear-gradient(180deg,#f9fcff,#f3f8fd 64%,#fff);padding-bottom:88px;box-shadow:0 0 50px rgba(30,89,150,.12)}
-header{padding:calc(16px + env(safe-area-inset-top)) 18px 10px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a1732}.crown{font-size:32px;filter:drop-shadow(0 5px 7px rgba(28,120,255,.25))}.brand b{display:block;font-size:21px;font-weight:900;letter-spacing:-.02em}.brand small{display:block;color:#8ea2bf;font-size:10px;margin-top:2px}
-.head-actions{display:flex;gap:12px}.iconbtn{border:0;background:transparent;font-size:23px;color:#12284d;position:relative}.dot{position:absolute;right:1px;top:0;width:8px;height:8px;border-radius:50%;background:#ff3852}
-.search{margin:4px 18px 14px;height:54px;border-radius:28px;background:#fff;box-shadow:0 10px 26px rgba(50,110,180,.10),inset 0 0 0 1px #e9f0f8;display:flex;align-items:center;padding:0 18px;gap:12px}
-.search span{font-size:22px}.search input{flex:1;border:0;outline:0;background:transparent;font-size:14px;color:#263650}.search input::placeholder{color:#9aa9bf}
-.hero{margin:0 14px 18px;min-height:294px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(120deg,#eaf5ff 0%,#fafdff 45%,#dbeeff 100%);box-shadow:var(--shadow)}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,252,255,.98) 0%,rgba(247,252,255,.88) 42%,rgba(247,252,255,.12) 68%,rgba(247,252,255,0) 100%)}
-.hero img{position:absolute;right:-70px;top:0;height:100%;width:72%;object-fit:cover;object-position:center}
-.hero-content{position:relative;z-index:2;width:63%;padding:31px 0 24px 28px}.mini{font-size:10px;color:#1479ff;font-weight:900;letter-spacing:.14em}.hero h1{margin:10px 0 9px;font-size:37px;line-height:1.15;letter-spacing:-.04em;color:#09214a}.hero p{margin:0;color:#667b99;font-size:13px;line-height:1.7}.dots{display:flex;gap:6px;position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%)}.dots i{display:block;width:7px;height:7px;border-radius:10px;background:#c7d7e9}.dots i:first-child{width:18px;background:#177eff}
-.btn3d{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;text-decoration:none;cursor:pointer;font-weight:900;user-select:none;transition:.08s transform,.08s box-shadow}
-.btn3d.blue{margin-top:17px;height:47px;padding:0 24px;border-radius:24px;color:#fff;background:linear-gradient(180deg,#31a7ff,#127bff 62%,#0665e5);box-shadow:0 7px 0 #0754c7,0 15px 24px rgba(14,116,245,.28),inset 0 2px 0 rgba(255,255,255,.38)}
-.btn3d.blue:active,.buy:active{transform:translateY(5px);box-shadow:0 2px 0 #0754c7,0 8px 14px rgba(14,116,245,.18)}
-.categories{padding:0 14px 18px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center}.cat{text-decoration:none;color:#17233d;font-size:11px;font-weight:700}.cat .ci{width:49px;height:49px;border-radius:17px;margin:0 auto 7px;display:grid;place-items:center;font-size:22px;background:linear-gradient(180deg,#fff,#eaf4ff);box-shadow:0 9px 20px rgba(38,103,176,.12),inset 0 1px 0 #fff}.cat:nth-child(2) .ci{background:linear-gradient(180deg,#fff5e9,#ffe9d5)}.cat:nth-child(4) .ci{background:linear-gradient(180deg,#fff1fa,#ffe7f4)}
-.section{padding:0 14px 20px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px}.section-head h2{font-size:22px;margin:0;font-weight:950;letter-spacing:-.02em}.section-head h2 span{color:#ff384f;margin-right:6px}.section-head p{margin:3px 0 0;color:#9aa6b8;font-size:11px}.section-head a{text-decoration:none;color:#8290a6;font-size:11px}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.product{position:relative;background:#fff;border:1px solid #edf2f8;border-radius:19px;padding:13px 12px 12px;min-height:220px;box-shadow:0 9px 24px rgba(28,86,150,.08);display:flex;flex-direction:column}.hot{position:absolute;right:10px;top:9px;font-size:9px;color:#ff4359;background:#fff0f2;padding:3px 6px;border-radius:7px;font-weight:800}.plogo{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#edf6ff,#fff);box-shadow:inset 0 0 0 1px #edf2f8;font-size:20px;font-weight:950;margin-bottom:11px;overflow:hidden}.plogo img{max-width:100%;max-height:100%;object-fit:cover}.product h3{margin:0 0 5px;font-size:12px;line-height:1.25;min-height:30px}.product .desc{font-size:10px;color:#7d8da7;line-height:1.45;min-height:30px}.price{font-size:17px;color:#ff2847;font-weight:950;margin:10px 0 9px}.price small{font-size:9px;font-weight:700}.buy{margin-top:auto;height:35px;border:0;border-radius:18px;color:#fff;font-size:11px;font-weight:900;background:linear-gradient(180deg,#2ca7ff,#117bff 62%,#0967dc);box-shadow:0 5px 0 #0753bd,0 10px 18px rgba(14,116,245,.20);cursor:pointer}
-.enterprise{margin:2px 14px 16px;border-radius:21px;padding:20px;background:linear-gradient(110deg,#e9f5ff,#f8fcff 58%,#d8ecff);box-shadow:var(--shadow);position:relative;overflow:hidden}.enterprise:after{content:"";position:absolute;right:-28px;bottom:-45px;width:170px;height:150px;background:linear-gradient(135deg,rgba(70,144,220,.18),rgba(255,255,255,.4));transform:skew(-15deg);border-left:1px solid rgba(71,136,208,.18)}.enterprise h3{font-size:24px;margin:0 0 5px}.enterprise p{margin:0;color:#7488a4;font-size:12px}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:0 14px 14px}.feature{background:#fff;border:1px solid #edf2f8;border-radius:15px;padding:12px 5px;text-align:center;box-shadow:0 7px 18px rgba(31,88,150,.07)}.feature b{display:block;font-size:11px;margin-top:4px}.feature small{font-size:8px;color:#94a1b4}
-.telegram{margin:0 14px 18px;border-radius:18px;padding:13px 14px;background:linear-gradient(100deg,#dff2ff,#f8fcff);display:flex;align-items:center;gap:11px;border:1px solid #e2effa}.tg{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#36baff,#1595ea);font-size:24px;box-shadow:0 8px 17px rgba(30,159,235,.24)}.telegram b{display:block;font-size:13px}.telegram small{display:block;color:#7d8da6;font-size:9px;margin-top:3px}.telegram a{margin-left:auto;text-decoration:none;color:#1678eb;font-size:12px;font-weight:900;background:#fff;padding:9px 13px;border-radius:18px;box-shadow:0 6px 15px rgba(40,105,170,.08)}
-.bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;height:76px;padding-bottom:env(safe-area-inset-bottom);background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border-top:1px solid #e7eef7;display:grid;grid-template-columns:repeat(5,1fr);z-index:30}.bottom a{display:flex;align-items:center;justify-content:center;flex-direction:column;text-decoration:none;color:#7d899d;font-size:10px;gap:4px}.bottom span{font-size:22px}.bottom .active{color:#167bff;font-weight:800}
+:root{--blue:#1688ff;--blue2:#06a8ff;--navy:#091f47;--red:#ff304f;--muted:#8a99af;--line:#e6eef8;--shadow:0 12px 32px rgba(43,111,187,.10)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#edf5fb;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;color:#081a3a;-webkit-font-smoothing:antialiased}
+body{display:flex;justify-content:center}.app{width:100%;max-width:430px;min-height:100svh;background:linear-gradient(180deg,#fbfdff 0,#f4f9fd 72%,#fff 100%);padding-bottom:88px;box-shadow:0 0 45px rgba(32,92,155,.10)}
+header{padding:calc(17px + env(safe-area-inset-top)) 20px 12px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:#0a1e43;text-decoration:none}.logo{width:45px;height:45px;display:grid;place-items:center}.logo svg{display:block;width:45px;height:45px;filter:drop-shadow(0 7px 9px rgba(24,128,255,.19))}.brand b{display:block;font-size:20px;line-height:1.05;font-weight:950;letter-spacing:-.03em}.brand small{display:block;margin-top:5px;color:#8396b4;font-size:10px;font-weight:500;white-space:nowrap}
+.head-actions{display:flex;align-items:center;gap:15px}.iconbtn{width:32px;height:32px;display:grid;place-items:center;border:0;background:transparent;color:#0b2048;padding:0;position:relative}.iconbtn svg{width:27px;height:27px}.dot{position:absolute;width:9px;height:9px;border-radius:50%;right:0;top:0;background:#ff3652;box-shadow:0 0 0 2px #fff}
+.search{margin:0 19px 15px;height:56px;border-radius:29px;background:#fff;display:flex;align-items:center;gap:12px;padding:0 18px;box-shadow:0 10px 28px rgba(50,110,178,.10),inset 0 0 0 1px #e8eff7}.search svg{width:22px;height:22px;flex:none}.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#243957;font-size:14px}.search input::placeholder{color:#9baac1}.scan{font-size:22px;color:#18345b;line-height:1}
+.hero{margin:0 14px 18px;border-radius:22px;overflow:hidden;position:relative;box-shadow:var(--shadow);aspect-ratio:719/303;background:#eef7ff}.hero img{display:block;width:100%;height:100%;object-fit:cover}.hero-hit{position:absolute;left:5.6%;top:68%;width:30%;height:17%;border-radius:30px}
+.categories{padding:0 17px 18px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;text-align:center}.cat{color:#14213c;text-decoration:none;font-size:11px;font-weight:800;white-space:nowrap}.ci{width:50px;height:50px;border-radius:17px;margin:0 auto 8px;display:grid;place-items:center;font-size:23px;background:linear-gradient(180deg,#fff,#edf6ff);box-shadow:0 8px 20px rgba(42,104,173,.09),inset 0 1px 0 rgba(255,255,255,.95)}.cat:nth-child(2) .ci{background:linear-gradient(180deg,#fff7ea,#ffead4)}.cat:nth-child(4) .ci{background:linear-gradient(180deg,#fff3fa,#ffe7f3)}.cat:nth-child(5) .ci{background:linear-gradient(180deg,#eef5ff,#e6efff)}.cat:nth-child(6) .ci{background:linear-gradient(180deg,#f5fbff,#edf7ff)}
+.section{padding:0 16px 20px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px}.section-head h2{margin:0;font-size:21px;line-height:1;font-weight:950;letter-spacing:-.03em}.section-head .fire{font-size:27px;margin-right:4px}.section-head p{margin:6px 0 0;color:#9ca9ba;font-size:10px}.section-head a{color:#8e9bac;text-decoration:none;font-size:11px}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.product{position:relative;min-width:0;min-height:232px;background:#fff;border:1px solid #edf2f7;border-radius:20px;padding:13px 11px 12px;box-shadow:0 9px 24px rgba(32,87,145,.08);display:flex;flex-direction:column}.badge{position:absolute;right:9px;top:9px;border-radius:7px;padding:4px 7px;background:#fff0f3;color:#ff4560;font-size:9px;font-weight:900}.plogo{width:59px;height:59px;border-radius:15px;display:grid;place-items:center;margin-bottom:12px;background:linear-gradient(145deg,#f2f8ff,#fff);box-shadow:inset 0 0 0 1px #e9f0f7;font-size:24px;font-weight:950;overflow:hidden}.plogo img{width:100%;height:100%;object-fit:cover}.brand-openai{background:linear-gradient(145deg,#0da384,#057a67)!important;color:white}.brand-claude{background:linear-gradient(145deg,#f49070,#e3694e)!important;color:white}.brand-gemini{background:linear-gradient(145deg,#f2f4ff,#fff)!important;color:#635dff}.brand-aws{font-size:17px;color:#172339}.brand-google{font-size:14px;color:#4285f4}.brand-kiro{background:linear-gradient(145deg,#6457ff,#2f7cff)!important;color:white}
+.product h3{margin:0 0 6px;font-size:12px;line-height:1.25;min-height:30px;font-weight:900;overflow:hidden}.desc{font-size:10px;line-height:1.42;color:#73839c;min-height:42px;overflow:hidden}.price{margin:9px 0 8px;color:#ff2f4f;font-size:17px;line-height:1;font-weight:950}.price-label{min-height:24px;color:#ff3554;font-size:9px;line-height:1.25;font-weight:800}.buy{margin-top:auto;height:34px;border:0;border-radius:18px;color:#fff;font-size:11px;font-weight:900;cursor:pointer;background:linear-gradient(180deg,#32b0ff,#1687ff 58%,#0a73eb);box-shadow:0 5px 0 #075ac2,0 10px 17px rgba(17,126,246,.22),inset 0 2px 0 rgba(255,255,255,.3)}.buy:active{transform:translateY(4px);box-shadow:0 1px 0 #075ac2,0 6px 12px rgba(17,126,246,.16)}.buy:disabled{opacity:.45;filter:grayscale(.2)}
+.enterprise{margin:2px 15px 14px;height:145px;border-radius:20px;position:relative;overflow:hidden;padding:18px 18px;background:linear-gradient(110deg,#ecf7ff 0%,#f9fcff 53%,#d9eeff 100%);box-shadow:var(--shadow)}.enterprise h3{margin:0;font-size:22px;font-weight:950}.enterprise .pill{display:inline-block;margin-left:6px;vertical-align:3px;border-radius:6px;padding:3px 7px;color:#fff;background:#2f9cff;font-size:9px}.enterprise p{margin:7px 0 13px;color:#6d819f;font-size:11px}.enterprise .benefits{display:flex;gap:10px;color:#5f7695;font-size:9px}.enterprise .buildings{position:absolute;right:70px;bottom:-5px;width:110px;height:130px;opacity:.63}.building{position:absolute;bottom:0;background:linear-gradient(90deg,#9ec7e8,#e2f2ff 55%,#7eb3dd);border:1px solid rgba(90,147,196,.35);transform:skewY(-3deg)}.building.one{right:0;width:55px;height:126px}.building.two{right:42px;width:55px;height:96px}.building:before{content:"";position:absolute;inset:8px;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(45,113,170,.18) 9px 11px),repeating-linear-gradient(0deg,transparent 0 10px,rgba(45,113,170,.16) 10px 12px)}.consult{position:absolute;right:15px;bottom:16px;height:37px;padding:0 16px;border-radius:20px;color:#fff;text-decoration:none;display:flex;align-items:center;font-size:11px;font-weight:900;background:linear-gradient(180deg,#31a9ff,#167cff);box-shadow:0 5px 0 #075bc2,0 9px 16px rgba(18,124,242,.20)}
+.features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:0 15px 14px}.feature{min-width:0;background:#fff;border:1px solid #edf2f8;border-radius:14px;padding:10px 5px;text-align:center;box-shadow:0 7px 18px rgba(33,88,145,.06)}.feature .fi{font-size:21px;color:#157fff}.feature b{display:block;font-size:10px;margin-top:2px}.feature small{display:block;color:#98a4b5;font-size:7px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.telegram{margin:0 15px 18px;min-height:64px;border-radius:17px;padding:10px 12px;background:linear-gradient(100deg,#dff2ff,#f9fcff);display:flex;align-items:center;gap:10px;border:1px solid #e3eff9}.tg{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#38bcff,#1594e8);font-size:22px;box-shadow:0 8px 16px rgba(24,153,229,.22)}.telegram b{display:block;font-size:12px}.telegram small{display:block;color:#7f90a8;font-size:8px;margin-top:3px}.telegram a{margin-left:auto;white-space:nowrap;text-decoration:none;color:#1778e9;background:#fff;padding:9px 12px;border-radius:18px;font-size:10px;font-weight:900;box-shadow:0 6px 14px rgba(40,105,170,.08)}
+.bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;height:76px;padding-bottom:env(safe-area-inset-bottom);z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(18px);border-top:1px solid #e7eef7;display:grid;grid-template-columns:repeat(5,1fr)}.bottom a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#7d899d;text-decoration:none;font-size:10px}.bottom a.active{color:#1684ff;font-weight:900}.bottom svg{width:22px;height:22px}.cart-count{position:absolute;top:9px;right:22px;min-width:18px;height:18px;border-radius:9px;background:#ff344f;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:900;border:2px solid #fff}
 .notice{grid-column:1/-1;text-align:center;background:#fff;border:1px solid #e5eef8;border-radius:16px;padding:20px;color:#8090a8}
-@media(max-width:370px){.hero h1{font-size:32px}.products{gap:7px}.product{padding:10px 9px}.categories{gap:4px}.cat .ci{width:44px;height:44px}.features{gap:5px}}
-@media(min-width:760px){body{background:#e8f0f8}.app{max-width:1180px;padding:24px 34px 110px;border-radius:0}.hero{min-height:420px}.hero-content{padding:54px;width:55%}.hero h1{font-size:62px}.hero p{font-size:16px}.categories{grid-template-columns:repeat(6,120px);justify-content:center}.products{grid-template-columns:repeat(6,1fr)}.bottom{max-width:1180px}}
+@media(max-width:370px){header{padding-left:15px;padding-right:15px}.brand b{font-size:18px}.brand small{font-size:9px}.categories{padding-left:10px;padding-right:10px;gap:5px}.ci{width:45px;height:45px}.section{padding-left:10px;padding-right:10px}.products{gap:7px}.product{padding:10px 9px}.product h3{font-size:11px}.price{font-size:15px}}
+@media(min-width:760px){body{background:#e9f1f8}.app{max-width:1180px;padding:20px 34px 110px}.hero{max-width:719px;margin-left:auto;margin-right:auto}.categories{grid-template-columns:repeat(6,110px);justify-content:center}.products{grid-template-columns:repeat(6,minmax(0,1fr))}.bottom{max-width:1180px}}
 </style>
 </head>
 <body>
 <main class="app">
 <header>
-  <a class="brand" href="/"><span class="crown">♛</span><span><b>EVA AI 市场</b><small>全球优质 AI 服务 · 一站式购买平台</small></span></a>
-  <div class="head-actions"><button class="iconbtn" onclick="location.href='/dashboard.html'" aria-label="通知">♧<i class="dot"></i></button><button class="iconbtn" onclick="location.href='/checkout.html'" aria-label="购物车">🛒</button></div>
+  <a class="brand" href="/">
+    <span class="logo">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#34b8ff"/><stop offset=".55" stop-color="#147eff"/><stop offset="1" stop-color="#065be7"/></linearGradient></defs>
+        <path fill="url(#cg)" d="M11 18l9 7 7-14 6 14 12-10 5 26c-12 8-25 8-38 0z"/><path fill="#fff" opacity=".9" d="M16 31h32v4H16z"/><circle cx="11" cy="15" r="4" fill="#34b8ff"/><circle cx="28" cy="8" r="4" fill="#147eff"/><circle cx="47" cy="12" r="4" fill="#065be7"/>
+      </svg>
+    </span>
+    <span><b>EVA AI 市场</b><small>全球优质 AI 服务 · 一站式购买平台</small></span>
+  </a>
+  <div class="head-actions">
+    <button class="iconbtn" onclick="location.href='/dashboard.html'" aria-label="通知"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><i class="dot"></i></button>
+    <button class="iconbtn" onclick="location.href='/checkout.html'" aria-label="购物车"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.8a2 2 0 002-1.5L21 8H7"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg></button>
+  </div>
 </header>
 
-<div class="search"><span>⌕</span><input id="homeSearch" placeholder="搜索 AI 产品、服务或品牌..."><span style="font-size:18px">⌗</span></div>
+<div class="search">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#18345b" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+  <input id="homeSearch" placeholder="搜索 AI 产品、服务或品牌...">
+  <span class="scan">⌗</span>
+</div>
 
 <section class="hero">
-  <img src="/assets/ai-cyborg-hero.webp" alt="EVA AI">
-  <div class="hero-content">
-    <div class="mini">♛ EVA AI MARKET</div>
-    <h1>让 AI 为你<br>创造更多可能</h1>
-    <p>更智能 · 更高效 · 更美好的未来</p>
-    <a class="btn3d blue" href="/products.html">立即探索 <b>→</b></a>
-  </div>
-  <div class="dots"><i></i><i></i><i></i><i></i></div>
+  <img src="/assets/eva-reference-hero.webp" alt="EVA AI MARKET">
+  <a class="hero-hit" href="/products.html" aria-label="立即探索"></a>
 </section>
 
 <section class="categories">
@@ -62,50 +66,54 @@ header{padding:calc(16px + env(safe-area-inset-top)) 18px 10px;display:flex;alig
 </section>
 
 <section class="section">
-  <div class="section-head"><div><h2><span>🔥</span>热门推荐</h2><p>全球热门 AI 产品 · 正品保障 · 即买即用</p></div><a href="/products.html">查看全部 ›</a></div>
+  <div class="section-head"><div><h2><span class="fire">🔥</span>热门推荐</h2><p>全球热门 AI 产品 · 正品保障 · 即买即用</p></div><a href="/products.html">查看全部 ›</a></div>
   <div class="products" id="homeProducts"><div class="notice">正在加载热门产品…</div></div>
 </section>
 
 <section class="enterprise">
-  <h3>企业定制方案</h3><p>一站式 AI 解决方案 · 助力企业数字化转型</p>
-  <a class="btn3d blue" style="height:40px;margin-top:14px;padding:0 18px;font-size:12px" href="https://t.me/AWSXCLOUDEBUYSELL">立即咨询 →</a>
+  <h3>企业定制方案 <span class="pill">为企业而生</span></h3>
+  <p>一站式 AI 解决方案 · 助力企业数字化转型</p>
+  <div class="benefits"><span>♢ 专属方案</span><span>♧ 批量采购</span><span>▣ 专业支持</span></div>
+  <div class="buildings"><i class="building two"></i><i class="building one"></i></div>
+  <a class="consult" href="https://t.me/AWSXCLOUDEBUYSELL">立即咨询 →</a>
 </section>
 
 <section class="features">
-  <div class="feature"><span>🛡️</span><b>正品保障</b><small>官方授权 正规渠道</small></div>
-  <div class="feature"><span>⚡</span><b>快速交付</b><small>自动发货 即买即用</small></div>
-  <div class="feature"><span>🎧</span><b>售后支持</b><small>专业团队 7×24小时</small></div>
-  <div class="feature"><span>🌐</span><b>全球服务</b><small>服务全球用户</small></div>
+  <div class="feature"><div class="fi">🛡️</div><b>正品保障</b><small>官方授权 正规渠道</small></div>
+  <div class="feature"><div class="fi">⚡</div><b>快速交付</b><small>自动发货 即买即用</small></div>
+  <div class="feature"><div class="fi">🎧</div><b>售后支持</b><small>专业团队 7×24小时</small></div>
+  <div class="feature"><div class="fi">🌐</div><b>全球服务</b><small>服务全球用户</small></div>
 </section>
 
 <section class="telegram">
-  <div class="tg">➤</div><div><b>加入我们的 Telegram 社群</b><small>获取最新优惠 · 产品资讯 · 专属客服</small></div><a href="https://t.me/AWSXCLOUDEBUYSELL">立即加入 →</a>
+  <div class="tg">➤</div>
+  <div><b>加入我们的 Telegram 社群</b><small>获取最新优惠 · 产品资讯 · 使用教程 · 专属客服</small></div>
+  <a href="https://t.me/AWSXCLOUDEBUYSELL">立即加入 →</a>
 </section>
 </main>
 
 <nav class="bottom">
-  <a class="active" href="/"><span>⌂</span>首页</a>
-  <a href="/products.html"><span>▦</span>分类</a>
-  <a href="/checkout.html"><span>🛒</span>购物车</a>
-  <a href="/dashboard.html"><span>▤</span>订单</a>
-  <a href="/dashboard.html"><span>♙</span>我的</a>
+  <a class="active" href="/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>首页</a>
+  <a href="/products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>分类</a>
+  <a href="/checkout.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.8a2 2 0 002-1.5L21 8H7"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><i class="cart-count">3</i>购物车</a>
+  <a href="/dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12v18H6z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>订单</a>
+  <a href="/dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.5 3.5-7 8-7s7.2 2.5 8 7"/></svg>我的</a>
 </nav>
 
 <script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const icon=p=>{const s=((p?.name||'')+' '+(p?.category||'')).toLowerCase();if(s.includes('chatgpt')||s.includes('openai'))return '◎';if(s.includes('claude'))return '✺';if(s.includes('gemini'))return '✦';if(s.includes('aws'))return 'aws';if(s.includes('google')||s.includes('gcp'))return 'GCP';if(s.includes('capcut'))return 'CC';if(s.includes('kiro'))return 'K';return 'AI'};
-const subtitle=p=>p.subtitle||p.category||'优质 AI 服务';
+const brands=p=>{const s=((p?.name||'')+' '+(p?.category||'')).toLowerCase();if(s.includes('chatgpt')||s.includes('openai'))return ['◎','openai'];if(s.includes('claude'))return ['✺','claude'];if(s.includes('gemini')||s.includes('google ai ultra'))return ['✦','gemini'];if(s.includes('aws'))return ['aws','aws'];if(s.includes('google'))return ['G','google'];if(s.includes('kiro'))return ['K','kiro'];return ['AI','']};
 fetch('/api/store',{cache:'no-store'}).then(async r=>{const b=await r.json();if(!r.ok)throw new Error(b.error||'Catalog unavailable');return b}).then(b=>{
- const products=Array.isArray(b.products)?b.products:[];
- const seen=new Set();
- const priority=['chatgpt','claude','gemini','midjourney','aws','google','gcp','capcut','kiro'];
- const list=products.filter(p=>{const k=String(p.name||'').trim().toLowerCase();if(!k||seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>{const A=String(a.name||'').toLowerCase(),B=String(b.name||'').toLowerCase();let ai=priority.findIndex(x=>A.includes(x)),bi=priority.findIndex(x=>B.includes(x));if(ai<0)ai=99;if(bi<0)bi=99;return ai-bi}).slice(0,6);
+ const all=Array.isArray(b.products)?b.products:[];
+ const ids=['chatgpt-plus','claude-pro','gemini-ultra-5x','kiro-power-1m','aws-8','google-ai-pro'];
+ const fallback=all.filter(p=>Number(p.stock)>0);
+ const list=ids.map(id=>all.find(p=>p.id===id)).filter(Boolean);
+ while(list.length<6&&fallback.length){const p=fallback.shift();if(!list.some(x=>x.id===p.id))list.push(p)}
  const root=document.getElementById('homeProducts');
- if(!list.length){root.innerHTML='<div class="notice">暂无产品</div>';return}
- root.innerHTML=list.map((p,i)=>'<article class="product"><span class="hot">'+(i<3?'热门':'推荐')+'</span><div class="plogo">'+icon(p)+'</div><h3>'+esc(p.name)+'</h3><div class="desc">'+esc(subtitle(p))+'</div><div class="price">US$ '+Number(p.price_usd||0).toFixed(1)+'<small> / '+esc(p.official_price_label||'方案')+'</small></div><button class="buy" data-id="'+esc(p.id)+'" '+(Number(p.stock)<=0?'disabled':'')+'>'+(Number(p.stock)<=0?'暂时缺货':'立即购买 →')+'</button></article>').join('');
- root.querySelectorAll('.buy:not([disabled])').forEach(btn=>btn.onclick=()=>{const p=products.find(x=>String(x.id)===String(btn.dataset.id));if(p)sessionStorage.setItem('eva-checkout-product',JSON.stringify(p));location.href='/product.html?id='+encodeURIComponent(btn.dataset.id)});
+ root.innerHTML=list.map((p,i)=>{const [ic,br]=brands(p);const label=p.id==='gemini-ultra-5x'?'Gemini Ultra':p.id==='aws-8'?'AWS 云服务':p.id==='google-ai-pro'?'Google Cloud':p.name;return '<article class="product"><span class="badge">'+(i===1?'推荐':'热门')+'</span><div class="plogo brand-'+br+'">'+ic+'</div><h3>'+esc(label)+'</h3><div class="desc">'+esc(p.subtitle||p.category||'优质 AI 服务')+'</div><div class="price">US$ '+Number(p.price_usd||0).toFixed(1)+'</div><div class="price-label">'+esc(p.official_price_label||'月度方案')+'</div><button class="buy" data-id="'+esc(p.id)+'" '+(Number(p.stock)<=0?'disabled':'')+'>'+(Number(p.stock)<=0?'暂时缺货':'立即购买 →')+'</button></article>'}).join('');
+ root.querySelectorAll('.buy:not([disabled])').forEach(btn=>btn.onclick=()=>{const p=all.find(x=>String(x.id)===String(btn.dataset.id));if(p)sessionStorage.setItem('eva-checkout-product',JSON.stringify(p));location.href='/product.html?id='+encodeURIComponent(btn.dataset.id)});
 }).catch(e=>document.getElementById('homeProducts').innerHTML='<div class="notice">'+esc(e.message)+'</div>');
-document.getElementById('homeSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){location.href='/products.html?q='+encodeURIComponent(e.target.value||'')}})
+document.getElementById('homeSearch').addEventListener('keydown',e=>{if(e.key==='Enter')location.href='/products.html?q='+encodeURIComponent(e.target.value||'')});
 </script>
 </body>
 </html>
