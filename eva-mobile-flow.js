@@ -37,10 +37,11 @@
     return products;
   }
   const id=()=>new URLSearchParams(location.search).get('id');
+  function cleanPublicLabel(v){return String(v||'').replace(/\s*\+\s*5%\s*EVA\s*fee/ig,'').replace(/\s{2,}/g,' ').replace(/\s*[·|\-]\s*$/,'').trim();}
 
   function card(p){
     const unavailable=Number(p.stock)<=0;
-    return '<article class="product-card'+(unavailable?' out-of-stock':'')+'"><div class="product-top"><div class="product-logo brand-'+brand(p)+'">'+icon(p)+'</div><span class="heart">♡</span></div><h3>'+esc(p.name)+'</h3><div class="price">$ '+Number(p.price_usd||0).toFixed(2)+' <small>/ '+esc(p.official_price_label||'Plan')+'</small></div><button class="buy" data-id="'+esc(p.id)+'"'+(unavailable?' disabled aria-disabled="true"':'')+'>'+(unavailable?'Out of Stock':'Buy Now')+'</button></article>';
+    return '<article class="product-card'+(unavailable?' out-of-stock':'')+'"><div class="product-top"><div class="product-logo brand-'+brand(p)+'">'+icon(p)+'</div><span class="heart">♡</span></div><h3>'+esc(p.name)+'</h3><div class="price">$ '+Number(p.price_usd||0).toFixed(2)+' <small>/ '+esc(cleanPublicLabel(p.official_price_label)||p.access_label||'Plan')+'</small></div><button class="buy" data-id="'+esc(p.id)+'"'+(unavailable?' disabled aria-disabled="true"':'')+'>'+(unavailable?'Out of Stock':'Buy Now')+'</button></article>';
   }
 
   async function productsPage(){
@@ -110,7 +111,7 @@
         const items=[];
         if(x.subtitle) items.push(x.subtitle);
         if(Number(x.warranty_days)>0) items.push(Number(x.warranty_days)+' day warranty');
-        if(x.official_price_label) items.push(x.official_price_label);
+        if(x.official_price_label){const publicLabel=cleanPublicLabel(x.official_price_label);if(publicLabel)items.push(publicLabel);}
         if(x.purchase_mode) items.push('Purchase mode: '+x.purchase_mode);
         if(x.access_label) items.push(x.access_label);
         features.innerHTML=items.map(v=>'<li>✓ '+esc(v)+'</li>').join('');
