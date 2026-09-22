@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#080414">
-<title>EVA AI Market - Checkout</title>
+<meta name="theme-color" content="#f8fbff">
+<title>确认订单｜EVA AI 市场</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -111,6 +111,7 @@ radial-gradient(circle at 50% 20%,rgba(138,43,226,.16),transparent 40%),
  body[data-page="checkout"] .mt-auto{padding-bottom:18px!important}
 }
 </style><link rel="stylesheet" href="/eva-premium-2026.css?v=20260922-1">
+<link rel="stylesheet" href="/eva-storefront-white.css?v=20260923-step2">
 </head>
 <body data-page="checkout">
 <main class="app-container" id="checkout">
@@ -125,48 +126,48 @@ radial-gradient(circle at 50% 20%,rgba(138,43,226,.16),transparent 40%),
         <path d="M50 15L54 38H46Z" fill="url(#logoGrad)"/><circle cx="30" cy="25" r="2.5" fill="url(#logoGrad)"/><circle cx="70" cy="25" r="2.5" fill="url(#logoGrad)"/><path d="M50 68L56 78L50 85L44 78Z" fill="url(#logoGrad)"/>
       </svg>
     </div>
-    <div class="flex flex-col justify-center -mt-1"><h1 class="text-[15px] font-[800] tracking-[0.03em] text-white leading-tight">EVA AI MARKET</h1><p class="text-[8px] text-[#867b9f] font-bold tracking-[0.16em] leading-tight mt-[2px]">AI & CLOUD SOLUTIONS</p></div>
+    <div class="flex flex-col justify-center -mt-1"><h1 class="text-[15px] font-[800] tracking-[0.03em] text-white leading-tight">EVA AI 市场</h1><p class="text-[8px] text-[#867b9f] font-bold tracking-[0.16em] leading-tight mt-[2px]">全球优质 AI 服务 · 一站式购买平台</p></div>
   </a>
   <button class="icon-btn" id="menuBtn" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
 </header>
 
 <div class="px-8 pb-8 relative z-10 checkout-pad">
   <div class="flex justify-between items-center mb-2"><div class="step-circle step-inactive">1</div><div class="step-line step-line-gradient"></div><div class="step-circle step-active">2</div><div class="step-line step-line-inactive"></div><div class="step-circle step-inactive">3</div></div>
-  <div class="flex justify-between px-0"><span class="text-[12px] text-[#867b9f] font-medium w-[44px] text-center">Cart</span><span class="text-[12px] text-[#d4a5fd] font-semibold w-[60px] text-center">Checkout</span><span class="text-[12px] text-[#867b9f] font-medium w-[55px] text-center">Payment</span></div>
+  <div class="flex justify-between px-0"><span class="text-[12px] text-[#867b9f] font-medium w-[44px] text-center">购物车</span><span class="text-[12px] text-[#d4a5fd] font-semibold w-[60px] text-center">确认订单</span><span class="text-[12px] text-[#867b9f] font-medium w-[55px] text-center">支付</span></div>
 </div>
 
 <div class="px-5 mb-5 relative z-10 checkout-pad">
   <section class="section-card">
-    <h2 class="text-white font-bold text-[16px] mb-4">Order Summary</h2>
+    <h2 class="text-white font-bold text-[16px] mb-4">订单摘要</h2>
     <div class="flex items-center gap-4 pb-4 border-b border-[#231a38] mb-4">
       <div class="product-icon" id="coLogo">K</div>
       <div class="flex-1 min-w-0">
-        <div class="flex justify-between items-start gap-2 mb-1"><h3 id="coName" class="text-white font-semibold text-[14px] leading-tight truncate">Loading product…</h3><span id="coPrice" class="text-white font-bold text-[15px] whitespace-nowrap"></span></div>
-        <div class="flex justify-between items-center gap-2"><span id="coPlan" class="text-[#867b9f] text-[12px] truncate"></span><span class="text-[#867b9f] text-[12px] whitespace-nowrap">Qty: 1</span></div>
+        <div class="flex justify-between items-start gap-2 mb-1"><h3 id="coName" class="text-white font-semibold text-[14px] leading-tight truncate">正在加载商品…</h3><span id="coPrice" class="text-white font-bold text-[15px] whitespace-nowrap"></span></div>
+        <div class="flex justify-between items-center gap-2"><span id="coPlan" class="text-[#867b9f] text-[12px] truncate"></span><span class="text-[#867b9f] text-[12px] whitespace-nowrap">数量: 1</span></div>
       </div>
     </div>
-    <div class="flex justify-between items-center mb-3"><span class="text-[#a59ab8] text-[14px]">Subtotal</span><span id="coSubtotal" class="text-white font-semibold text-[14px]"></span></div>
-    <div class="flex justify-between items-center"><span class="text-white font-bold text-[18px]">Total</span><span id="coTotal" class="text-white font-bold text-[18px]"></span></div>
+    <div class="flex justify-between items-center mb-3"><span class="text-[#a59ab8] text-[14px]">商品金额</span><span id="coSubtotal" class="text-white font-semibold text-[14px]"></span></div>
+    <div class="flex justify-between items-center"><span class="text-white font-bold text-[18px]">应付总额</span><span id="coTotal" class="text-white font-bold text-[18px]"></span></div>
   </section>
 </div>
 
 <div class="px-5 mb-6 relative z-10 checkout-pad">
   <section class="section-card payment">
-    <h2 class="text-white font-bold text-[16px] mb-4">Payment Method</h2>
+    <h2 class="text-white font-bold text-[16px] mb-4">选择支付网络</h2>
     <label class="payment-option active"><input type="radio" checked name="payment" value="USDT (TRC20)"><span class="text-white font-semibold text-[15px]">USDT (TRC20)</span></label>
     <label class="payment-option"><input type="radio" name="payment" value="USDT (BEP20)"><span class="text-[#a59ab8] font-medium text-[15px]">USDT (BEP20)</span></label>
     <label class="payment-option"><input type="radio" name="payment" value="USDT (ERC20)"><span class="text-[#a59ab8] font-medium text-[15px]">USDT (ERC20)</span></label>
-    <label class="terms"><input type="checkbox" id="agreeTerms"><span>I agree to the <strong class="text-white">Terms &amp; Conditions</strong></span></label>
-    <button id="payNow" disabled>Pay Now (USDT)</button>
+    <label class="terms"><input type="checkbox" id="agreeTerms"><span>我已阅读并同意 <strong class="text-white">服务条款</strong></span></label>
+    <button id="payNow" disabled>确认支付 (USDT)</button>
   </section>
 </div>
 
 <p class="notice" id="checkoutNotice" hidden></p>
 
 <div class="mt-auto px-10 pb-8 flex justify-between items-end relative z-10">
-  <div class="flex flex-col items-center gap-2"><span class="text-[#a59ab8] text-[23px]">▣</span><span class="text-[#867b9f] text-[11px] font-medium">Secure</span></div>
-  <div class="flex flex-col items-center gap-2"><span class="text-[#a59ab8] text-[23px]">◴</span><span class="text-[#867b9f] text-[11px] font-medium">Fast</span></div>
-  <div class="flex flex-col items-center gap-2"><span class="text-[#a59ab8] text-[23px]">◇</span><span class="text-[#867b9f] text-[11px] font-medium">Reliable</span></div>
+  <div class="flex flex-col items-center gap-2"><span class="text-[#a59ab8] text-[23px]">▣</span><span class="text-[#867b9f] text-[11px] font-medium">安全</span></div>
+  <div class="flex flex-col items-center gap-2"><span class="text-[#a59ab8] text-[23px]">◴</span><span class="text-[#867b9f] text-[11px] font-medium">快速</span></div>
+  <div class="flex flex-col items-center gap-2"><span class="text-[#a59ab8] text-[23px]">◇</span><span class="text-[#867b9f] text-[11px] font-medium">可靠</span></div>
 </div>
 </main>
 
