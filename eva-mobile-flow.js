@@ -39,7 +39,8 @@
   const id=()=>new URLSearchParams(location.search).get('id');
 
   function card(p){
-    return '<article class="product-card"><div class="product-top"><div class="product-logo brand-'+brand(p)+'">'+icon(p)+'</div><span class="heart">♡</span></div><h3>'+esc(p.name)+'</h3><div class="price">$ '+Number(p.price_usd||0).toFixed(2)+' <small>/ '+esc(p.official_price_label||'Plan')+'</small></div><button class="buy" data-id="'+esc(p.id)+'">Buy Now</button></article>';
+    const unavailable=Number(p.stock)<=0;
+    return '<article class="product-card'+(unavailable?' out-of-stock':'')+'"><div class="product-top"><div class="product-logo brand-'+brand(p)+'">'+icon(p)+'</div><span class="heart">♡</span></div><h3>'+esc(p.name)+'</h3><div class="price">$ '+Number(p.price_usd||0).toFixed(2)+' <small>/ '+esc(p.official_price_label||'Plan')+'</small></div><button class="buy" data-id="'+esc(p.id)+'"'+(unavailable?' disabled aria-disabled="true"':'')+'>'+(unavailable?'Out of Stock':'Buy Now')+'</button></article>';
   }
 
   async function productsPage(){
@@ -100,10 +101,16 @@
       price.textContent='$'+Number(x.price_usd||0).toFixed(2);
       stock.textContent=Number(x.stock)>0?'In Stock ('+x.stock+')':'Unavailable';
       if(art) art.dataset.icon=icon(x);
-      if(buy) buy.onclick=()=>{
-        sessionStorage.setItem('eva-checkout-product',JSON.stringify(x));
-        location.href='/checkout.html?id='+encodeURIComponent(x.id);
-      };
+      if(buy){
+        const unavailable=Number(x.stock)<=0;
+        buy.disabled=unavailable;
+        buy.setAttribute('aria-disabled',String(unavailable));
+        buy.textContent=unavailable?'Out of Stock':'Buy Now';
+        buy.onclick=unavailable?null:()=>{
+          sessionStorage.setItem('eva-checkout-product',JSON.stringify(x));
+          location.href='/checkout.html?id='+encodeURIComponent(x.id);
+        };
+      }
     };
     try{
       const cached=JSON.parse(sessionStorage.getItem('eva-checkout-product'));
@@ -165,9 +172,15 @@
         if(!p) throw new Error('Product unavailable');
         paintCheckout(p);
       }
-      const pay=$('#payNow'), agree=$('#agreeTerms'), radios=$$('input[name="payment"]');
+      const pay=$('#payNow'), agree=$('#agreeTerms'), radios=$('input[name="payment"]');
+      const unavailable=Number(p.stock)<=0;
+      if(unavailable){
+        const n=$('#checkoutNotice');
+        if(n){n.textContent='This product is currently out of stock.';n.hidden=false;}
+        if(pay) pay.textContent='Out of Stock';
+      }
       const sync=()=>{
-        if(pay) pay.disabled=!agree?.checked;
+        if(pay) pay.disabled=unavailable||!agree?.checked;
         $$('.payment-option').forEach(x=>{
           const input=x.querySelector('input');
           x.classList.toggle('active',Boolean(input?.checked));
