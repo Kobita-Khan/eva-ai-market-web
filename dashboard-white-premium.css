@@ -1,0 +1,54 @@
+:root{--eva-blue:#1688ff;--eva-blue2:#38b5ff;--eva-navy:#0a2148;--eva-muted:#7f8fa6;--eva-line:#e5edf6;--eva-bg:#f3f8fd;--eva-card:#fff;--eva-red:#ff3655;--eva-green:#179b69;--eva-shadow:0 12px 30px rgba(40,103,175,.10)}
+html,body{background:#edf5fb!important;color:var(--eva-navy)!important;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif!important}
+body.dashboard-page{display:flex!important;justify-content:center!important;min-height:100vh!important;background:#edf5fb!important}
+body.dashboard-page .app-container{width:100%!important;max-width:430px!important;min-height:100svh!important;height:auto!important;background:linear-gradient(180deg,#fbfdff,#f3f8fd 75%,#fff)!important;color:var(--eva-navy)!important;box-shadow:0 0 44px rgba(34,88,145,.10)!important;padding-bottom:92px!important}
+.glow-bg-top{display:none!important}
+body.dashboard-page header{background:transparent!important;color:var(--eva-navy)!important}
+body.dashboard-page header h1,body.dashboard-page header b{color:var(--eva-navy)!important}
+.icon-btn{background:#fff!important;color:#173558!important;border:1px solid #e5edf6!important;box-shadow:0 7px 16px rgba(40,95,155,.07)!important}
+
+/* Overview */
+#overview{padding:0 14px 10px!important}
+.wallet-card{background:linear-gradient(145deg,#ffffff,#edf7ff)!important;border:1px solid #dce9f5!important;border-radius:22px!important;box-shadow:0 14px 30px rgba(35,90,149,.09)!important;color:var(--eva-navy)!important}
+.wallet-glow{background:radial-gradient(circle,rgba(46,174,255,.18),transparent 70%)!important}
+.wallet-card *{color:var(--eva-navy)}
+.action-btn{background:#fff!important;border:1px solid #dde8f2!important;border-radius:16px!important;color:#284361!important;box-shadow:0 8px 18px rgba(35,90,149,.06)!important}
+.action-btn.active{background:#eef8ff!important;border-color:#1688ff!important;color:#1479e9!important}
+.menu-item{border-bottom:1px solid #edf2f7!important;color:#38506e!important}.menu-item.active{background:linear-gradient(90deg,#eef7ff,rgba(255,255,255,0))!important;border-left:3px solid #1688ff!important}.menu-item.active .menu-icon,.menu-item.active .menu-text{color:#1688ff!important}
+
+/* Functional portal */
+.functional-zone{padding:12px 14px 100px!important;background:transparent!important}
+.functional-zone .panel,.functional-zone .dash-card{background:#fff!important;border:1px solid #e5edf6!important;border-radius:20px!important;box-shadow:0 10px 28px rgba(35,90,149,.07)!important;color:var(--eva-navy)!important}
+.functional-zone .section-heading{margin:18px 2px 9px!important}
+.functional-zone .section-heading span{font-size:10px!important;font-weight:900!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#1688ff!important}
+.functional-zone .section-heading h2{color:var(--eva-navy)!important;font-size:20px!important;font-weight:950!important;letter-spacing:-.03em!important}
+.functional-zone .section-heading p,.functional-zone .safe-note{color:#7f8fa6!important}
+
+/* Deposit */
+#new-deposit{overflow:hidden!important}
+.quantum-card,.quantum-vault,.quantum-history{background:#fff!important;color:var(--eva-navy)!important;border-color:#dfeaf5!important;box-shadow:none!important}
+.quantum-card:before,.quantum-card:after,#quantum-glare{opacity:.12!important}
+.quantum-networks{gap:8px!important}.quantum-networks button{background:#f5f9fd!important;color:#647993!important;border:1px solid #dbe7f2!important;border-radius:14px!important}.quantum-networks button.active{background:linear-gradient(180deg,#35b4ff,#1684ff)!important;color:#fff!important;border-color:#1684ff!important;box-shadow:0 4px 0 #0b61c8!important}
+.quantum-vault{border-radius:18px!important}.quantum-vault-top span,.quantum-vault small{color:#7f8fa6!important}.quantum-vault code{color:#183655!important;background:#f3f8fd!important;border:1px solid #e2ebf4!important;border-radius:12px!important;padding:10px!important}
+.quantum-online{color:#159565!important}
+#copy-deposit-address{background:#eef7ff!important;color:#1479e9!important;border:1px solid #cae2fb!important;border-radius:18px!important}
+.quantum-label{color:#38506e!important}.quantum-label input{background:#fff!important;color:#173558!important;border:1px solid #dce7f1!important;border-radius:14px!important}
+.quantum-submit{border:0!important;border-radius:24px!important;background:linear-gradient(180deg,#35b4ff,#1684ff)!important;color:#fff!important;box-shadow:0 6px 0 #075bc0,0 12px 20px rgba(18,126,245,.20)!important}
+
+/* Tables */
+.table-wrap{border-radius:16px!important;overflow:auto!important}
+table{width:100%!important;border-collapse:separate!important;border-spacing:0!important;color:#2c4564!important}
+thead th{background:#f4f8fc!important;color:#7b8ba0!important;font-size:9px!important;text-transform:uppercase!important;letter-spacing:.05em!important;border-bottom:1px solid #e5edf6!important}
+tbody td{background:#fff!important;color:#36506e!important;border-bottom:1px solid #edf2f7!important}
+tbody tr:last-child td{border-bottom:0!important}
+
+/* Catalog + order */
+.store-dashboard{padding:10px!important}.store-products{background:transparent!important}.store-loading{color:#8494a8!important}
+#customer-orders .section-heading,#balance-history .section-heading{margin-top:22px!important}
+
+/* Bottom nav */
+.bottom-nav{width:100%!important;max-width:430px!important;height:74px!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(16px)!important;border-top:1px solid #e5edf6!important;box-shadow:0 -10px 28px rgba(31,85,144,.06)!important;padding:0 18px calc(env(safe-area-inset-bottom)/2)!important}
+.bottom-nav a{color:#7b899d!important;font-size:9px!important}.bottom-nav a:hover,.bottom-nav a:focus{color:#1688ff!important}.spider-fab{display:none!important}
+
+/* Mobile polish */
+@media(max-width:430px){.functional-zone{padding-left:12px!important;padding-right:12px!important}.functional-zone .panel,.functional-zone .dash-card{border-radius:18px!important}.wallet-card{border-radius:20px!important}#overview{padding-left:12px!important;padding-right:12px!important}}

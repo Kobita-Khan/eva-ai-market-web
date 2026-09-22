@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#06020c">
-<title>EVA AI Market - Dashboard</title>
+<meta name="theme-color" content="#f8fbff">
+<title>客户中心｜EVA AI 市场</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -59,6 +59,7 @@ body.dashboard-page .functional-zone{order:initial!important}
  body.dashboard-page .functional-zone{padding-top:18px!important;background:#02050c!important}
 }
 </style><link rel="stylesheet" href="/eva-premium-2026.css?v=20260922-1">
+<link rel="stylesheet" href="/dashboard-white-premium.css?v=20260923-step3">
 </head>
 <body class="dashboard-page">
 <div class="app-container">
@@ -90,14 +91,14 @@ body.dashboard-page .functional-zone{order:initial!important}
 
 <section class="px-6 mb-8 relative z-10 flex gap-3">
   <a href="#new-deposit" class="action-btn active flex-1 py-3.5 flex flex-col items-center justify-center gap-2 no-underline"><span class="text-[22px] text-[#10a37f]">⇩</span><span class="text-[#10a37f] text-[12px] font-semibold">Deposit</span></a>
-  <a href="#customer-orders" class="action-btn flex-1 py-3.5 flex flex-col items-center justify-center gap-2 no-underline"><span class="text-[21px] text-[#a59ab8]">▤</span><span class="text-[#a59ab8] text-[12px] font-semibold">My Orders</span></a>
+  <a href="#customer-orders" class="action-btn flex-1 py-3.5 flex flex-col items-center justify-center gap-2 no-underline"><span class="text-[21px] text-[#a59ab8]">▤</span><span class="text-[#a59ab8] text-[12px] font-semibold">My 订单</span></a>
   <a href="#balance-history" class="action-btn flex-1 py-3.5 flex flex-col items-center justify-center gap-2 no-underline"><span class="text-[21px] text-[#a59ab8]">★</span><span class="text-[#a59ab8] text-[12px] font-semibold">Rewards</span></a>
 </section>
 
 <section class="px-6 pb-4 relative z-10">
   <a class="menu-item active" href="#overview"><div class="flex items-center gap-4"><span class="menu-icon text-xl">⌂</span><span class="menu-text text-[14px] font-medium">Dashboard</span></div><span class="text-[#524670]">›</span></a>
-  <a class="menu-item" href="#customer-orders"><div class="flex items-center gap-4"><span class="menu-icon text-xl">☷</span><span class="text-[#d1d5db] text-[14px] font-medium">My Orders</span></div><span class="text-[#524670]">›</span></a>
-  <a class="menu-item" href="#new-deposit"><div class="flex items-center gap-4"><span class="menu-icon text-xl">▭</span><span class="text-[#d1d5db] text-[14px] font-medium">My Wallet</span></div><span class="text-[#524670]">›</span></a>
+  <a class="menu-item" href="#customer-orders"><div class="flex items-center gap-4"><span class="menu-icon text-xl">☷</span><span class="text-[#d1d5db] text-[14px] font-medium">My 订单</span></div><span class="text-[#524670]">›</span></a>
+  <a class="menu-item" href="#new-deposit"><div class="flex items-center gap-4"><span class="menu-icon text-xl">▭</span><span class="text-[#d1d5db] text-[14px] font-medium">My 钱包</span></div><span class="text-[#524670]">›</span></a>
   <a class="menu-item" href="#balance-history"><div class="flex items-center gap-4"><span class="menu-icon text-xl">♙</span><span class="text-[#d1d5db] text-[14px] font-medium">Referrals</span></div><span class="text-[#524670]">›</span></a>
   <a class="menu-item" href="#overview"><div class="flex items-center gap-4"><span class="menu-icon text-xl">♙</span><span class="text-[#d1d5db] text-[14px] font-medium">Account Settings</span></div><span class="text-[#524670]">›</span></a>
   <a class="menu-item" href="https://t.me/eva007_8" target="_blank" rel="noopener"><div class="flex items-center gap-4"><span class="menu-icon text-xl">◉</span><span class="text-[#d1d5db] text-[14px] font-medium">Support</span></div><span class="text-[#524670]">›</span></a>
@@ -116,31 +117,31 @@ body.dashboard-page .functional-zone{order:initial!important}
         <label class="quantum-label">Amount in USDT<input id="dash-amount" type="number" min="10" step="0.01" placeholder="Minimum 10 USDT" required></label>
         <div class="quantum-label">Select Settlement Network<div class="quantum-networks"><button type="button" data-net="TRC20" class="active">TRC20</button><button type="button" data-net="ERC20">ERC20</button><button type="button" data-net="BEP20">BEP20</button><button type="button" data-net="SOLANA">SOLANA</button></div><select id="dash-network" aria-label="Network"><option>TRC20</option><option>ERC20</option><option>BEP20</option><option>SOLANA</option></select></div>
         <div class="quantum-specs"><div><small>Minimum Deposit</small><strong>10.00 USDT</strong><em>✓ Ready</em></div><div><small>Verification</small><strong>Network + Admin</strong></div></div>
-        <div class="quantum-vault"><div class="quantum-vault-top"><span>◇ SEND USDT TO THIS <b id="deposit-network-name">TRC20</b> ADDRESS</span><i id="quantum-badge">TRC20</i></div><div class="quantum-qr-wrap"><div id="deposit-qr"></div><span class="quantum-qr-token">₮</span></div><small>VAULT ADDRESS</small><code id="deposit-wallet-address">TJCFS6hDKsEnquGuvw43krk141QLvHnGbG</code><span class="quantum-online">● Address Ready</span><button id="copy-deposit-address" type="button">⧉ Copy wallet address</button></div>
-        <label class="quantum-label">Transaction ID (TXID)<input id="dash-txid" type="text" autocomplete="off" placeholder="Paste completed payment TXID" required></label>
-        <button class="quantum-submit" type="submit">➤ Submit For Verification</button>
+        <div class="quantum-vault"><div class="quantum-vault-top"><span>◇ 发送 USDT 至此 <b id="deposit-network-name">TRC20</b> ADDRESS</span><i id="quantum-badge">TRC20</i></div><div class="quantum-qr-wrap"><div id="deposit-qr"></div><span class="quantum-qr-token">₮</span></div><small>收款地址</small><code id="deposit-wallet-address">TJCFS6hDKsEnquGuvw43krk141QLvHnGbG</code><span class="quantum-online">● 地址可用</span><button id="copy-deposit-address" type="button">⧉ 复制钱包地址</button></div>
+        <label class="quantum-label">交易哈希 (TXID)<input id="dash-txid" type="text" autocomplete="off" placeholder="粘贴已完成付款的 TXID" required></label>
+        <button class="quantum-submit" type="submit">➤ 提交验证</button>
       </form>
     </div>
   </section>
 
-  <section class="panel dash-card quantum-history" id="deposit-history"><h2>Deposit Verification Log</h2><div class="table-wrap"><table><thead><tr><th>Date</th><th>Network</th><th>Amount</th><th>Status</th></tr></thead><tbody id="deposit-rows"></tbody></table></div></section>
+  <section class="panel dash-card quantum-history" id="deposit-history"><h2>充值验证记录</h2><div class="table-wrap"><table><thead><tr><th>Date</th><th>Network</th><th>Amount</th><th>Status</th></tr></thead><tbody id="deposit-rows"></tbody></table></div></section>
 
-  <div class="section-heading section-anchor" id="customer-products"><div><span>Product catalog</span><h2>Buy with EVA balance</h2></div></div>
+  <div class="section-heading section-anchor" id="customer-products"><div><span>商品目录</span><h2>使用 EVA 余额购买</h2></div></div>
   <section class="panel dash-card store-dashboard"><div id="dashboard-store-products" class="store-products compact-store"><article class="store-loading">Loading products…</article></div></section>
 
-  <div class="section-heading section-anchor" id="customer-orders"><div><span>Order tracking</span><h2>My orders & delivery</h2></div></div>
+  <div class="section-heading section-anchor" id="customer-orders"><div><span>订单追踪</span><h2>我的订单与交付</h2></div></div>
   <section class="panel dash-card"><div class="table-wrap"><table><thead><tr><th>Date</th><th>Product</th><th>Price</th><th>Status</th><th>Delivery</th></tr></thead><tbody id="order-rows"></tbody></table></div></section>
 
-  <div class="section-heading section-anchor" id="balance-history"><div><span>Account activity</span><h2>Balance history</h2></div></div>
+  <div class="section-heading section-anchor" id="balance-history"><div><span>账户记录</span><h2>余额记录</h2></div></div>
   <section class="panel dash-card"><div class="table-wrap"><table><thead><tr><th>Date</th><th>Type</th><th>Change</th><th>Balance</th></tr></thead><tbody id="ledger-rows"></tbody></table></div></section>
 </section>
 
 <nav class="bottom-nav">
-  <a href="/"><span class="text-[22px]">⌂</span><span>Home</span></a>
-  <a href="#customer-orders"><span class="text-[21px]">▤</span><span>Orders</span></a>
+  <a href="/"><span class="text-[22px]">⌂</span><span>首页</span></a>
+  <a href="#customer-orders"><span class="text-[21px]">▤</span><span>订单</span></a>
   <div class="spider-fab"><a href="/" class="spider-fab-inner" aria-label="EVA Home">🕷</a></div>
-  <a href="#new-deposit"><span class="text-[21px]">▭</span><span>Wallet</span></a>
-  <a href="#overview"><span class="text-[21px]">♙</span><span>Profile</span></a>
+  <a href="#new-deposit"><span class="text-[21px]">▭</span><span>钱包</span></a>
+  <a href="#overview"><span class="text-[21px]">♙</span><span>我的</span></a>
 </nav>
 </div>
 
