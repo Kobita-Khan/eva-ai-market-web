@@ -1,0 +1,53 @@
+:root{--ref-blue:#087cf3;--ref-blue2:#18a7ff;--ref-navy:#10224b;--ref-muted:#8998ae;--ref-red:#f2334e;--ref-line:#e8eef6;--ref-bg:#f4f9fd;--ref-card:#fff;--ref-shadow:0 8px 24px rgba(37,91,151,.08)}
+html,body{background:#eef6fb!important;color:var(--ref-navy)!important}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif!important}
+.app-container,.product-app,.success-app{max-width:430px!important;background:linear-gradient(180deg,#fbfdff,#f5f9fd 76%,#fff)!important;color:var(--ref-navy)!important;box-shadow:0 0 38px rgba(44,96,152,.08)!important}
+
+/* shared mobile header */
+.eva-head{padding:calc(11px + env(safe-area-inset-top)) 14px 9px!important;background:#fff!important;border-bottom:0!important}
+.eva-brand{color:var(--ref-navy)!important;gap:7px!important}.eva-logo{width:34px!important;height:34px!important}.eva-brand b{font-size:15px!important;font-weight:900!important;letter-spacing:-.02em!important}.eva-brand small{color:#8a9bb1!important;font-size:7px!important;letter-spacing:.05em!important}
+.icon-btn{background:#fff!important;border:1px solid #e4edf6!important;color:#17375d!important;border-radius:10px!important;box-shadow:0 5px 12px rgba(37,91,151,.05)!important}
+
+/* products listing: match reference single-row cards */
+body:has(#productsGrid) .app-container{padding-bottom:78px!important}
+.eva-search-wrap{padding:0 14px!important;margin-bottom:9px!important}.eva-search{height:38px!important;background:#fff!important;border:1px solid #e3ebf4!important;border-radius:19px!important;color:#284766!important;box-shadow:0 5px 15px rgba(37,91,151,.04)!important}
+.eva-search input{color:#284766!important}.eva-search input::placeholder{color:#9aa8bb!important}
+.chips-wrap{padding:0 14px 8px!important}.chips{gap:7px!important}.chips button{height:30px!important;padding:0 13px!important;border-radius:15px!important;background:#f4f8fc!important;border:1px solid #e5ecf4!important;color:#74859b!important;font-size:11px!important}.chips button.active{background:#e8f4ff!important;color:#087cf3!important;border-color:#cce5ff!important}
+.product-grid{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;padding:0 14px 90px!important}
+.product-card{min-height:86px!important;border-radius:14px!important;background:#fff!important;border:1px solid #e4edf6!important;box-shadow:0 6px 16px rgba(37,91,151,.055)!important;padding:10px 11px!important;display:grid!important;grid-template-columns:56px 1fr auto!important;grid-template-rows:auto auto!important;column-gap:10px!important;align-items:center!important}
+.product-top{grid-row:1/3!important;grid-column:1!important;display:block!important}.product-logo{width:52px!important;height:52px!important;border-radius:13px!important;font-size:25px!important;box-shadow:none!important}.heart{display:none!important}
+.product-card h3{grid-column:2!important;grid-row:1!important;margin:0!important;color:#10224b!important;font-size:13px!important;font-weight:900!important;align-self:end!important}
+.product-card .price{grid-column:2!important;grid-row:2!important;margin:2px 0 0!important;color:var(--ref-red)!important;font-size:14px!important;font-weight:950!important;align-self:start!important}.product-card .price small{display:none!important}
+.product-card .buy{grid-column:3!important;grid-row:1/3!important;align-self:center!important;width:78px!important;height:31px!important;border:0!important;border-radius:16px!important;background:linear-gradient(180deg,#1ca7ff,#087cf3)!important;color:#fff!important;font-size:10px!important;font-weight:900!important;box-shadow:0 4px 0 #0562c7!important}
+.product-card.out-of-stock .buy{background:#c8d4e0!important;box-shadow:none!important}
+
+/* product detail */
+body[data-page="product"]{background:#eef6fb!important;color:var(--ref-navy)!important}
+.product-app{padding-bottom:82px!important}.detail-art{height:160px!important;background:#fff!important;overflow:visible!important}.detail-art:after{right:auto!important;left:18px!important;bottom:16px!important;width:90px!important;height:90px!important;border-radius:18px!important;background:#fff!important;border:1px solid #e5edf6!important;box-shadow:0 8px 18px rgba(35,90,149,.08)!important;color:#087cf3!important;font-size:52px!important}
+.detail-top{top:calc(10px + env(safe-area-inset-top))!important}.detail-top button{background:#fff!important;color:#17375d!important;border:1px solid #e5edf6!important;box-shadow:0 5px 12px rgba(35,90,149,.05)!important}
+.detail{padding:0 15px 22px!important;background:#fff!important;margin-top:0!important}.detail h1{margin-left:108px!important;padding-top:12px!important;color:#10224b!important;font-size:18px!important}.detail .sub{margin-left:108px!important;color:#8697ad!important;font-size:10px!important}.big-price{margin-left:108px!important;color:var(--ref-red)!important;font-size:21px!important}.big-price:after{content:"/月"!important;color:var(--ref-red)!important;font-size:10px!important}
+.badges{margin:10px 0!important;gap:6px!important}.badge{background:#f2f8ff!important;border:1px solid #d9e9f8!important;color:#2f6ca7!important;border-radius:12px!important}.badge.green{background:#effaf5!important;border-color:#cfeede!important;color:#179b69!important}
+.features{background:#fff!important;color:#445d79!important;border-top:1px solid #edf2f7!important;padding-top:11px!important}.features li{color:#445d79!important}.stock{color:#179b69!important}
+.qty{display:none!important}.primary{border:0!important;border-radius:20px!important;background:linear-gradient(180deg,#1ca7ff,#087cf3)!important;color:#fff!important;box-shadow:0 5px 0 #0562c7!important}.outline{border:1px solid #cfe3f7!important;background:#fff!important;color:#087cf3!important}
+.info-row{background:#fff!important;border-color:#edf2f7!important;color:#526b86!important}
+
+/* checkout */
+body:has(#checkout){background:#eef6fb!important;color:var(--ref-navy)!important}
+body:has(#checkout) .app-container{background:#f7fbfe!important;padding-bottom:24px!important}
+body:has(#checkout) .app-container>div:first-of-type{background:#fff!important}
+body:has(#checkout) .text-white{color:var(--ref-navy)!important}
+body:has(#checkout) .text-\[\#867b9f\],body:has(#checkout) .text-\[\#a59ab8\]{color:#8192a8!important}
+.section-card{background:#fff!important;border:1px solid #e5edf6!important;border-radius:15px!important;box-shadow:var(--ref-shadow)!important}
+.step-circle{width:28px!important;height:28px!important;font-size:11px!important}.step-active{background:#087cf3!important;color:#fff!important;box-shadow:none!important}.step-inactive{background:#eef3f8!important;color:#8b9aaf!important;border-color:#dfe8f1!important}.step-line{background:#dce7f1!important}
+.payment-option{background:#fff!important;border:1px solid #e3ebf4!important;border-radius:12px!important;color:#36516d!important;padding:13px!important}.payment-option.active{border-color:#087cf3!important;background:#f5faff!important}.payment-option input[type=radio]{border-color:#b9c8d9!important}.payment-option input[type=radio]:checked{background:#087cf3!important;border-color:#087cf3!important}
+.terms{color:#647990!important}.notice{color:#7f90a6!important}
+#payNow{border-radius:20px!important;background:linear-gradient(180deg,#1ca7ff,#087cf3)!important;box-shadow:0 5px 0 #0562c7!important}
+
+/* dashboard/profile/orders */
+body.dashboard-page .app-container{max-width:430px!important;background:#f7fbfe!important}.functional-zone{background:transparent!important}.functional-zone .panel,.functional-zone .dash-card,.wallet-card{background:#fff!important;border:1px solid #e5edf6!important;box-shadow:var(--ref-shadow)!important;border-radius:16px!important}
+#customer-orders table,#deposit-history table,#balance-history table{font-size:10px!important}
+.bottom-nav,.eva-bottom{max-width:430px!important;background:#fff!important;border-top:1px solid #e5edf6!important;box-shadow:0 -8px 20px rgba(37,91,151,.05)!important}.bottom-nav a,.eva-bottom a{color:#8796aa!important}.bottom-nav a.active,.eva-bottom a.active{color:#087cf3!important}
+
+/* admin: dark left rail + light content, matching reference */
+body.eva-admin-page{background:#edf4fa!important}.eva-admin-shell{background:#edf4fa!important}.eva-admin-sidebar{background:linear-gradient(180deg,#0c2442,#0a1b32)!important;color:#fff!important;border-right:0!important}.eva-admin-sidebar a{color:#c4d0df!important}.eva-admin-sidebar a.active{background:#087cf3!important;color:#fff!important}.eva-admin-topbar{background:#fff!important}.eva-admin-workspace{background:#f4f8fc!important}.eva-admin-workspace .panel,.eva-admin-workspace .dash-card{background:#fff!important;border:1px solid #e4edf6!important;box-shadow:var(--ref-shadow)!important}
+@media(max-width:760px){.eva-admin-reference{background:#f4f8fc!important;color:var(--ref-navy)!important}.eva-ref-head,.eva-ref-title,.eva-ref-kpi,.eva-ref-links{background:#fff!important}.eva-ref-links a{color:#38506e!important}}
